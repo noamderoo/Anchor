@@ -1,0 +1,482 @@
+{
+  "project": "Anchor — Persoonlijk Leer- en Ideeënplatform",
+  "status": "In ontwikkeling",
+  "currentPhase": 2,
+  "phases": [
+    {
+      "number": 1,
+      "name": "Project Setup & Basisstructuur",
+      "status": "done",
+      "goal": "Een werkend project met basisstructuur, database, en lege layout die in de browser draait.",
+      "scope": [
+        "Vite + React + TypeScript project initialiseren",
+        "Tailwind CSS configureren met basis design tokens (kleuren, typografie, spacing)",
+        "Supabase project aanmaken en database schema opzetten (entries, tags, entry_tags, entry_references tabellen)",
+        "Basis layout structuur bouwen: header, main area (links tijdlijn placeholder, rechts dashboard placeholder), rechter sidebar",
+        "SPA routing opzetten met URL query params (?view=, ?entry=)",
+        "Zustand store initialiseren voor global state",
+        "New entry button als placeholder (nog niet functioneel)",
+        "View toggle buttons als placeholder (lijn | lijst | grid | graph iconen)",
+        "Sidebar met basis navigatie (inklapbaar)",
+        "Environment variables setup (.env voor Supabase keys)"
+      ],
+      "technicalDetails": {
+        "filesCreated": [
+          "package.json", "vite.config.ts", "tsconfig.json", "tsconfig.app.json",
+          "src/main.tsx", "src/App.tsx", "src/index.css",
+          "src/components/layout/Sidebar.tsx", "src/components/layout/Header.tsx", "src/components/layout/MainArea.tsx",
+          "src/store/useAppStore.ts",
+          "src/lib/supabase.ts",
+          "supabase/migrations/001_initial_schema.sql",
+          "src/types/index.ts",
+          ".env.local", ".env.example"
+        ],
+        "dependencies": ["react", "react-dom", "tailwindcss", "@supabase/supabase-js", "zustand", "lucide-react"],
+        "devDependencies": ["vite", "@vitejs/plugin-react", "typescript", "@types/react", "@types/react-dom", "@tailwindcss/vite"]
+      },
+      "definitionOfDone": [
+        { "id": "dod-1-1", "description": "Project start met npm run dev zonder errors", "done": true },
+        { "id": "dod-1-2", "description": "Tailwind CSS werkt en basis design tokens zijn geconfigureerd", "done": true },
+        { "id": "dod-1-3", "description": "Supabase database schema is aangemaakt (entries, tags, entry_tags, entry_references)", "done": true },
+        { "id": "dod-1-4", "description": "Layout is zichtbaar in browser: header, main area met twee kolommen, sidebar rechts", "done": true },
+        { "id": "dod-1-5", "description": "Sidebar is inklapbaar via toggle button", "done": true },
+        { "id": "dod-1-6", "description": "View toggle buttons zijn zichtbaar (nog niet functioneel)", "done": true },
+        { "id": "dod-1-7", "description": "New entry button is zichtbaar (nog niet functioneel)", "done": true },
+        { "id": "dod-1-8", "description": "URL query params worden gelezen en opgeslagen in state (?view=timeline als default)", "done": true },
+        { "id": "dod-1-9", "description": "TypeScript types voor Entry, Tag, EntryType zijn gedefinieerd", "done": true },
+        { "id": "dod-1-10", "description": "Environment variables voor Supabase zijn geconfigureerd", "done": true }
+      ],
+      "notInScope": [
+        "Entry creatie of bewerking",
+        "Data ophalen uit database",
+        "Functionele views (timeline, list, grid, graph)",
+        "Tags functionaliteit",
+        "Zoeken en filteren",
+        "AI integratie"
+      ]
+    },
+    {
+      "number": 2,
+      "name": "Entry Systeem — Basis CRUD",
+      "status": "todo",
+      "goal": "Entries kunnen aanmaken, bekijken, bewerken, archiveren en verwijderen via een centered modal.",
+      "scope": [
+        "New entry knop functioneel maken",
+        "Entry type selectie bij aanmaken (lesson, idea, milestone, note, resource, bookmark)",
+        "Formulier per entry type met juiste suggestie-velden",
+        "Entry opslaan naar Supabase",
+        "Entry modal: centered, dimmed/blurry achtergrond, alle velden zichtbaar en direct bewerkbaar",
+        "Inline editing in modal (klik in veld, type, klaar)",
+        "Entry archiveren (verdwijnt uit views, blijft in systeem)",
+        "Entry definitief verwijderen",
+        "Optimistic updates bij opslaan",
+        "Auto-save draft na 3 seconden inactiviteit",
+        "Toast notifications bij save/error",
+        "WACHT OP INPUT: Kies UI componenten voor modal, formulier, en toast notifications"
+      ],
+      "technicalDetails": {
+        "filesCreated": [
+          "src/components/entry/EntryModal.tsx", "src/components/entry/EntryForm.tsx",
+          "src/components/entry/EntryTypeSelector.tsx", "src/components/entry/fields/",
+          "src/store/useEntryStore.ts",
+          "src/lib/queries/entries.ts",
+          "src/hooks/useEntry.ts", "src/hooks/useAutoSave.ts"
+        ],
+        "dependencies": ["eventueel toast library"],
+        "notes": "Modal rendering via Portal, focus trap, backdrop click met unsaved changes confirmatie"
+      },
+      "definitionOfDone": [
+        { "id": "dod-2-1", "description": "New entry knop opent type selectie", "done": false },
+        { "id": "dod-2-2", "description": "Elk entry type toont de juiste suggestie-velden", "done": false },
+        { "id": "dod-2-3", "description": "Entry wordt succesvol opgeslagen in Supabase", "done": false },
+        { "id": "dod-2-4", "description": "Klikken op een entry opent de centered modal met dimmed achtergrond", "done": false },
+        { "id": "dod-2-5", "description": "Alle velden zijn direct bewerkbaar in de modal", "done": false },
+        { "id": "dod-2-6", "description": "Auto-save werkt na 3 seconden inactiviteit", "done": false },
+        { "id": "dod-2-7", "description": "Entry kan worden gearchiveerd (verdwijnt uit view)", "done": false },
+        { "id": "dod-2-8", "description": "Entry kan definitief worden verwijderd", "done": false },
+        { "id": "dod-2-9", "description": "Toast notification verschijnt bij opslaan/error", "done": false },
+        { "id": "dod-2-10", "description": "Modal sluit met Escape, backdrop click (met confirmation bij unsaved changes)", "done": false },
+        { "id": "dod-2-11", "description": "Focus trap werkt binnen modal", "done": false },
+        { "id": "dod-2-12", "description": "Optimistic updates zorgen voor snelle UI feedback", "done": false }
+      ],
+      "notInScope": [
+        "Tags toevoegen aan entries",
+        "Timeline weergave",
+        "Zoeken en filteren",
+        "Entry verwijzingen naar andere entries",
+        "AI suggesties",
+        "Afbeeldingen uploaden"
+      ]
+    },
+    {
+      "number": 3,
+      "name": "Timeline View & Homepage Dashboard",
+      "status": "todo",
+      "goal": "De homepage met verticale tijdlijn links en dashboard rechts, met werkende navigatie door entries.",
+      "scope": [
+        "Verticale tijdlijn implementeren met pinpoints per entry",
+        "Pinpoint toont: icoon voor entry type + titel",
+        "Hover op pinpoint toont extra metadata (datum, tags placeholder, status)",
+        "Klik op pinpoint opent entry modal (uit fase 2)",
+        "Dashboard rechts: laatste entry prominent weergeven",
+        "Stats sectie: aantal entries deze maand, aantal open bookmarks",
+        "Quick actions: New entry knop, contextuele shortcuts",
+        "Entries laden uit Supabase in batches (50 per keer)",
+        "Infinite scroll voor oudere entries",
+        "Virtualized list voor performance",
+        "Spacing op tijdlijn gebaseerd op datum",
+        "WACHT OP INPUT: Kies UI componenten voor timeline pinpoints, dashboard cards, stats display"
+      ],
+      "technicalDetails": {
+        "filesCreated": [
+          "src/components/timeline/Timeline.tsx", "src/components/timeline/TimelinePin.tsx",
+          "src/components/dashboard/Dashboard.tsx", "src/components/dashboard/LatestEntry.tsx",
+          "src/components/dashboard/StatsPanel.tsx", "src/components/dashboard/QuickActions.tsx"
+        ],
+        "dependencies": ["@tanstack/react-virtual"],
+        "notes": "Pinpoint positioning met absolute positioning op verticale as, CSS transforms voor smooth hover effects, Debounce bij hover voor data fetch"
+      },
+      "definitionOfDone": [
+        { "id": "dod-3-1", "description": "Verticale tijdlijn is zichtbaar aan linkerkant met pinpoints", "done": false },
+        { "id": "dod-3-2", "description": "Elk pinpoint toont icoon + titel van de entry", "done": false },
+        { "id": "dod-3-3", "description": "Hover op pinpoint toont extra metadata", "done": false },
+        { "id": "dod-3-4", "description": "Klik op pinpoint opent entry modal", "done": false },
+        { "id": "dod-3-5", "description": "Dashboard rechts toont de laatste entry", "done": false },
+        { "id": "dod-3-6", "description": "Stats tonen: entries deze maand, open bookmarks", "done": false },
+        { "id": "dod-3-7", "description": "Quick actions zijn zichtbaar en functioneel", "done": false },
+        { "id": "dod-3-8", "description": "Entries laden in batches van 50 met infinite scroll", "done": false },
+        { "id": "dod-3-9", "description": "Tijdlijn scrollt smooth", "done": false },
+        { "id": "dod-3-10", "description": "Homepage voelt als: Welkom terug. Dit is waar je was gebleven.", "done": false }
+      ],
+      "notInScope": [
+        "List view, grid view, graph view",
+        "Geavanceerd filteren en zoeken",
+        "Tags met kleuren",
+        "Reflectie-elementen (random highlight, flashbacks)",
+        "Responsive mobile layout"
+      ]
+    },
+    {
+      "number": 4,
+      "name": "Tags Systeem",
+      "status": "todo",
+      "goal": "Volledig werkend tag systeem met kleuren, toewijzing aan entries, en visuele weergave.",
+      "scope": [
+        "Tags aanmaken (handmatig in entry modal)",
+        "Automatische kleur toewijzing uit palet bij nieuwe tag",
+        "Tags koppelen aan entries (entry_tags junction table)",
+        "Tags weergeven op entries in tijdlijn en modal",
+        "Tags verwijderen van entries",
+        "Tag kleuren handmatig aanpassen (in settings of tag management)",
+        "Entry type icoon-kleuren definiëren",
+        "Tags in pinpoints op tijdlijn (als gekleurde dots of labels)",
+        "Bestaande tags als autocomplete suggesties bij het typen"
+      ],
+      "technicalDetails": {
+        "filesCreated": [
+          "src/components/tags/TagInput.tsx", "src/components/tags/TagBadge.tsx", "src/components/tags/TagManager.tsx",
+          "src/store/useTagStore.ts",
+          "src/lib/queries/tags.ts",
+          "src/hooks/useTags.ts",
+          "src/utils/colorPalette.ts",
+          "src/constants/entryTypes.ts"
+        ],
+        "notes": "Kleurenpalet: diverse hues, consistente saturatie en helderheid, toegankelijke contrast ratio's"
+      },
+      "definitionOfDone": [
+        { "id": "dod-4-1", "description": "Tags kunnen worden aangemaakt vanuit entry modal", "done": false },
+        { "id": "dod-4-2", "description": "Nieuwe tags krijgen automatisch een kleur uit het palet", "done": false },
+        { "id": "dod-4-3", "description": "Tags worden gekoppeld aan entries in de database", "done": false },
+        { "id": "dod-4-4", "description": "Tags zijn zichtbaar op entries in tijdlijn en modal", "done": false },
+        { "id": "dod-4-5", "description": "Bestaande tags verschijnen als autocomplete suggesties", "done": false },
+        { "id": "dod-4-6", "description": "Tags kunnen worden verwijderd van entries", "done": false },
+        { "id": "dod-4-7", "description": "Tag kleuren zijn handmatig aanpasbaar", "done": false },
+        { "id": "dod-4-8", "description": "Elk entry type heeft een eigen icoon-kleur", "done": false },
+        { "id": "dod-4-9", "description": "Tags zijn visueel herkenbaar (kleur + tekst, niet alleen kleur)", "done": false }
+      ],
+      "notInScope": [
+        "AI tag suggesties",
+        "Tag-gebaseerde filtering",
+        "Graph view connecties op basis van tags",
+        "Tag statistieken op dashboard"
+      ]
+    },
+    {
+      "number": 5,
+      "name": "Alternatieve Views (List & Grid)",
+      "status": "todo",
+      "goal": "Twee extra weergave-opties naast timeline: list view en card grid, met werkende view switching.",
+      "scope": [
+        "List view: compacte lijst, entries onder elkaar, minder detail, klik voor modal",
+        "Card grid: entries als kaartjes naast elkaar, visueel rich",
+        "View toggle buttons functioneel maken (lijn | lijst | grid | graph-placeholder)",
+        "Smooth transitie bij view switch (fade out/in)",
+        "URL params updaten bij switch (?view=list, ?view=grid)",
+        "Filters en zoekstatus behouden bij view switch",
+        "Grid: responsive kolommen (1 op mobile, 2 op tablet, 3+ op desktop)",
+        "Tags zichtbaar in list en grid views",
+        "Entry type iconen in list en grid views",
+        "WACHT OP INPUT: Kies UI componenten voor list items en grid cards"
+      ],
+      "technicalDetails": {
+        "filesCreated": [
+          "src/components/views/ListView.tsx", "src/components/views/ListItem.tsx",
+          "src/components/views/GridView.tsx", "src/components/views/GridCard.tsx",
+          "src/components/views/ViewSwitcher.tsx"
+        ],
+        "notes": "CSS Grid voor card grid layout, Transition animations (150-200ms fade)"
+      },
+      "definitionOfDone": [
+        { "id": "dod-5-1", "description": "List view toont entries in compacte lijst", "done": false },
+        { "id": "dod-5-2", "description": "Grid view toont entries als kaartjes in responsive grid", "done": false },
+        { "id": "dod-5-3", "description": "Toggle buttons switchen correct tussen timeline, list en grid", "done": false },
+        { "id": "dod-5-4", "description": "URL update bij view switch (?view=timeline/list/grid)", "done": false },
+        { "id": "dod-5-5", "description": "Transitie tussen views is smooth (fade)", "done": false },
+        { "id": "dod-5-6", "description": "Klik op entry in list/grid opent entry modal", "done": false },
+        { "id": "dod-5-7", "description": "Tags en entry type iconen zijn zichtbaar in alle views", "done": false },
+        { "id": "dod-5-8", "description": "View keuze blijft behouden bij page refresh (via URL)", "done": false }
+      ],
+      "notInScope": [
+        "Graph view (eigen fase)",
+        "Zoeken en filteren",
+        "Responsive mobile-specifieke layout",
+        "Drag & drop reordering"
+      ]
+    },
+    {
+      "number": 6,
+      "name": "Zoeken & Filteren",
+      "status": "todo",
+      "goal": "Entries snel vinden via smart search en geavanceerde filters.",
+      "scope": [
+        "Smart search bar: typ tag, datum, of woord → automatisch filteren",
+        "Real-time filtering terwijl je typt (debounce 300ms)",
+        "Geavanceerde filters panel: meerdere tags, datumbereik, entry type, status, combinaties",
+        "Filters werken in alle views (timeline, list, grid)",
+        "Clear button reset alle filters",
+        "Keyboard shortcut: / om focus naar search te zetten",
+        "Filter state behouden bij view switch",
+        "Lege resultaten: friendly message met suggestie",
+        "WACHT OP INPUT: Kies UI componenten voor search bar en filter panel"
+      ],
+      "technicalDetails": {
+        "filesCreated": [
+          "src/components/search/SearchBar.tsx", "src/components/search/AdvancedFilters.tsx",
+          "src/components/search/FilterTag.tsx", "src/components/search/EmptyResults.tsx",
+          "src/store/useFilterStore.ts",
+          "src/hooks/useSearch.ts", "src/hooks/useFilters.ts"
+        ],
+        "notes": "Debounce op input (300ms), Full-text search via Supabase of client-side filtering"
+      },
+      "definitionOfDone": [
+        { "id": "dod-6-1", "description": "Smart search bar is zichtbaar en functioneel", "done": false },
+        { "id": "dod-6-2", "description": "Typen in search bar filtert entries real-time", "done": false },
+        { "id": "dod-6-3", "description": "Geavanceerde filters panel is toegankelijk", "done": false },
+        { "id": "dod-6-4", "description": "Filteren op meerdere tags tegelijk werkt", "done": false },
+        { "id": "dod-6-5", "description": "Filteren op datumbereik werkt", "done": false },
+        { "id": "dod-6-6", "description": "Filteren op entry type werkt", "done": false },
+        { "id": "dod-6-7", "description": "Filteren op status werkt", "done": false },
+        { "id": "dod-6-8", "description": "Combineren van meerdere filters werkt", "done": false },
+        { "id": "dod-6-9", "description": "Clear button reset alle filters", "done": false },
+        { "id": "dod-6-10", "description": "/ keyboard shortcut focust search bar", "done": false },
+        { "id": "dod-6-11", "description": "Filters blijven behouden bij view switch", "done": false },
+        { "id": "dod-6-12", "description": "Lege resultaten tonen friendly message", "done": false }
+      ],
+      "notInScope": [
+        "AI-powered zoeksuggesties",
+        "Opgeslagen zoekopdrachten",
+        "Zoeken binnen graph view"
+      ]
+    },
+    {
+      "number": 7,
+      "name": "Reflectie & Dashboard Elementen",
+      "status": "todo",
+      "goal": "Dashboard verrijken met reflectie-elementen die terugblikken op eerdere entries stimuleren.",
+      "scope": [
+        "Random highlight: willekeurige oude entry tonen onder 'Herontdek dit...'",
+        "Flashbacks in maandstappen: entries van precies 1, 2, 3, ... maanden geleden",
+        "Meest gebruikte tags (top 3-5) op dashboard",
+        "Contextuele quick actions verbeteren",
+        "Dashboard stats updaten met tag stats",
+        "Klik op reflectie-element opent entry modal",
+        "Refresh mogelijkheid voor random highlight"
+      ],
+      "technicalDetails": {
+        "filesCreated": [
+          "src/components/dashboard/RandomHighlight.tsx", "src/components/dashboard/Flashbacks.tsx",
+          "src/components/dashboard/TopTags.tsx",
+          "src/lib/queries/reflections.ts",
+          "src/hooks/useReflections.ts", "src/hooks/useTopTags.ts"
+        ],
+        "notes": "Random entry: query met random ordering + filter op minimum leeftijd (> 2 weken), Maand-flashbacks: query per maandoffset"
+      },
+      "definitionOfDone": [
+        { "id": "dod-7-1", "description": "Herontdek dit... toont een willekeurige oude entry", "done": false },
+        { "id": "dod-7-2", "description": "Flashbacks tonen entries per maandstap (1, 2, 3 maanden geleden)", "done": false },
+        { "id": "dod-7-3", "description": "Top 3-5 meest gebruikte tags zijn zichtbaar op dashboard", "done": false },
+        { "id": "dod-7-4", "description": "Quick actions zijn contextueel (laatste entry, review deze week)", "done": false },
+        { "id": "dod-7-5", "description": "Klik op reflectie-element opent entry modal", "done": false },
+        { "id": "dod-7-6", "description": "Random highlight kan worden ververst", "done": false },
+        { "id": "dod-7-7", "description": "Dashboard voelt informatief maar niet overweldigend", "done": false }
+      ],
+      "notInScope": [
+        "AI-gestuurde reflectie-suggesties",
+        "Notificaties of reminders",
+        "Streaks of gamification"
+      ]
+    },
+    {
+      "number": 8,
+      "name": "Entry Verwijzingen & Graph View",
+      "status": "todo",
+      "goal": "Entries onderling verbinden en deze verbindingen visualiseren in een interactieve graph.",
+      "scope": [
+        "Entry verwijzingen: simpele referenties naar andere entries vanuit een entry",
+        "Zie ook: [entry titel] functionaliteit in entry modal",
+        "Entry zoeken en selecteren voor verwijzing",
+        "Verwijzingen opslaan in entry_references tabel",
+        "Graph view: nodes = entries, edges = gedeelde tags + handmatige verwijzingen",
+        "Force-directed layout, zoom en pan support",
+        "Klik op node opent entry modal",
+        "Graph view als vierde optie in view switcher",
+        "Broken references afhandelen",
+        "Performance: max 200 nodes tegelijk, filter opties",
+        "WACHT OP INPUT: Kies graph visualization library (React Flow, D3.js, of Cytoscape.js)"
+      ],
+      "technicalDetails": {
+        "filesCreated": [
+          "src/components/entry/EntryReferences.tsx", "src/components/entry/ReferenceSelector.tsx",
+          "src/components/graph/GraphView.tsx", "src/components/graph/GraphNode.tsx", "src/components/graph/GraphControls.tsx",
+          "src/store/useGraphStore.ts",
+          "src/lib/queries/references.ts", "src/lib/queries/graph.ts",
+          "src/hooks/useReferences.ts", "src/hooks/useGraph.ts"
+        ],
+        "dependencies": ["graph library (te kiezen)"],
+        "notes": "Force-directed layout, WebGL rendering optioneel, cluster entries met veel gedeelde tags"
+      },
+      "definitionOfDone": [
+        { "id": "dod-8-1", "description": "Verwijzingen naar andere entries kunnen worden toegevoegd in modal", "done": false },
+        { "id": "dod-8-2", "description": "Verwijzingen zijn zichtbaar in entry modal als klikbare links", "done": false },
+        { "id": "dod-8-3", "description": "Broken references tonen [Verwijderde entry]", "done": false },
+        { "id": "dod-8-4", "description": "Graph view is beschikbaar via view switcher", "done": false },
+        { "id": "dod-8-5", "description": "Nodes representeren entries met juiste grootte", "done": false },
+        { "id": "dod-8-6", "description": "Edges tonen tag-gebaseerde connecties met juiste dikte", "done": false },
+        { "id": "dod-8-7", "description": "Handmatige verwijzingen zijn zichtbaar als edges", "done": false },
+        { "id": "dod-8-8", "description": "Klik op node opent entry modal", "done": false },
+        { "id": "dod-8-9", "description": "Zoom en pan werken in graph view", "done": false },
+        { "id": "dod-8-10", "description": "Graph is read-only (geen editing in graph)", "done": false },
+        { "id": "dod-8-11", "description": "Performance is acceptabel bij 100+ entries", "done": false }
+      ],
+      "notInScope": [
+        "AI-gestuurde verbindingssuggesties",
+        "3D graph",
+        "Graph editing (drag nodes om verbindingen te maken)",
+        "Export van graph als afbeelding"
+      ]
+    },
+    {
+      "number": 9,
+      "name": "AI Tag Suggesties",
+      "status": "todo",
+      "goal": "AI-gestuurde tag suggesties bij het aanmaken of bewerken van entries.",
+      "scope": [
+        "API integratie met Claude of OpenAI",
+        "Tag suggesties genereren op basis van titel + content",
+        "Trigger: 500ms debounce na laatste keystroke, minimum 10 karakters",
+        "Suggestie UI: max 5 suggesties, klik om toe te voegen, dismiss om te negeren",
+        "Suggesties verdwijnen na 30 seconden of bij nieuwe input",
+        "Loading state tijdens API call",
+        "Fallback bij API error: geen suggesties tonen, error loggen",
+        "Rate limiting: client-side throttling",
+        "Bestaande tags meenemen als context voor betere suggesties",
+        "WACHT OP INPUT: Kies AI provider (Anthropic Claude of OpenAI)"
+      ],
+      "technicalDetails": {
+        "filesCreated": [
+          "src/lib/ai/tagSuggestions.ts", "src/components/tags/TagSuggestions.tsx",
+          "src/hooks/useTagSuggestions.ts"
+        ],
+        "dependencies": ["AI provider SDK"],
+        "notes": "Server-side proxy voor API key veiligheid (of Supabase Edge Function), Client-side rate limiting"
+      },
+      "definitionOfDone": [
+        { "id": "dod-9-1", "description": "AI genereert relevante tag suggesties bij het typen", "done": false },
+        { "id": "dod-9-2", "description": "Suggesties verschijnen na 500ms inactiviteit (minimum 10 karakters)", "done": false },
+        { "id": "dod-9-3", "description": "Maximaal 5 suggesties worden getoond", "done": false },
+        { "id": "dod-9-4", "description": "Klik op suggestie voegt tag toe aan entry", "done": false },
+        { "id": "dod-9-5", "description": "Dismiss verwijdert suggestie", "done": false },
+        { "id": "dod-9-6", "description": "Loading state is zichtbaar tijdens API call", "done": false },
+        { "id": "dod-9-7", "description": "Bij API error worden geen suggesties getoond (geen crash)", "done": false },
+        { "id": "dod-9-8", "description": "Rate limiting voorkomt excessive API calls", "done": false },
+        { "id": "dod-9-9", "description": "Handmatig tags toevoegen blijft altijd mogelijk", "done": false },
+        { "id": "dod-9-10", "description": "AI voelt subtiel en niet opdringerig", "done": false }
+      ],
+      "notInScope": [
+        "AI patroonherkenning over meerdere entries",
+        "AI-gestuurde reflectie-suggesties",
+        "AI content generatie",
+        "Offline AI (lokaal model)"
+      ]
+    },
+    {
+      "number": 10,
+      "name": "Responsive Design, Accessibility & Polish",
+      "status": "todo",
+      "goal": "Platform volledig responsive maken, toegankelijk voor iedereen, en visueel gepolijst.",
+      "scope": [
+        "Mobile layout (< 640px): tijdlijn wordt verticale lijst, sidebar wordt hamburger menu, modal full-screen",
+        "Tablet layout (640-1024px): smallere kolommen, grid 2 kolommen, modal 80% breedte",
+        "Accessibility (WCAG 2.1 AA): keyboard navigatie, focus indicators, ARIA labels, semantische HTML, kleurcontrast 4.5:1",
+        "Animaties: modal fade-in/scale-up, view switch fade, hover states, prefers-reduced-motion",
+        "Performance: code splitting, image lazy loading, skeleton screens, < 2s FCP",
+        "Dark mode ready: CSS variables voor light/dark",
+        "Empty states: friendly messages",
+        "Error states: duidelijke foutmeldingen"
+      ],
+      "technicalDetails": {
+        "filesCreated": [
+          "src/components/ui/SkeletonLoader.tsx", "src/components/ui/EmptyState.tsx",
+          "src/components/ui/ErrorState.tsx", "src/components/layout/MobileNav.tsx"
+        ],
+        "notes": "Responsive Tailwind classes (sm:, md:, lg:), Dynamic imports voor graph view (React.lazy)"
+      },
+      "definitionOfDone": [
+        { "id": "dod-10-1", "description": "Mobile layout werkt correct op schermen < 640px", "done": false },
+        { "id": "dod-10-2", "description": "Tablet layout werkt correct op schermen 640-1024px", "done": false },
+        { "id": "dod-10-3", "description": "Desktop layout is optimaal op schermen > 1024px", "done": false },
+        { "id": "dod-10-4", "description": "Alle functionaliteit is bereikbaar via keyboard", "done": false },
+        { "id": "dod-10-5", "description": "Focus indicators zijn duidelijk zichtbaar", "done": false },
+        { "id": "dod-10-6", "description": "ARIA labels zijn aanwezig op interactieve elementen", "done": false },
+        { "id": "dod-10-7", "description": "Kleurcontrast voldoet aan WCAG 2.1 AA (4.5:1)", "done": false },
+        { "id": "dod-10-8", "description": "Animaties respecteren prefers-reduced-motion", "done": false },
+        { "id": "dod-10-9", "description": "Graph view wordt lazy geladen", "done": false },
+        { "id": "dod-10-10", "description": "Empty states tonen friendly messages", "done": false },
+        { "id": "dod-10-11", "description": "Error states zijn informatief en helpend", "done": false },
+        { "id": "dod-10-12", "description": "Dark mode is beschikbaar en werkt correct", "done": false },
+        { "id": "dod-10-13", "description": "First Contentful Paint < 2s", "done": false },
+        { "id": "dod-10-14", "description": "Platform voelt gepolijst en professioneel", "done": false }
+      ],
+      "notInScope": [
+        "PWA (Progressive Web App)",
+        "Offline support",
+        "Push notificaties",
+        "Multi-user / authenticatie",
+        "Custom domain setup",
+        "CI/CD pipeline"
+      ]
+    }
+  ],
+  "changelog": [
+    { "phase": 1, "status": "done", "summary": "Project setup, layout, database schema" },
+    { "phase": 2, "status": "todo", "summary": "Entry CRUD, modal, formulieren" },
+    { "phase": 3, "status": "todo", "summary": "Timeline view, homepage dashboard" },
+    { "phase": 4, "status": "todo", "summary": "Tags systeem met kleuren" },
+    { "phase": 5, "status": "todo", "summary": "List view, grid view, view switching" },
+    { "phase": 6, "status": "todo", "summary": "Smart search, geavanceerde filters" },
+    { "phase": 7, "status": "todo", "summary": "Reflectie-elementen, dashboard verrijking" },
+    { "phase": 8, "status": "todo", "summary": "Entry verwijzingen, graph view" },
+    { "phase": 9, "status": "todo", "summary": "AI tag suggesties" },
+    { "phase": 10, "status": "todo", "summary": "Responsive, accessibility, polish" }
+  ]
+}

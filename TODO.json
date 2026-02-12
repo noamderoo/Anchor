@@ -1,0 +1,86 @@
+{
+  "currentPhase": {
+    "number": 1,
+    "name": "Project Setup & Basisstructuur",
+    "status": "done"
+  },
+  "activeTasks": [
+    {
+      "group": "Project initialisatie",
+      "tasks": [
+        { "id": "init-1", "description": "Maak Vite + React + TypeScript project aan (npm create vite@latest)", "done": true },
+        { "id": "init-2", "description": "Installeer dependencies: tailwindcss, @supabase/supabase-js, zustand, lucide-react", "done": true },
+        { "id": "init-3", "description": "Configureer Tailwind CSS met PostCSS en Autoprefixer", "done": true },
+        { "id": "init-4", "description": "Stel tsconfig.json in met path aliases (@/ → src/)", "done": true }
+      ]
+    },
+    {
+      "group": "Design tokens & styling",
+      "tasks": [
+        { "id": "design-1", "description": "Definieer kleurenpalet in tailwind.config.ts (primary, secondary, neutral, semantic)", "done": true },
+        { "id": "design-2", "description": "Definieer typografie scale (base 16px, headings, small text)", "done": true },
+        { "id": "design-3", "description": "Definieer spacing scale en border radius waarden", "done": true },
+        { "id": "design-4", "description": "Stel basis index.css in met global styles en font imports", "done": true }
+      ]
+    },
+    {
+      "group": "Database",
+      "tasks": [
+        { "id": "db-1", "description": "Maak Supabase project aan (of gebruik bestaand)", "done": true },
+        { "id": "db-2", "description": "Schrijf migration: entries tabel (id, title, content, entry_type, status, custom_date, image_url, created_at, updated_at, archived)", "done": true },
+        { "id": "db-3", "description": "Schrijf migration: tags tabel (id, name, color, created_at)", "done": true },
+        { "id": "db-4", "description": "Schrijf migration: entry_tags junction tabel (entry_id, tag_id)", "done": true },
+        { "id": "db-5", "description": "Schrijf migration: entry_references tabel (id, from_entry_id, to_entry_id, created_at)", "done": true },
+        { "id": "db-6", "description": "Voer migrations uit in Supabase", "done": false },
+        { "id": "db-7", "description": "Maak src/lib/supabase.ts aan met client initialisatie", "done": true }
+      ]
+    },
+    {
+      "group": "TypeScript types",
+      "tasks": [
+        { "id": "types-1", "description": "Definieer Entry interface in src/types/index.ts", "done": true },
+        { "id": "types-2", "description": "Definieer Tag interface", "done": true },
+        { "id": "types-3", "description": "Definieer EntryType enum (lesson, idea, milestone, note, resource, bookmark)", "done": true },
+        { "id": "types-4", "description": "Definieer ViewType enum (timeline, list, grid, graph)", "done": true }
+      ]
+    },
+    {
+      "group": "Layout componenten",
+      "tasks": [
+        { "id": "layout-1", "description": "Kies basiscomponent stijl voor sidebar → Custom gekozen", "done": true, "blocked": false },
+        { "id": "layout-2", "description": "Bouw src/components/layout/Header.tsx met view toggle buttons (placeholder) en New entry button (placeholder)", "done": true },
+        { "id": "layout-3", "description": "Bouw src/components/layout/Sidebar.tsx met inklapbare navigatie", "done": true },
+        { "id": "layout-4", "description": "Bouw src/components/layout/MainArea.tsx met twee-koloms layout (tijdlijn links, dashboard rechts)", "done": true },
+        { "id": "layout-5", "description": "Stel src/App.tsx in als container voor de layout", "done": true }
+      ]
+    },
+    {
+      "group": "State & routing",
+      "tasks": [
+        { "id": "state-1", "description": "Maak src/store/useAppStore.ts aan met Zustand (currentView, sidebarOpen, selectedEntryId)", "done": true },
+        { "id": "state-2", "description": "Implementeer URL query params lezen/schrijven (?view=, ?entry=)", "done": true },
+        { "id": "state-3", "description": "Sync URL params met Zustand store", "done": true }
+      ]
+    },
+    {
+      "group": "Environment",
+      "tasks": [
+        { "id": "env-1", "description": "Maak .env.local aan met VITE_SUPABASE_URL en VITE_SUPABASE_ANON_KEY", "done": true },
+        { "id": "env-2", "description": "Voeg .env.local toe aan .gitignore", "done": true },
+        { "id": "env-3", "description": "Maak .env.example aan als template", "done": true }
+      ]
+    }
+  ],
+  "parkingLot": [
+    { "id": "pl-1", "description": "Bookmark entries converteren naar andere entry types", "targetPhase": 2 },
+    { "id": "pl-2", "description": "Afbeelding upload bij entries", "targetPhase": "na fase 2" },
+    { "id": "pl-3", "description": "Custom datum instellen bij entries", "targetPhase": 2 },
+    { "id": "pl-4", "description": "Keyboard shortcut Cmd/Ctrl + B voor sidebar toggle", "targetPhase": 10 },
+    { "id": "pl-5", "description": "Keyboard shortcut / voor zoeken", "targetPhase": 6 },
+    { "id": "pl-6", "description": "localStorage voor sidebar collapsed state", "targetPhase": "1 of 2" },
+    { "id": "pl-7", "description": "Supabase Auth voorbereiden voor toekomstige multi-user support", "targetPhase": null },
+    { "id": "pl-8", "description": "Prefers-color-scheme detectie voor dark mode", "targetPhase": 10 },
+    { "id": "pl-9", "description": "Custom font kiezen (system fonts als fallback)", "targetPhase": null },
+    { "id": "pl-10", "description": "Deployment setup op Vercel of Netlify", "targetPhase": "na fase 10" }
+  ]
+}
