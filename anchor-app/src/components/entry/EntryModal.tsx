@@ -14,8 +14,10 @@ import { useEntryStore } from '@/store/useEntryStore'
 import { useTagStore } from '@/store/useTagStore'
 import { useToastStore } from '@/store/useToastStore'
 import { useAutoSave } from '@/hooks/useAutoSave'
+import { useReferences } from '@/hooks/useReferences'
 import { EntryForm } from '@/components/entry/EntryForm'
 import { TagInput } from '@/components/tags/TagInput'
+import { EntryReferences } from '@/components/entry/EntryReferences'
 import { ENTRY_TYPE_CONFIGS } from '@/types'
 import type { Entry, EntryUpdate, Tag } from '@/types'
 
@@ -65,6 +67,15 @@ export function EntryModal() {
   const [showDeleteConfirm, setShowDeleteConfirm] = useState(false)
   const [pendingTags, setPendingTags] = useState<Tag[]>([])
   const isNew = editingEntry?.id === ''
+
+  // Load references for existing entries
+  const {
+    outgoing: outgoingRefs,
+    incoming: incomingRefs,
+    isLoading: isLoadingRefs,
+    addReference,
+    removeReference,
+  } = useReferences(editingEntry?.id && !isNew ? editingEntry.id : null)
 
   // Load tags for existing entry when modal opens
   useEffect(() => {
@@ -324,6 +335,18 @@ export function EntryModal() {
               }}
             />
           </div>
+
+          {/* References (only for existing entries) */}
+          {!isNew && editingEntry.id && (
+            <EntryReferences
+              entryId={editingEntry.id}
+              outgoing={outgoingRefs}
+              incoming={incomingRefs}
+              isLoading={isLoadingRefs}
+              onAddReference={addReference}
+              onRemoveReference={removeReference}
+            />
+          )}
         </div>
 
         {/* Footer */}

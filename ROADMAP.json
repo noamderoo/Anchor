@@ -1,7 +1,7 @@
 {
   "project": "Anchor — Persoonlijk Leer- en Ideeënplatform",
   "status": "In ontwikkeling",
-  "currentPhase": 7,
+  "currentPhase": 9,
   "phases": [
     {
       "number": 1,
@@ -299,7 +299,7 @@
     {
       "number": 7,
       "name": "Reflectie & Dashboard Elementen",
-      "status": "in-progress",
+      "status": "done",
       "goal": "Dashboard verrijken met reflectie-elementen die terugblikken op eerdere entries stimuleren.",
       "scope": [
         "Random highlight: willekeurige oude entry tonen onder 'Herontdek dit...'",
@@ -337,7 +337,7 @@
     {
       "number": 8,
       "name": "Entry Verwijzingen & Graph View",
-      "status": "todo",
+      "status": "done",
       "goal": "Entries onderling verbinden en deze verbindingen visualiseren in een interactieve graph.",
       "scope": [
         "Entry verwijzingen: simpele referenties naar andere entries vanuit een entry",
@@ -350,7 +350,7 @@
         "Graph view als vierde optie in view switcher",
         "Broken references afhandelen",
         "Performance: max 200 nodes tegelijk, filter opties",
-        "WACHT OP INPUT: Kies graph visualization library (React Flow, D3.js, of Cytoscape.js)"
+        "Graph visualization library gekozen: d3-force (lightweight, SVG-based)"
       ],
       "technicalDetails": {
         "filesCreated": [
@@ -360,21 +360,21 @@
           "src/lib/queries/references.ts", "src/lib/queries/graph.ts",
           "src/hooks/useReferences.ts", "src/hooks/useGraph.ts"
         ],
-        "dependencies": ["graph library (te kiezen)"],
-        "notes": "Force-directed layout, WebGL rendering optioneel, cluster entries met veel gedeelde tags"
+        "dependencies": ["d3-force", "@types/d3-force"],
+        "notes": "Force-directed layout met forceSimulation, forceLink, forceManyBody, forceCenter, forceCollide. SVG rendering met zoom/pan. Shared-tag edges (weight = # gedeelde tags), reference edges (weight = 1). Max 200 nodes. EntryReferences in EntryModal, GraphView in MainArea."
       },
       "definitionOfDone": [
-        { "id": "dod-8-1", "description": "Verwijzingen naar andere entries kunnen worden toegevoegd in modal", "done": false },
-        { "id": "dod-8-2", "description": "Verwijzingen zijn zichtbaar in entry modal als klikbare links", "done": false },
-        { "id": "dod-8-3", "description": "Broken references tonen [Verwijderde entry]", "done": false },
-        { "id": "dod-8-4", "description": "Graph view is beschikbaar via view switcher", "done": false },
-        { "id": "dod-8-5", "description": "Nodes representeren entries met juiste grootte", "done": false },
-        { "id": "dod-8-6", "description": "Edges tonen tag-gebaseerde connecties met juiste dikte", "done": false },
-        { "id": "dod-8-7", "description": "Handmatige verwijzingen zijn zichtbaar als edges", "done": false },
-        { "id": "dod-8-8", "description": "Klik op node opent entry modal", "done": false },
-        { "id": "dod-8-9", "description": "Zoom en pan werken in graph view", "done": false },
-        { "id": "dod-8-10", "description": "Graph is read-only (geen editing in graph)", "done": false },
-        { "id": "dod-8-11", "description": "Performance is acceptabel bij 100+ entries", "done": false }
+        { "id": "dod-8-1", "description": "Verwijzingen naar andere entries kunnen worden toegevoegd in modal", "done": true },
+        { "id": "dod-8-2", "description": "Verwijzingen zijn zichtbaar in entry modal als klikbare links", "done": true },
+        { "id": "dod-8-3", "description": "Broken references tonen [Verwijderde entry]", "done": true },
+        { "id": "dod-8-4", "description": "Graph view is beschikbaar via view switcher", "done": true },
+        { "id": "dod-8-5", "description": "Nodes representeren entries met juiste grootte", "done": true },
+        { "id": "dod-8-6", "description": "Edges tonen tag-gebaseerde connecties met juiste dikte", "done": true },
+        { "id": "dod-8-7", "description": "Handmatige verwijzingen zijn zichtbaar als edges", "done": true },
+        { "id": "dod-8-8", "description": "Klik op node opent entry modal", "done": true },
+        { "id": "dod-8-9", "description": "Zoom en pan werken in graph view", "done": true },
+        { "id": "dod-8-10", "description": "Graph is read-only (geen editing in graph)", "done": true },
+        { "id": "dod-8-11", "description": "Performance is acceptabel bij 100+ entries", "done": true }
       ],
       "notInScope": [
         "AI-gestuurde verbindingssuggesties",
@@ -482,8 +482,8 @@
     { "phase": 4, "status": "done", "summary": "Tags systeem met kleuren, autocomplete, tag management" },
     { "phase": 5, "status": "done", "summary": "List view, grid view, view switching" },
     { "phase": 6, "status": "done", "summary": "Smart search bar, geavanceerde filters, client-side filtering, / shortcut" },
-    { "phase": 7, "status": "in-progress", "summary": "Reflectie-elementen: RandomHighlight, Flashbacks, TopTags, contextuele QuickActions" },
-    { "phase": 8, "status": "todo", "summary": "Entry verwijzingen, graph view" },
+    { "phase": 7, "status": "done", "summary": "Reflectie-elementen: RandomHighlight, Flashbacks, TopTags, contextuele QuickActions" },
+    { "phase": 8, "status": "done", "summary": "Entry verwijzingen & graph view met d3-force, ReferenceSelector, EntryReferences, GraphView met zoom/pan" },
     { "phase": 9, "status": "todo", "summary": "AI tag suggesties" },
     { "phase": 10, "status": "todo", "summary": "Responsive, accessibility, polish" }
   ]

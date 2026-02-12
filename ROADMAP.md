@@ -5,7 +5,7 @@
 > ⚠️ **BELANGRIJK:** Dit bestand heeft een JSON tegenhanger (`ROADMAP.json`). Bij elke wijziging in dit bestand MOET `ROADMAP.json` ook worden bijgewerkt, en vice versa. Dezelfde regel geldt voor `TODO.md` ↔ `TODO.json`. Deze bestanden mogen NOOIT worden verwijderd.
 
 **Status:** In ontwikkeling
-**Huidige fase:** 🔨 Fase 7: Reflectie & Dashboard Elementen
+**Huidige fase:** ⏳ Fase 9: AI Tag Suggesties
 
 ## Overzicht Fases
 
@@ -17,8 +17,8 @@
 | 4 | Tags Systeem | ✅ Done |
 | 5 | Alternatieve Views (List & Grid) | ✅ Done |
 | 6 | Zoeken & Filteren | ✅ Done |
-| 7 | Reflectie & Dashboard Elementen | 🔨 In Progress |
-| 8 | Entry Verwijzingen & Graph View | ⏳ Todo |
+| 7 | Reflectie & Dashboard Elementen | ✅ Done |
+| 8 | Entry Verwijzingen & Graph View | ✅ Done |
 | 9 | AI Tag Suggesties | ⏳ Todo |
 | 10 | Responsive Design, Accessibility & Polish | ⏳ Todo |
 
@@ -367,30 +367,32 @@ Entries onderling verbinden en deze verbindingen visualiseren in een interactiev
 - Graph view als vierde optie in view switcher
 - Broken references afhandelen ("[Verwijderde entry]")
 - Performance: max 200 nodes tegelijk, filter opties
-- 🛑 **WACHT OP INPUT:** Kies graph visualization library (React Flow, D3.js, of Cytoscape.js)
+- ✅ Graph visualization library gekozen: d3-force (lightweight, SVG-based)
 
 ### Technische details
 - **Bestanden aangemaakt:** `src/components/entry/EntryReferences.tsx`, `src/components/entry/ReferenceSelector.tsx`, `src/components/graph/GraphView.tsx`, `src/components/graph/GraphNode.tsx`, `src/components/graph/GraphControls.tsx`
 - **Store:** `src/store/useGraphStore.ts`
 - **Supabase queries:** `src/lib/queries/references.ts`, `src/lib/queries/graph.ts`
 - **Hooks:** `src/hooks/useReferences.ts`, `src/hooks/useGraph.ts`
-- **Dependencies:** graph library (te kiezen)
-- Force-directed layout algoritme
-- WebGL rendering optioneel voor grote graphs
-- Cluster entries met veel gedeelde tags
+- **Dependencies:** d3-force, @types/d3-force
+- Force-directed layout met forceSimulation, forceLink, forceManyBody, forceCenter, forceCollide
+- SVG rendering met zoom/pan support
+- Shared-tag edges (weight = # gedeelde tags), reference edges (weight = 1)
+- Max 200 nodes, gesorteerd op connection count
+- Integratie: EntryReferences in EntryModal.tsx, GraphView in MainArea.tsx
 
 ### Definition of Done
-- [ ] Verwijzingen naar andere entries kunnen worden toegevoegd in modal
-- [ ] Verwijzingen zijn zichtbaar in entry modal als klikbare links
-- [ ] Broken references tonen "[Verwijderde entry]"
-- [ ] Graph view is beschikbaar via view switcher
-- [ ] Nodes representeren entries met juiste grootte
-- [ ] Edges tonen tag-gebaseerde connecties met juiste dikte
-- [ ] Handmatige verwijzingen zijn zichtbaar als edges
-- [ ] Klik op node opent entry modal
-- [ ] Zoom en pan werken in graph view
-- [ ] Graph is read-only (geen editing in graph)
-- [ ] Performance is acceptabel bij 100+ entries
+- [x] Verwijzingen naar andere entries kunnen worden toegevoegd in modal
+- [x] Verwijzingen zijn zichtbaar in entry modal als klikbare links
+- [x] Broken references tonen "[Verwijderde entry]"
+- [x] Graph view is beschikbaar via view switcher
+- [x] Nodes representeren entries met juiste grootte
+- [x] Edges tonen tag-gebaseerde connecties met juiste dikte
+- [x] Handmatige verwijzingen zijn zichtbaar als edges
+- [x] Klik op node opent entry modal
+- [x] Zoom en pan werken in graph view
+- [x] Graph is read-only (geen editing in graph)
+- [x] Performance is acceptabel bij 100+ entries
 
 ### Niet in scope
 - AI-gestuurde verbindingssuggesties
@@ -528,7 +530,7 @@ Platform volledig responsive maken, toegankelijk voor iedereen, en visueel gepol
 | 4 | ✅ Done | Tags systeem met kleuren, autocomplete, tag management, integratie in modal en timeline |
 | 5 | ✅ Done | List view, grid view, view switching |
 | 6 | ✅ Done | Smart search bar, geavanceerde filters, client-side filtering, / shortcut |
-| 7 | 🔨 In Progress | Reflectie-elementen: RandomHighlight, Flashbacks, TopTags, contextuele QuickActions |
-| 8 | ⏳ Todo | Entry verwijzingen, graph view |
+| 7 | ✅ Done | Reflectie-elementen: RandomHighlight, Flashbacks, TopTags, contextuele QuickActions |
+| 8 | ✅ Done | Entry verwijzingen & graph view met d3-force, ReferenceSelector, EntryReferences, GraphView met zoom/pan |
 | 9 | ⏳ Todo | AI tag suggesties |
 | 10 | ⏳ Todo | Responsive, accessibility, polish |

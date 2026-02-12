@@ -1,8 +1,8 @@
 {
   "currentPhase": {
-    "number": 7,
-    "name": "Reflectie & Dashboard Elementen",
-    "status": "in-progress"
+    "number": 9,
+    "name": "AI Tag Suggesties",
+    "status": "todo"
   },
   "completedPhases": [
     {
@@ -86,17 +86,43 @@
         { "id": "search-7", "description": "useFilterStore.ts, useSearch.ts, useFilters.ts hooks", "done": true },
         { "id": "search-8", "description": "Integratie in Header, App, MainArea", "done": true }
       ]
+    },
+    {
+      "number": 7,
+      "name": "Reflectie & Dashboard Elementen",
+      "status": "done",
+      "completedTasks": [
+        { "id": "refl-1", "description": "reflections.ts Supabase queries (fetchRandomEntry, fetchFlashbackEntries, fetchAllFlashbacks)", "done": true },
+        { "id": "refl-2", "description": "useReflections.ts hooks (useRandomHighlight, useFlashbacks)", "done": true },
+        { "id": "refl-3", "description": "useTopTags.ts hook (computed uit entryTagsMap via useMemo)", "done": true },
+        { "id": "refl-4", "description": "RandomHighlight.tsx — Herontdek dit... met refresh knop", "done": true },
+        { "id": "refl-5", "description": "Flashbacks.tsx — entries van 1-6 maanden geleden per maandstap", "done": true },
+        { "id": "refl-6", "description": "TopTags.tsx — top 5 meest gebruikte tags met kleur en count", "done": true },
+        { "id": "refl-7", "description": "Dashboard.tsx uitgebreid met reflectie componenten", "done": true },
+        { "id": "refl-8", "description": "QuickActions.tsx uitgebreid met Review deze week actie", "done": true }
+      ]
+    },
+    {
+      "number": 8,
+      "name": "Entry Verwijzingen & Graph View",
+      "status": "done",
+      "completedTasks": [
+        { "id": "ref-1", "description": "references.ts Supabase queries (CRUD voor entry_references)", "done": true },
+        { "id": "ref-2", "description": "graph.ts queries (buildGraphData met shared-tag edges en reference edges)", "done": true },
+        { "id": "ref-3", "description": "useReferences.ts hooks (useReferences, useAllReferences, useReferencedEntries)", "done": true },
+        { "id": "ref-4", "description": "useGraph.ts hook (d3-force simulation)", "done": true },
+        { "id": "ref-5", "description": "useGraphStore.ts (Zustand store voor zoom/pan state)", "done": true },
+        { "id": "ref-6", "description": "ReferenceSelector.tsx — zoek dropdown voor entry verwijzingen", "done": true },
+        { "id": "ref-7", "description": "EntryReferences.tsx — outgoing/incoming refs met add/remove", "done": true },
+        { "id": "ref-8", "description": "GraphView.tsx — SVG force-directed graph met zoom/pan", "done": true },
+        { "id": "ref-9", "description": "GraphNode.tsx — type-gekleurde cirkels met hover glow", "done": true },
+        { "id": "ref-10", "description": "GraphControls.tsx — zoom knoppen en stats overlay", "done": true },
+        { "id": "ref-11", "description": "Integratie in EntryModal.tsx en MainArea.tsx", "done": true },
+        { "id": "ref-12", "description": "d3-force en @types/d3-force dependencies geïnstalleerd", "done": true }
+      ]
     }
   ],
   "activeTasks": [
-    { "id": "refl-1", "description": "reflections.ts Supabase queries (fetchRandomEntry, fetchFlashbackEntries, fetchAllFlashbacks)", "done": true },
-    { "id": "refl-2", "description": "useReflections.ts hooks (useRandomHighlight, useFlashbacks)", "done": true },
-    { "id": "refl-3", "description": "useTopTags.ts hook (computed uit entryTagsMap via useMemo)", "done": true },
-    { "id": "refl-4", "description": "RandomHighlight.tsx — Herontdek dit... met refresh knop", "done": true },
-    { "id": "refl-5", "description": "Flashbacks.tsx — entries van 1-6 maanden geleden per maandstap", "done": true },
-    { "id": "refl-6", "description": "TopTags.tsx — top 5 meest gebruikte tags met kleur en count", "done": true },
-    { "id": "refl-7", "description": "Dashboard.tsx uitgebreid met reflectie componenten", "done": true },
-    { "id": "refl-8", "description": "QuickActions.tsx uitgebreid met Review deze week actie", "done": true }
   ],
   "parkingLot": [
     { "id": "pl-1", "description": "Bookmark entries converteren naar andere entry types", "targetPhase": "later" },

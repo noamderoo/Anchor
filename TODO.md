@@ -2,9 +2,32 @@
 
 > ⚠️ **BELANGRIJK:** Dit bestand heeft een JSON tegenhanger (`TODO.json`). Bij elke wijziging in dit bestand MOET `TODO.json` ook worden bijgewerkt, en vice versa. Dezelfde regel geldt voor `ROADMAP.md` ↔ `ROADMAP.json`. Deze bestanden mogen NOOIT worden verwijderd.
 
-## Huidige Fase: Fase 7 — Reflectie & Dashboard Elementen 🔨
+## Huidige Fase: Fase 9 — AI Tag Suggesties ⏳
 
-### Fase 7: Reflectie & Dashboard Elementen 🔨
+### Fase 9: AI Tag Suggesties ⏳
+
+_Nog niet gestart — wacht op input: kies AI provider (Anthropic Claude of OpenAI)_
+
+### Fase 8 afgerond: Entry Verwijzingen & Graph View ✅
+
+**Entry Verwijzingen**
+- [x] ReferenceSelector.tsx — zoek dropdown om entries te vinden en verwijzen
+- [x] EntryReferences.tsx — outgoing/incoming refs met add/remove, broken reference handling
+- [x] references.ts Supabase queries (CRUD voor entry_references)
+- [x] useReferences.ts hooks (useReferences, useAllReferences, useReferencedEntries)
+- [x] Integratie in EntryModal.tsx (referenties sectie onder tags)
+
+**Graph View**
+- [x] GraphView.tsx — SVG force-directed graph met zoom/pan, hover tooltips
+- [x] GraphNode.tsx — type-gekleurde cirkels met hover glow, labels
+- [x] GraphControls.tsx — zoom in/out/reset knoppen, stats overlay
+- [x] graph.ts queries (buildGraphData met shared-tag edges en reference edges)
+- [x] useGraph.ts hook (d3-force simulation: forceSimulation, forceLink, forceManyBody, forceCenter)
+- [x] useGraphStore.ts (Zustand store voor zoom/pan state)
+- [x] Graph view geïntegreerd in MainArea.tsx (vervangt placeholder)
+- [x] d3-force en @types/d3-force dependencies geïnstalleerd
+
+### Fase 7 afgerond: Reflectie & Dashboard Elementen ✅
 
 **Reflectie componenten**
 - [x] RandomHighlight.tsx — "Herontdek dit..." met willekeurige oude entry (min. 2 weken oud)

@@ -4,6 +4,7 @@ import { useFilterStore } from '@/store/useFilterStore'
 import { Timeline } from '@/components/timeline/Timeline'
 import { ListView } from '@/components/views/ListView'
 import { GridView } from '@/components/views/GridView'
+import { GraphView } from '@/components/graph/GraphView'
 import { Dashboard } from '@/components/dashboard/Dashboard'
 import { EmptyResults } from '@/components/search/EmptyResults'
 import type { Entry } from '@/types'
@@ -65,19 +66,10 @@ export function MainArea({ entries, isLoading, hasMore, isLoadingMore, onLoadMor
             />
           )}
 
-          {/* Graph view placeholder */}
+          {/* Graph view */}
           {currentView === 'graph' && !showEmptyResults && (
-            <div className="max-w-3xl">
-              <div className="flex items-center justify-center h-64 rounded-xl border-2 border-dashed border-neutral-200 bg-neutral-50/50">
-                <div className="text-center">
-                  <p className="text-neutral-400 text-sm font-medium uppercase tracking-wide">
-                    Graph view
-                  </p>
-                  <p className="text-neutral-300 text-xs mt-1">
-                    Wordt gebouwd in fase 8
-                  </p>
-                </div>
-              </div>
+            <div className="h-full min-h-[500px]">
+              <GraphView entries={visibleEntries} />
             </div>
           )}
         </div>
