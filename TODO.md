@@ -2,9 +2,66 @@
 
 > ⚠️ **BELANGRIJK:** Dit bestand heeft een JSON tegenhanger (`TODO.json`). Bij elke wijziging in dit bestand MOET `TODO.json` ook worden bijgewerkt, en vice versa. Dezelfde regel geldt voor `ROADMAP.md` ↔ `ROADMAP.json`. Deze bestanden mogen NOOIT worden verwijderd.
 
-## Huidige Fase: Fase 1 — Project Setup & Basisstructuur
+## Huidige Fase: Fase 5 — Alternatieve Views (List & Grid)
 
-### Actieve taken
+### Vorige fase afgerond: Fase 4 — Tags Systeem ✅
+
+**Tags CRUD & Store**
+- [x] colorPalette.ts met 20 kleuren en auto-assignment
+- [x] tags.ts Supabase queries (CRUD, link/unlink, batch fetchTagsForEntries)
+- [x] useTagStore met entryTagsMap, optimistic updates, batch loading
+- [x] useTags.ts hook (useEntryTags, useTags)
+
+**Tag Componenten**
+- [x] TagBadge — gekleurde pill met dot + tekst, removable variant
+- [x] TagInput — autocomplete dropdown met zoeken, bestaande tags selecteren, inline nieuwe tag aanmaken
+- [x] TagManager — tag beheer panel met color picker (20 kleuren) en verwijderen met confirmatie
+
+**Integratie**
+- [x] Tags sectie in EntryModal (onder EntryForm, met border separator)
+- [x] Pending tags flow voor nieuwe entries (link na save)
+- [x] Tag badges op TimelinePin (max 3 + overflow indicator)
+- [x] Batch tag loading in App.tsx voor alle zichtbare entries
+- [x] Tags + entry tags laden bij app mount
+- [x] entryTypes.ts constants (ENTRY_TYPE_ICONS, ENTRY_TYPE_COLORS)
+
+### Vorige fase afgerond: Fase 3 — Timeline View & Homepage Dashboard ✅
+
+**Timeline**
+- [x] Timeline.tsx met verticale lijn, datum-groepering (Vandaag/Gisteren/datum), en connector dots
+- [x] TimelinePin.tsx met type-icoon, titel, tijdstip, status badge, hover tooltip met content preview
+- [x] Infinite scroll via IntersectionObserver sentinel (batches van 50)
+- [x] Empty state met Anchor icoon en "Eerste entry" knop
+- [x] "Begin van je tijdlijn" indicator onderaan
+
+**Dashboard**
+- [x] Dashboard.tsx wrapper met LatestEntry, StatsPanel, QuickActions
+- [x] LatestEntry.tsx met type-icoon, kleur border, content preview, time-ago
+- [x] StatsPanel.tsx met 4 stat cards (deze maand, deze week, bookmarks, totaal) + iconen
+- [x] QuickActions.tsx met "Nieuwe entry" en "Verder met [laatste entry]"
+
+**Store & integratie**
+- [x] useEntryStore uitgebreid met isLoadingMore, hasMore, loadMore() (batch pagination met deduplicatie)
+- [x] MainArea.tsx gerefactord naar props-based (entries, isLoading, hasMore, onLoadMore)
+- [x] App.tsx haalt pagination state uit store, passed naar MainArea
+- [x] View placeholders voor list/grid/graph views
+
+### Vorige fase afgerond: Fase 2 — Entry Systeem — Basis CRUD ✅
+
+**Entry CRUD**
+- [x] EntryTypeSelector component (6-type grid bij klikken op "Nieuw")
+- [x] EntryForm component met type-specifieke velden (titel, content, status, datum)
+- [x] EntryModal component (centered, dimmed achtergrond, focus trap, Escape sluiten)
+- [x] Supabase CRUD queries (`src/lib/queries/entries.ts`)
+- [x] Entry store met optimistic updates (`src/store/useEntryStore.ts`)
+- [x] Auto-save hook (3s debounce, `src/hooks/useAutoSave.ts`)
+- [x] Toast notificatie systeem (custom, `src/store/useToastStore.ts` + `src/components/ui/ToastContainer.tsx`)
+- [x] Entry archiveren en definitief verwijderen
+- [x] "Nieuw" knop in Header gekoppeld aan EntryTypeSelector
+- [x] MainArea toont entries met type-iconen, kleuren, klikbaar naar modal
+- [x] Dashboard sidebar met live stats (deze maand, bookmarks) en laatste entry
+
+### Vorige fase afgerond: Fase 1 — Project Setup & Basisstructuur ✅
 
 **Project initialisatie**
 - [x] Maak Vite + React + TypeScript project aan (`npm create vite@latest`)

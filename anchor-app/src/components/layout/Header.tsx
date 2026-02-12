@@ -8,6 +8,7 @@ import {
   PanelRightClose,
 } from 'lucide-react'
 import { useAppStore } from '@/store/useAppStore'
+import { useEntryStore } from '@/store/useEntryStore'
 import type { ViewType } from '@/types'
 
 const viewOptions: { type: ViewType; icon: typeof GitCommitVertical; label: string }[] = [
@@ -19,6 +20,7 @@ const viewOptions: { type: ViewType; icon: typeof GitCommitVertical; label: stri
 
 export function Header() {
   const { currentView, setCurrentView, sidebarOpen, toggleSidebar } = useAppStore()
+  const openTypeSelector = useEntryStore((s) => s.openTypeSelector)
 
   return (
     <header className="h-[var(--header-height)] border-b border-neutral-200 bg-white flex items-center justify-between px-4 shrink-0">
@@ -55,6 +57,7 @@ export function Header() {
       {/* Right: New entry + sidebar toggle */}
       <div className="flex items-center gap-2">
         <button
+          onClick={openTypeSelector}
           className="flex items-center gap-1.5 px-3 py-1.5 bg-primary-600 text-white rounded-lg text-sm font-medium hover:bg-primary-700 transition-colors cursor-pointer"
           aria-label="Nieuwe entry"
         >

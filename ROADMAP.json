@@ -1,7 +1,7 @@
 {
   "project": "Anchor — Persoonlijk Leer- en Ideeënplatform",
   "status": "In ontwikkeling",
-  "currentPhase": 2,
+  "currentPhase": 4,
   "phases": [
     {
       "number": 1,
@@ -58,7 +58,7 @@
     {
       "number": 2,
       "name": "Entry Systeem — Basis CRUD",
-      "status": "todo",
+      "status": "done",
       "goal": "Entries kunnen aanmaken, bekijken, bewerken, archiveren en verwijderen via een centered modal.",
       "scope": [
         "New entry knop functioneel maken",
@@ -72,32 +72,33 @@
         "Optimistic updates bij opslaan",
         "Auto-save draft na 3 seconden inactiviteit",
         "Toast notifications bij save/error",
-        "WACHT OP INPUT: Kies UI componenten voor modal, formulier, en toast notifications"
+        "Custom UI componenten gekozen (geen externe library)"
       ],
       "technicalDetails": {
         "filesCreated": [
           "src/components/entry/EntryModal.tsx", "src/components/entry/EntryForm.tsx",
-          "src/components/entry/EntryTypeSelector.tsx", "src/components/entry/fields/",
-          "src/store/useEntryStore.ts",
+          "src/components/entry/EntryTypeSelector.tsx",
+          "src/store/useEntryStore.ts", "src/store/useToastStore.ts",
           "src/lib/queries/entries.ts",
-          "src/hooks/useEntry.ts", "src/hooks/useAutoSave.ts"
+          "src/hooks/useAutoSave.ts",
+          "src/components/ui/ToastContainer.tsx"
         ],
-        "dependencies": ["eventueel toast library"],
-        "notes": "Modal rendering via Portal, focus trap, backdrop click met unsaved changes confirmatie"
+        "dependencies": [],
+        "notes": "Alle UI componenten custom gebouwd. Modal met focus trap, Escape sluiten, backdrop click met unsaved changes confirmatie. Optimistic updates met rollback bij errors. Auto-save met 3s debounce."
       },
       "definitionOfDone": [
-        { "id": "dod-2-1", "description": "New entry knop opent type selectie", "done": false },
-        { "id": "dod-2-2", "description": "Elk entry type toont de juiste suggestie-velden", "done": false },
-        { "id": "dod-2-3", "description": "Entry wordt succesvol opgeslagen in Supabase", "done": false },
-        { "id": "dod-2-4", "description": "Klikken op een entry opent de centered modal met dimmed achtergrond", "done": false },
-        { "id": "dod-2-5", "description": "Alle velden zijn direct bewerkbaar in de modal", "done": false },
-        { "id": "dod-2-6", "description": "Auto-save werkt na 3 seconden inactiviteit", "done": false },
-        { "id": "dod-2-7", "description": "Entry kan worden gearchiveerd (verdwijnt uit view)", "done": false },
-        { "id": "dod-2-8", "description": "Entry kan definitief worden verwijderd", "done": false },
-        { "id": "dod-2-9", "description": "Toast notification verschijnt bij opslaan/error", "done": false },
-        { "id": "dod-2-10", "description": "Modal sluit met Escape, backdrop click (met confirmation bij unsaved changes)", "done": false },
-        { "id": "dod-2-11", "description": "Focus trap werkt binnen modal", "done": false },
-        { "id": "dod-2-12", "description": "Optimistic updates zorgen voor snelle UI feedback", "done": false }
+        { "id": "dod-2-1", "description": "New entry knop opent type selectie", "done": true },
+        { "id": "dod-2-2", "description": "Elk entry type toont de juiste suggestie-velden", "done": true },
+        { "id": "dod-2-3", "description": "Entry wordt succesvol opgeslagen in Supabase", "done": true },
+        { "id": "dod-2-4", "description": "Klikken op een entry opent de centered modal met dimmed achtergrond", "done": true },
+        { "id": "dod-2-5", "description": "Alle velden zijn direct bewerkbaar in de modal", "done": true },
+        { "id": "dod-2-6", "description": "Auto-save werkt na 3 seconden inactiviteit", "done": true },
+        { "id": "dod-2-7", "description": "Entry kan worden gearchiveerd (verdwijnt uit view)", "done": true },
+        { "id": "dod-2-8", "description": "Entry kan definitief worden verwijderd", "done": true },
+        { "id": "dod-2-9", "description": "Toast notification verschijnt bij opslaan/error", "done": true },
+        { "id": "dod-2-10", "description": "Modal sluit met Escape, backdrop click (met confirmation bij unsaved changes)", "done": true },
+        { "id": "dod-2-11", "description": "Focus trap werkt binnen modal", "done": true },
+        { "id": "dod-2-12", "description": "Optimistic updates zorgen voor snelle UI feedback", "done": true }
       ],
       "notInScope": [
         "Tags toevoegen aan entries",
@@ -111,42 +112,42 @@
     {
       "number": 3,
       "name": "Timeline View & Homepage Dashboard",
-      "status": "todo",
+      "status": "done",
       "goal": "De homepage met verticale tijdlijn links en dashboard rechts, met werkende navigatie door entries.",
       "scope": [
-        "Verticale tijdlijn implementeren met pinpoints per entry",
-        "Pinpoint toont: icoon voor entry type + titel",
-        "Hover op pinpoint toont extra metadata (datum, tags placeholder, status)",
-        "Klik op pinpoint opent entry modal (uit fase 2)",
-        "Dashboard rechts: laatste entry prominent weergeven",
-        "Stats sectie: aantal entries deze maand, aantal open bookmarks",
-        "Quick actions: New entry knop, contextuele shortcuts",
-        "Entries laden uit Supabase in batches (50 per keer)",
-        "Infinite scroll voor oudere entries",
-        "Virtualized list voor performance",
-        "Spacing op tijdlijn gebaseerd op datum",
-        "WACHT OP INPUT: Kies UI componenten voor timeline pinpoints, dashboard cards, stats display"
+        "Verticale tijdlijn met datum-groepering (Vandaag/Gisteren/datum)",
+        "Pinpoint toont: type-icoon, titel, tijdstip, status badge",
+        "Hover op pinpoint toont tooltip met content preview en metadata",
+        "Klik op pinpoint opent entry modal",
+        "Dashboard rechts: laatste entry met time-ago en type-kleur",
+        "Stats sectie: 4 cards (deze maand, deze week, bookmarks, totaal)",
+        "Quick actions: Nieuwe entry, Verder met laatste entry",
+        "Entries laden uit Supabase in batches van 50",
+        "Infinite scroll via IntersectionObserver",
+        "Empty state met Anchor icoon en eerste entry knop",
+        "Custom UI componenten (geen externe library)"
       ],
       "technicalDetails": {
         "filesCreated": [
           "src/components/timeline/Timeline.tsx", "src/components/timeline/TimelinePin.tsx",
           "src/components/dashboard/Dashboard.tsx", "src/components/dashboard/LatestEntry.tsx",
-          "src/components/dashboard/StatsPanel.tsx", "src/components/dashboard/QuickActions.tsx"
+          "src/components/dashboard/StatsPanel.tsx", "src/components/dashboard/QuickActions.tsx",
+          "src/hooks/useInfiniteEntries.ts"
         ],
-        "dependencies": ["@tanstack/react-virtual"],
-        "notes": "Pinpoint positioning met absolute positioning op verticale as, CSS transforms voor smooth hover effects, Debounce bij hover voor data fetch"
+        "dependencies": [],
+        "notes": "IntersectionObserver voor infinite scroll (geen @tanstack/react-virtual nodig). useEntryStore uitgebreid met isLoadingMore, hasMore, loadMore(). MainArea gerefactord naar props-based. Datum-groepering in Timeline component."
       },
       "definitionOfDone": [
-        { "id": "dod-3-1", "description": "Verticale tijdlijn is zichtbaar aan linkerkant met pinpoints", "done": false },
-        { "id": "dod-3-2", "description": "Elk pinpoint toont icoon + titel van de entry", "done": false },
-        { "id": "dod-3-3", "description": "Hover op pinpoint toont extra metadata", "done": false },
-        { "id": "dod-3-4", "description": "Klik op pinpoint opent entry modal", "done": false },
-        { "id": "dod-3-5", "description": "Dashboard rechts toont de laatste entry", "done": false },
-        { "id": "dod-3-6", "description": "Stats tonen: entries deze maand, open bookmarks", "done": false },
-        { "id": "dod-3-7", "description": "Quick actions zijn zichtbaar en functioneel", "done": false },
-        { "id": "dod-3-8", "description": "Entries laden in batches van 50 met infinite scroll", "done": false },
-        { "id": "dod-3-9", "description": "Tijdlijn scrollt smooth", "done": false },
-        { "id": "dod-3-10", "description": "Homepage voelt als: Welkom terug. Dit is waar je was gebleven.", "done": false }
+        { "id": "dod-3-1", "description": "Verticale tijdlijn is zichtbaar aan linkerkant met pinpoints", "done": true },
+        { "id": "dod-3-2", "description": "Elk pinpoint toont icoon + titel van de entry", "done": true },
+        { "id": "dod-3-3", "description": "Hover op pinpoint toont extra metadata", "done": true },
+        { "id": "dod-3-4", "description": "Klik op pinpoint opent entry modal", "done": true },
+        { "id": "dod-3-5", "description": "Dashboard rechts toont de laatste entry", "done": true },
+        { "id": "dod-3-6", "description": "Stats tonen: entries deze maand, deze week, bookmarks, totaal", "done": true },
+        { "id": "dod-3-7", "description": "Quick actions zijn zichtbaar en functioneel", "done": true },
+        { "id": "dod-3-8", "description": "Entries laden in batches van 50 met infinite scroll", "done": true },
+        { "id": "dod-3-9", "description": "Tijdlijn scrollt smooth", "done": true },
+        { "id": "dod-3-10", "description": "Homepage voelt als: Welkom terug. Dit is waar je was gebleven.", "done": true }
       ],
       "notInScope": [
         "List view, grid view, graph view",
@@ -159,18 +160,22 @@
     {
       "number": 4,
       "name": "Tags Systeem",
-      "status": "todo",
+      "status": "done",
       "goal": "Volledig werkend tag systeem met kleuren, toewijzing aan entries, en visuele weergave.",
       "scope": [
-        "Tags aanmaken (handmatig in entry modal)",
-        "Automatische kleur toewijzing uit palet bij nieuwe tag",
+        "Tags aanmaken (handmatig in entry modal via autocomplete input)",
+        "Automatische kleur toewijzing uit palet van 20 kleuren bij nieuwe tag",
         "Tags koppelen aan entries (entry_tags junction table)",
-        "Tags weergeven op entries in tijdlijn en modal",
-        "Tags verwijderen van entries",
-        "Tag kleuren handmatig aanpassen (in settings of tag management)",
-        "Entry type icoon-kleuren definiëren",
-        "Tags in pinpoints op tijdlijn (als gekleurde dots of labels)",
-        "Bestaande tags als autocomplete suggesties bij het typen"
+        "Tags weergeven op entries in tijdlijn (max 3 + overflow indicator) en modal",
+        "Tags verwijderen van entries (removable badges)",
+        "Tag kleuren handmatig aanpassen (color picker in TagManager)",
+        "Entry type icoon-kleuren gedefinieerd in constants/entryTypes.ts",
+        "Tags in pinpoints op tijdlijn als gekleurde badges met dot + tekst",
+        "Bestaande tags als autocomplete suggesties bij het typen",
+        "Nieuwe tags aanmaken inline vanuit de autocomplete dropdown",
+        "Tags beheren panel (TagManager) met kleur wijzigen en verwijderen",
+        "Batch laden van tags voor alle zichtbare entries",
+        "Pending tags flow voor nieuwe entries (link na save)"
       ],
       "technicalDetails": {
         "filesCreated": [
@@ -181,18 +186,19 @@
           "src/utils/colorPalette.ts",
           "src/constants/entryTypes.ts"
         ],
-        "notes": "Kleurenpalet: diverse hues, consistente saturatie en helderheid, toegankelijke contrast ratio's"
+        "dependencies": [],
+        "notes": "Zustand store met entryTagsMap voor reactive tag weergave. Optimistic updates met rollback. Kleurenpalet: 20 diverse hues. Tags laden in batch via fetchTagsForEntries. Pending tags pattern voor new entry flow. TagManager voor kleur aanpassen en verwijderen."
       },
       "definitionOfDone": [
-        { "id": "dod-4-1", "description": "Tags kunnen worden aangemaakt vanuit entry modal", "done": false },
-        { "id": "dod-4-2", "description": "Nieuwe tags krijgen automatisch een kleur uit het palet", "done": false },
-        { "id": "dod-4-3", "description": "Tags worden gekoppeld aan entries in de database", "done": false },
-        { "id": "dod-4-4", "description": "Tags zijn zichtbaar op entries in tijdlijn en modal", "done": false },
-        { "id": "dod-4-5", "description": "Bestaande tags verschijnen als autocomplete suggesties", "done": false },
-        { "id": "dod-4-6", "description": "Tags kunnen worden verwijderd van entries", "done": false },
-        { "id": "dod-4-7", "description": "Tag kleuren zijn handmatig aanpasbaar", "done": false },
-        { "id": "dod-4-8", "description": "Elk entry type heeft een eigen icoon-kleur", "done": false },
-        { "id": "dod-4-9", "description": "Tags zijn visueel herkenbaar (kleur + tekst, niet alleen kleur)", "done": false }
+        { "id": "dod-4-1", "description": "Tags kunnen worden aangemaakt vanuit entry modal", "done": true },
+        { "id": "dod-4-2", "description": "Nieuwe tags krijgen automatisch een kleur uit het palet", "done": true },
+        { "id": "dod-4-3", "description": "Tags worden gekoppeld aan entries in de database", "done": true },
+        { "id": "dod-4-4", "description": "Tags zijn zichtbaar op entries in tijdlijn en modal", "done": true },
+        { "id": "dod-4-5", "description": "Bestaande tags verschijnen als autocomplete suggesties", "done": true },
+        { "id": "dod-4-6", "description": "Tags kunnen worden verwijderd van entries", "done": true },
+        { "id": "dod-4-7", "description": "Tag kleuren zijn handmatig aanpasbaar", "done": true },
+        { "id": "dod-4-8", "description": "Elk entry type heeft een eigen icoon-kleur", "done": true },
+        { "id": "dod-4-9", "description": "Tags zijn visueel herkenbaar (kleur + tekst, niet alleen kleur)", "done": true }
       ],
       "notInScope": [
         "AI tag suggesties",

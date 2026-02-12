@@ -17,6 +17,74 @@ export interface Entry {
   archived: boolean
 }
 
+// Nieuw entry (nog niet opgeslagen)
+export type NewEntry = Omit<Entry, 'id' | 'created_at' | 'updated_at'>
+
+// Entry update (partial)
+export type EntryUpdate = Partial<Omit<Entry, 'id' | 'created_at' | 'updated_at'>>
+
+// ─── Entry Type Metadata ───
+
+export interface EntryTypeConfig {
+  type: EntryType
+  label: string
+  description: string
+  icon: string // Lucide icon name
+  color: string // Tailwind color class
+  suggestedFields: string[]
+}
+
+export const ENTRY_TYPE_CONFIGS: Record<EntryType, EntryTypeConfig> = {
+  lesson: {
+    type: 'lesson',
+    label: 'Lesson Learned',
+    description: 'Iets wat je hebt geleerd door ervaring',
+    icon: 'GraduationCap',
+    color: 'entry-lesson',
+    suggestedFields: ['title', 'content', 'status'],
+  },
+  idea: {
+    type: 'idea',
+    label: 'Idee',
+    description: 'Een ruw idee of concept',
+    icon: 'Lightbulb',
+    color: 'entry-idea',
+    suggestedFields: ['title', 'content', 'status'],
+  },
+  milestone: {
+    type: 'milestone',
+    label: 'Milestone',
+    description: 'Een afgerond project of doel',
+    icon: 'Trophy',
+    color: 'entry-milestone',
+    suggestedFields: ['title', 'content', 'custom_date'],
+  },
+  note: {
+    type: 'note',
+    label: 'Notitie',
+    description: 'Een korte observatie of gedachte',
+    icon: 'StickyNote',
+    color: 'entry-note',
+    suggestedFields: ['title', 'content'],
+  },
+  resource: {
+    type: 'resource',
+    label: 'Resource',
+    description: 'Een artikel, video of tool',
+    icon: 'Link',
+    color: 'entry-resource',
+    suggestedFields: ['title', 'content', 'status'],
+  },
+  bookmark: {
+    type: 'bookmark',
+    label: 'Bookmark',
+    description: 'Iets om later mee aan de slag te gaan',
+    icon: 'Bookmark',
+    color: 'entry-bookmark',
+    suggestedFields: ['title', 'content', 'status'],
+  },
+}
+
 // ─── Tags ───
 
 export interface Tag {
@@ -50,4 +118,15 @@ export interface AppState {
   currentView: ViewType
   sidebarOpen: boolean
   selectedEntryId: string | null
+}
+
+// ─── Toast ───
+
+export type ToastType = 'success' | 'error' | 'info'
+
+export interface Toast {
+  id: string
+  message: string
+  type: ToastType
+  duration?: number
 }

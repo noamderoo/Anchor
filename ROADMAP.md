@@ -5,16 +5,16 @@
 > ⚠️ **BELANGRIJK:** Dit bestand heeft een JSON tegenhanger (`ROADMAP.json`). Bij elke wijziging in dit bestand MOET `ROADMAP.json` ook worden bijgewerkt, en vice versa. Dezelfde regel geldt voor `TODO.md` ↔ `TODO.json`. Deze bestanden mogen NOOIT worden verwijderd.
 
 **Status:** In ontwikkeling
-**Huidige fase:** ➡️ Fase 1: Project Setup & Basisstructuur
+**Huidige fase:** ✅ Fase 4: Tags Systeem
 
 ## Overzicht Fases
 
 | # | Fase | Status |
 |---|---|---|
 | 1 | Project Setup & Basisstructuur | ✅ Done |
-| 2 | Entry Systeem — Basis CRUD | ⏳ Todo |
-| 3 | Timeline View & Homepage Dashboard | ⏳ Todo |
-| 4 | Tags Systeem | ⏳ Todo |
+| 2 | Entry Systeem — Basis CRUD | ✅ Done |
+| 3 | Timeline View & Homepage Dashboard | ✅ Done |
+| 4 | Tags Systeem | ✅ Done |
 | 5 | Alternatieve Views (List & Grid) | ⏳ Todo |
 | 6 | Zoeken & Filteren | ⏳ Todo |
 | 7 | Reflectie & Dashboard Elementen | ⏳ Todo |
@@ -85,30 +85,33 @@ Entries kunnen aanmaken, bekijken, bewerken, archiveren en verwijderen via een c
 - Optimistic updates bij opslaan
 - Auto-save draft na 3 seconden inactiviteit
 - Toast notifications bij save/error
-- 🛑 **WACHT OP INPUT:** Kies UI componenten voor modal, formulier, en toast notifications
+- ✅ Custom UI componenten gekozen (geen externe library)
 
 ### Technische details
-- **Bestanden aangemaakt:** `src/components/entry/EntryModal.tsx`, `src/components/entry/EntryForm.tsx`, `src/components/entry/EntryTypeSelector.tsx`, `src/components/entry/fields/` (per veldtype)
-- **Store uitbreiding:** `src/store/useEntryStore.ts` (entries state, CRUD actions)
-- **Supabase queries:** `src/lib/queries/entries.ts` (create, read, update, archive, delete)
-- **Hooks:** `src/hooks/useEntry.ts`, `src/hooks/useAutoSave.ts`
-- **Types uitbreiding:** entry type-specifieke velden in `src/types/index.ts`
-- **Dependencies:** eventueel een toast library (of custom)
-- Modal rendering via Portal, focus trap, backdrop click met unsaved changes confirmatie
+- **Bestanden aangemaakt:** `src/components/entry/EntryModal.tsx`, `src/components/entry/EntryForm.tsx`, `src/components/entry/EntryTypeSelector.tsx`
+- **Store uitbreiding:** `src/store/useEntryStore.ts` (entries state, CRUD actions met optimistic updates)
+- **Toast store:** `src/store/useToastStore.ts` (custom toast systeem)
+- **Supabase queries:** `src/lib/queries/entries.ts` (create, read, update, archive, unarchive, delete)
+- **Hooks:** `src/hooks/useAutoSave.ts` (3s debounced auto-save)
+- **UI componenten:** `src/components/ui/ToastContainer.tsx` (custom toast notifications)
+- **Types uitbreiding:** NewEntry, EntryUpdate, EntryTypeConfig, ENTRY_TYPE_CONFIGS, Toast types in `src/types/index.ts`
+- **CSS animaties:** scaleIn, fadeIn, slideInUp keyframes in `src/index.css`
+- Modal met focus trap, Escape sluiten, backdrop click met unsaved changes confirmatie
+- Optimistic updates met rollback bij errors
 
 ### Definition of Done
-- [ ] "New entry" knop opent type selectie
-- [ ] Elk entry type toont de juiste suggestie-velden
-- [ ] Entry wordt succesvol opgeslagen in Supabase
-- [ ] Klikken op een entry opent de centered modal met dimmed achtergrond
-- [ ] Alle velden zijn direct bewerkbaar in de modal
-- [ ] Auto-save werkt na 3 seconden inactiviteit
-- [ ] Entry kan worden gearchiveerd (verdwijnt uit view)
-- [ ] Entry kan definitief worden verwijderd
-- [ ] Toast notification verschijnt bij opslaan/error
-- [ ] Modal sluit met Escape, backdrop click (met confirmation bij unsaved changes)
-- [ ] Focus trap werkt binnen modal
-- [ ] Optimistic updates zorgen voor snelle UI feedback
+- [x] "New entry" knop opent type selectie
+- [x] Elk entry type toont de juiste suggestie-velden
+- [x] Entry wordt succesvol opgeslagen in Supabase
+- [x] Klikken op een entry opent de centered modal met dimmed achtergrond
+- [x] Alle velden zijn direct bewerkbaar in de modal
+- [x] Auto-save werkt na 3 seconden inactiviteit
+- [x] Entry kan worden gearchiveerd (verdwijnt uit view)
+- [x] Entry kan definitief worden verwijderd
+- [x] Toast notification verschijnt bij opslaan/error
+- [x] Modal sluit met Escape, backdrop click (met confirmation bij unsaved changes)
+- [x] Focus trap werkt binnen modal
+- [x] Optimistic updates zorgen voor snelle UI feedback
 
 ### Niet in scope
 - Tags toevoegen aan entries
@@ -129,35 +132,34 @@ De homepage met verticale tijdlijn links en dashboard rechts, met werkende navig
 - Hover op pinpoint toont extra metadata (datum, tags placeholder, status)
 - Klik op pinpoint opent entry modal (uit fase 2)
 - Dashboard rechts: laatste entry prominent weergeven
-- Stats sectie: aantal entries deze maand, aantal open bookmarks
-- Quick actions: "New entry" knop, contextuele shortcuts
+- Stats sectie: entries deze maand, deze week, bookmarks, totaal
+- Quick actions: "Nieuwe entry" knop, "Verder met [laatste entry]" shortcut
 - Entries laden uit Supabase in batches (50 per keer)
-- Infinite scroll voor oudere entries
-- Virtualized list voor performance
-- Spacing op tijdlijn gebaseerd op datum
-- 🛑 **WACHT OP INPUT:** Kies UI componenten voor timeline pinpoints, dashboard cards, stats display
+- Infinite scroll via IntersectionObserver
+- Datum-groepering (Vandaag, Gisteren, datum)
+- ✅ Custom UI componenten gekozen (geen externe library)
 
 ### Technische details
-- **Bestanden aangemaakt:** `src/components/timeline/Timeline.tsx`, `src/components/timeline/TimelinePin.tsx`, `src/components/dashboard/Dashboard.tsx`, `src/components/dashboard/LatestEntry.tsx`, `src/components/dashboard/StatsPanel.tsx`, `src/components/dashboard/QuickActions.tsx`
-- **Store uitbreiding:** paginatie state, current view state
-- **Supabase queries:** `src/lib/queries/entries.ts` uitbreiden met pagination, ordering
-- **Hooks:** `src/hooks/useInfiniteEntries.ts`, `src/hooks/useEntryStats.ts`
-- **Dependencies:** `@tanstack/react-virtual` (virtualized list) of vergelijkbaar
-- Pinpoint positioning met absolute positioning op verticale as
-- CSS transforms voor smooth hover effects
-- Debounce bij hover voor data fetch
+- **Timeline:** `src/components/timeline/Timeline.tsx` (datum-groepen, verticale lijn, infinite scroll sentinel, empty/loading states)
+- **TimelinePin:** `src/components/timeline/TimelinePin.tsx` (type icoon, titel, tijdstip, status badge, hover tooltip met content preview)
+- **Dashboard:** `src/components/dashboard/Dashboard.tsx` (wrapper), `LatestEntry.tsx` (met time-ago), `StatsPanel.tsx` (4 stat cards met iconen), `QuickActions.tsx` (nieuw + doorgaan met laatste)
+- **Store uitbreiding:** `isLoadingMore`, `hasMore`, `loadMore()` in `useEntryStore.ts` (batch pagination met deduplicatie)
+- **Hook:** `src/hooks/useInfiniteEntries.ts` (standalone hook, ook beschikbaar maar store is primary)
+- **MainArea refactor:** Props-based (entries, isLoading, hasMore, onLoadMore), rendert Timeline of view placeholder afhankelijk van currentView
+- **App.tsx:** Haalt pagination state uit store, passed als props naar MainArea
+- Geen externe dependencies toegevoegd — IntersectionObserver i.p.v. @tanstack/react-virtual
 
 ### Definition of Done
-- [ ] Verticale tijdlijn is zichtbaar aan linkerkant met pinpoints
-- [ ] Elk pinpoint toont icoon + titel van de entry
-- [ ] Hover op pinpoint toont extra metadata
-- [ ] Klik op pinpoint opent entry modal
-- [ ] Dashboard rechts toont de laatste entry
-- [ ] Stats tonen: entries deze maand, open bookmarks
-- [ ] Quick actions zijn zichtbaar en functioneel
-- [ ] Entries laden in batches van 50 met infinite scroll
-- [ ] Tijdlijn scrollt smooth
-- [ ] Homepage voelt als "Welkom terug. Dit is waar je was gebleven."
+- [x] Verticale tijdlijn is zichtbaar aan linkerkant met pinpoints
+- [x] Elk pinpoint toont icoon + titel van de entry
+- [x] Hover op pinpoint toont extra metadata
+- [x] Klik op pinpoint opent entry modal
+- [x] Dashboard rechts toont de laatste entry
+- [x] Stats tonen: entries deze maand, deze week, bookmarks, totaal
+- [x] Quick actions zijn zichtbaar en functioneel
+- [x] Entries laden in batches van 50 met infinite scroll
+- [x] Tijdlijn scrollt smooth
+- [x] Homepage voelt als "Welkom terug. Dit is waar je was gebleven."
 
 ### Niet in scope
 - List view, grid view, graph view
@@ -172,35 +174,40 @@ De homepage met verticale tijdlijn links en dashboard rechts, met werkende navig
 Volledig werkend tag systeem met kleuren, toewijzing aan entries, en visuele weergave.
 
 ### Scope
-- Tags aanmaken (handmatig in entry modal)
-- Automatische kleur toewijzing uit palet bij nieuwe tag
+- Tags aanmaken (handmatig in entry modal via autocomplete input)
+- Automatische kleur toewijzing uit palet van 20 kleuren bij nieuwe tag
 - Tags koppelen aan entries (entry_tags junction table)
-- Tags weergeven op entries in tijdlijn en modal
-- Tags verwijderen van entries
-- Tag kleuren handmatig aanpassen (in settings of tag management)
-- Entry type icoon-kleuren definiëren
-- Tags in pinpoints op tijdlijn (als gekleurde dots of labels)
+- Tags weergeven op entries in tijdlijn (max 3 + overflow indicator) en modal
+- Tags verwijderen van entries (removable badges)
+- Tag kleuren handmatig aanpassen (color picker in TagManager)
+- Entry type icoon-kleuren gedefinieerd in `src/constants/entryTypes.ts`
+- Tags in pinpoints op tijdlijn als gekleurde badges met dot + tekst
 - Bestaande tags als autocomplete suggesties bij het typen
+- Nieuwe tags aanmaken inline vanuit de autocomplete dropdown
+- Tags beheren panel (TagManager) met kleur wijzigen en verwijderen
+- Batch laden van tags voor alle zichtbare entries
+- Pending tags flow voor nieuwe entries (link na save)
 
 ### Technische details
-- **Bestanden aangemaakt:** `src/components/tags/TagInput.tsx`, `src/components/tags/TagBadge.tsx`, `src/components/tags/TagManager.tsx`
-- **Store:** `src/store/useTagStore.ts`
-- **Supabase queries:** `src/lib/queries/tags.ts` (CRUD, koppeling met entries)
-- **Hooks:** `src/hooks/useTags.ts`
-- **Utils:** `src/utils/colorPalette.ts` (automatisch kleur genereren)
-- **Constanten:** `src/constants/entryTypes.ts` (icoon + kleur per entry type)
-- Kleurenpalet: diverse hues, consistente saturatie en helderheid, toegankelijke contrast ratio's
+- **Tag componenten:** `src/components/tags/TagBadge.tsx` (gekleurde pill met dot), `TagInput.tsx` (autocomplete + create), `TagManager.tsx` (beheer met kleur picker)
+- **Store:** `src/store/useTagStore.ts` (Zustand, entryTagsMap, optimistic updates, batch loading)
+- **Supabase queries:** `src/lib/queries/tags.ts` (CRUD, link/unlink, fetchTagsForEntries batch)
+- **Hooks:** `src/hooks/useTags.ts` (useEntryTags, useTags convenience hooks)
+- **Utils:** `src/utils/colorPalette.ts` (20 kleuren, getNextTagColor, getTagBgColor, getTagBorderColor)
+- **Constanten:** `src/constants/entryTypes.ts` (ENTRY_TYPE_ICONS, ENTRY_TYPE_COLORS per type)
+- **Integratie:** EntryModal uitgebreid met Tags sectie + pending tags voor new entries, TimelinePin toont tag badges, App.tsx laadt tags + batch entry tags
+- Geen externe dependencies toegevoegd
 
 ### Definition of Done
-- [ ] Tags kunnen worden aangemaakt vanuit entry modal
-- [ ] Nieuwe tags krijgen automatisch een kleur uit het palet
-- [ ] Tags worden gekoppeld aan entries in de database
-- [ ] Tags zijn zichtbaar op entries in tijdlijn en modal
-- [ ] Bestaande tags verschijnen als autocomplete suggesties
-- [ ] Tags kunnen worden verwijderd van entries
-- [ ] Tag kleuren zijn handmatig aanpasbaar
-- [ ] Elk entry type heeft een eigen icoon-kleur
-- [ ] Tags zijn visueel herkenbaar (kleur + tekst, niet alleen kleur)
+- [x] Tags kunnen worden aangemaakt vanuit entry modal
+- [x] Nieuwe tags krijgen automatisch een kleur uit het palet
+- [x] Tags worden gekoppeld aan entries in de database
+- [x] Tags zijn zichtbaar op entries in tijdlijn en modal
+- [x] Bestaande tags verschijnen als autocomplete suggesties
+- [x] Tags kunnen worden verwijderd van entries
+- [x] Tag kleuren zijn handmatig aanpasbaar
+- [x] Elk entry type heeft een eigen icoon-kleur
+- [x] Tags zijn visueel herkenbaar (kleur + tekst, niet alleen kleur)
 
 ### Niet in scope
 - AI tag suggesties
@@ -510,9 +517,9 @@ Platform volledig responsive maken, toegankelijk voor iedereen, en visueel gepol
 | Fase | Status | Samenvatting |
 |---|---|---|
 | 1 | ✅ Done | Project setup, layout, database schema |
-| 2 | ⏳ Todo | Entry CRUD, modal, formulieren |
-| 3 | ⏳ Todo | Timeline view, homepage dashboard |
-| 4 | ⏳ Todo | Tags systeem met kleuren |
+| 2 | ✅ Done | Entry CRUD, modal, formulieren, toast, auto-save |
+| 3 | ✅ Done | Timeline view met datum-groepen, dashboard met stats en quick actions, infinite scroll |
+| 4 | ✅ Done | Tags systeem met kleuren, autocomplete, tag management, integratie in modal en timeline |
 | 5 | ⏳ Todo | List view, grid view, view switching |
 | 6 | ⏳ Todo | Smart search, geavanceerde filters |
 | 7 | ⏳ Todo | Reflectie-elementen, dashboard verrijking |
