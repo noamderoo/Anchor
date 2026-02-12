@@ -1,7 +1,7 @@
 {
   "currentPhase": {
-    "number": 5,
-    "name": "Alternatieve Views (List & Grid)",
+    "number": 6,
+    "name": "Zoeken & Filteren",
     "status": "todo"
   },
   "completedPhases": [
@@ -56,6 +56,20 @@
         { "id": "tag-8", "description": "Tag badges op TimelinePin (max 3 + overflow)", "done": true },
         { "id": "tag-9", "description": "Batch tag loading in App.tsx voor zichtbare entries", "done": true },
         { "id": "tag-10", "description": "entryTypes.ts constants + useTags.ts hook", "done": true }
+      ]
+    },
+    {
+      "number": 5,
+      "name": "Alternatieve Views (List & Grid)",
+      "status": "done",
+      "completedTasks": [
+        { "id": "view-1", "description": "ListView.tsx met datum-groepering, infinite scroll, empty/loading states", "done": true },
+        { "id": "view-2", "description": "ListItem.tsx met type icoon, titel, content preview, tags, status, datum", "done": true },
+        { "id": "view-3", "description": "GridView.tsx met responsive CSS Grid (1/2/3 kolommen), infinite scroll", "done": true },
+        { "id": "view-4", "description": "GridCard.tsx met kleur accent bar, type icoon + label, titel, content preview, tags", "done": true },
+        { "id": "view-5", "description": "MainArea.tsx gerefactord: Timeline/ListView/GridView conditioneel gerenderd", "done": true },
+        { "id": "view-6", "description": "viewSwitch keyframe animatie (180ms fade + translateY)", "done": true },
+        { "id": "view-7", "description": "line-clamp-3 utility toegevoegd", "done": true }
       ]
     }
   ],

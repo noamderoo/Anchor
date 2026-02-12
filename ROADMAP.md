@@ -5,7 +5,7 @@
 > ⚠️ **BELANGRIJK:** Dit bestand heeft een JSON tegenhanger (`ROADMAP.json`). Bij elke wijziging in dit bestand MOET `ROADMAP.json` ook worden bijgewerkt, en vice versa. Dezelfde regel geldt voor `TODO.md` ↔ `TODO.json`. Deze bestanden mogen NOOIT worden verwijderd.
 
 **Status:** In ontwikkeling
-**Huidige fase:** ✅ Fase 4: Tags Systeem
+**Huidige fase:** ✅ Fase 5: Alternatieve Views (List & Grid)
 
 ## Overzicht Fases
 
@@ -15,7 +15,7 @@
 | 2 | Entry Systeem — Basis CRUD | ✅ Done |
 | 3 | Timeline View & Homepage Dashboard | ✅ Done |
 | 4 | Tags Systeem | ✅ Done |
-| 5 | Alternatieve Views (List & Grid) | ⏳ Todo |
+| 5 | Alternatieve Views (List & Grid) | ✅ Done |
 | 6 | Zoeken & Filteren | ⏳ Todo |
 | 7 | Reflectie & Dashboard Elementen | ⏳ Todo |
 | 8 | Entry Verwijzingen & Graph View | ⏳ Todo |
@@ -230,24 +230,26 @@ Twee extra weergave-opties naast timeline: list view en card grid, met werkende 
 - Grid: responsive kolommen (1 op mobile, 2 op tablet, 3+ op desktop)
 - Tags zichtbaar in list en grid views
 - Entry type iconen in list en grid views
-- 🛑 **WACHT OP INPUT:** Kies UI componenten voor list items en grid cards
+- ✅ Custom UI componenten gekozen (geen externe library)
 
 ### Technische details
-- **Bestanden aangemaakt:** `src/components/views/ListView.tsx`, `src/components/views/ListItem.tsx`, `src/components/views/GridView.tsx`, `src/components/views/GridCard.tsx`, `src/components/views/ViewSwitcher.tsx`
-- **Store uitbreiding:** current view in state, persisteer in URL
-- **Hooks:** `src/hooks/useView.ts` (view switching logic)
-- CSS Grid voor card grid layout
-- Transition animations (150-200ms fade)
+- **List componenten:** `src/components/views/ListView.tsx` (datum-groepen, infinite scroll, empty/loading states), `src/components/views/ListItem.tsx` (type icoon, titel, content preview, tags, status, datum)
+- **Grid componenten:** `src/components/views/GridView.tsx` (CSS Grid responsive layout, infinite scroll, empty/loading states), `src/components/views/GridCard.tsx` (kaartje met kleur accent bar, type icoon + label, titel, content preview, tags, status, datum)
+- **MainArea refactor:** View switcher met `key={currentView}` voor fade transition animatie, Timeline/ListView/GridView/Graph placeholder conditioneel gerenderd
+- **CSS animaties:** `viewSwitch` keyframe (180ms fade + translateY), `line-clamp-3` utility toegevoegd
+- Geen externe dependencies toegevoegd
+- View toggle buttons in Header waren al functioneel (via useAppStore setCurrentView)
+- URL params werkten al via useAppStore (?view=list, ?view=grid, ?view=timeline)
 
 ### Definition of Done
-- [ ] List view toont entries in compacte lijst
-- [ ] Grid view toont entries als kaartjes in responsive grid
-- [ ] Toggle buttons switchen correct tussen timeline, list en grid
-- [ ] URL update bij view switch (?view=timeline/list/grid)
-- [ ] Transitie tussen views is smooth (fade)
-- [ ] Klik op entry in list/grid opent entry modal
-- [ ] Tags en entry type iconen zijn zichtbaar in alle views
-- [ ] View keuze blijft behouden bij page refresh (via URL)
+- [x] List view toont entries in compacte lijst
+- [x] Grid view toont entries als kaartjes in responsive grid
+- [x] Toggle buttons switchen correct tussen timeline, list en grid
+- [x] URL update bij view switch (?view=timeline/list/grid)
+- [x] Transitie tussen views is smooth (fade)
+- [x] Klik op entry in list/grid opent entry modal
+- [x] Tags en entry type iconen zijn zichtbaar in alle views
+- [x] View keuze blijft behouden bij page refresh (via URL)
 
 ### Niet in scope
 - Graph view (eigen fase)

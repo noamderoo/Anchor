@@ -1,7 +1,7 @@
 {
   "project": "Anchor — Persoonlijk Leer- en Ideeënplatform",
   "status": "In ontwikkeling",
-  "currentPhase": 4,
+  "currentPhase": 5,
   "phases": [
     {
       "number": 1,
@@ -210,7 +210,7 @@
     {
       "number": 5,
       "name": "Alternatieve Views (List & Grid)",
-      "status": "todo",
+      "status": "done",
       "goal": "Twee extra weergave-opties naast timeline: list view en card grid, met werkende view switching.",
       "scope": [
         "List view: compacte lijst, entries onder elkaar, minder detail, klik voor modal",
@@ -222,25 +222,25 @@
         "Grid: responsive kolommen (1 op mobile, 2 op tablet, 3+ op desktop)",
         "Tags zichtbaar in list en grid views",
         "Entry type iconen in list en grid views",
-        "WACHT OP INPUT: Kies UI componenten voor list items en grid cards"
+        "Custom UI componenten gekozen (geen externe library)"
       ],
       "technicalDetails": {
         "filesCreated": [
           "src/components/views/ListView.tsx", "src/components/views/ListItem.tsx",
-          "src/components/views/GridView.tsx", "src/components/views/GridCard.tsx",
-          "src/components/views/ViewSwitcher.tsx"
+          "src/components/views/GridView.tsx", "src/components/views/GridCard.tsx"
         ],
-        "notes": "CSS Grid voor card grid layout, Transition animations (150-200ms fade)"
+        "dependencies": [],
+        "notes": "CSS Grid voor card grid layout. viewSwitch keyframe (180ms fade + translateY). MainArea gerefactord met key={currentView} voor transition. ListView met datum-groepering en infinite scroll. GridCard met gekleurde accent bar bovenaan. Geen ViewSwitcher of useView hook nodig — bestaande Header + useAppStore voldoen."
       },
       "definitionOfDone": [
-        { "id": "dod-5-1", "description": "List view toont entries in compacte lijst", "done": false },
-        { "id": "dod-5-2", "description": "Grid view toont entries als kaartjes in responsive grid", "done": false },
-        { "id": "dod-5-3", "description": "Toggle buttons switchen correct tussen timeline, list en grid", "done": false },
-        { "id": "dod-5-4", "description": "URL update bij view switch (?view=timeline/list/grid)", "done": false },
-        { "id": "dod-5-5", "description": "Transitie tussen views is smooth (fade)", "done": false },
-        { "id": "dod-5-6", "description": "Klik op entry in list/grid opent entry modal", "done": false },
-        { "id": "dod-5-7", "description": "Tags en entry type iconen zijn zichtbaar in alle views", "done": false },
-        { "id": "dod-5-8", "description": "View keuze blijft behouden bij page refresh (via URL)", "done": false }
+        { "id": "dod-5-1", "description": "List view toont entries in compacte lijst", "done": true },
+        { "id": "dod-5-2", "description": "Grid view toont entries als kaartjes in responsive grid", "done": true },
+        { "id": "dod-5-3", "description": "Toggle buttons switchen correct tussen timeline, list en grid", "done": true },
+        { "id": "dod-5-4", "description": "URL update bij view switch (?view=timeline/list/grid)", "done": true },
+        { "id": "dod-5-5", "description": "Transitie tussen views is smooth (fade)", "done": true },
+        { "id": "dod-5-6", "description": "Klik op entry in list/grid opent entry modal", "done": true },
+        { "id": "dod-5-7", "description": "Tags en entry type iconen zijn zichtbaar in alle views", "done": true },
+        { "id": "dod-5-8", "description": "View keuze blijft behouden bij page refresh (via URL)", "done": true }
       ],
       "notInScope": [
         "Graph view (eigen fase)",

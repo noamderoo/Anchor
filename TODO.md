@@ -2,7 +2,30 @@
 
 > ⚠️ **BELANGRIJK:** Dit bestand heeft een JSON tegenhanger (`TODO.json`). Bij elke wijziging in dit bestand MOET `TODO.json` ook worden bijgewerkt, en vice versa. Dezelfde regel geldt voor `ROADMAP.md` ↔ `ROADMAP.json`. Deze bestanden mogen NOOIT worden verwijderd.
 
-## Huidige Fase: Fase 5 — Alternatieve Views (List & Grid)
+## Huidige Fase: Fase 6 — Zoeken & Filteren
+
+### Vorige fase afgerond: Fase 5 — Alternatieve Views (List & Grid) ✅
+
+**List View**
+- [x] ListView.tsx met datum-groepering, infinite scroll, empty/loading states
+- [x] ListItem.tsx met type icoon, titel, content preview, tags (max 2), status, type label, datum
+- [x] Compacte rij-layout, klikbaar naar modal
+
+**Grid View**
+- [x] GridView.tsx met responsive CSS Grid (1/2/3 kolommen), infinite scroll, empty/loading states
+- [x] GridCard.tsx met kleur accent bar, type icoon + label, titel, content preview (3 regels), tags, status, datum
+- [x] hover effect met shadow + lift animatie
+
+**View Switching**
+- [x] MainArea.tsx gerefactord: Timeline/ListView/GridView conditioneel gerenderd
+- [x] Smooth fade transitie via viewSwitch keyframe (180ms) met key={currentView}
+- [x] Graph view placeholder behouden
+- [x] URL params werkten al via useAppStore (?view=list, ?view=grid)
+- [x] View toggle buttons in Header al functioneel
+
+**CSS**
+- [x] viewSwitch keyframe animatie (fade + translateY)
+- [x] line-clamp-3 utility toegevoegd
 
 ### Vorige fase afgerond: Fase 4 — Tags Systeem ✅
 

@@ -170,6 +170,21 @@ body {
   }
 }
 
+@keyframes viewSwitch {
+  from {
+    opacity: 0;
+    transform: translateY(4px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animate-view-switch {
+  animation: viewSwitch 0.18s ease-out;
+}
+
 .animate-fade-in {
   animation: fadeIn 0.15s ease-out;
 }
@@ -187,6 +202,13 @@ body {
 .line-clamp-2 {
   display: -webkit-box;
   -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+.line-clamp-3 {
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
   -webkit-box-orient: vertical;
   overflow: hidden;
 }
