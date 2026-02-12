@@ -5,7 +5,7 @@
 > ⚠️ **BELANGRIJK:** Dit bestand heeft een JSON tegenhanger (`ROADMAP.json`). Bij elke wijziging in dit bestand MOET `ROADMAP.json` ook worden bijgewerkt, en vice versa. Dezelfde regel geldt voor `TODO.md` ↔ `TODO.json`. Deze bestanden mogen NOOIT worden verwijderd.
 
 **Status:** In ontwikkeling
-**Huidige fase:** ✅ Fase 5: Alternatieve Views (List & Grid)
+**Huidige fase:** 🔨 Fase 7: Reflectie & Dashboard Elementen
 
 ## Overzicht Fases
 
@@ -16,8 +16,8 @@
 | 3 | Timeline View & Homepage Dashboard | ✅ Done |
 | 4 | Tags Systeem | ✅ Done |
 | 5 | Alternatieve Views (List & Grid) | ✅ Done |
-| 6 | Zoeken & Filteren | ⏳ Todo |
-| 7 | Reflectie & Dashboard Elementen | ⏳ Todo |
+| 6 | Zoeken & Filteren | ✅ Done |
+| 7 | Reflectie & Dashboard Elementen | 🔨 In Progress |
 | 8 | Entry Verwijzingen & Graph View | ⏳ Todo |
 | 9 | AI Tag Suggesties | ⏳ Todo |
 | 10 | Responsive Design, Accessibility & Polish | ⏳ Todo |
@@ -276,30 +276,31 @@ Entries snel vinden via smart search en geavanceerde filters.
 - Keyboard shortcut: `/` om focus naar search te zetten
 - Filter state behouden bij view switch
 - Lege resultaten: friendly message met suggestie
-- 🛑 **WACHT OP INPUT:** Kies UI componenten voor search bar en filter panel
+- ✅ Custom UI componenten gekozen (geen externe library)
 
 ### Technische details
-- **Bestanden aangemaakt:** `src/components/search/SearchBar.tsx`, `src/components/search/AdvancedFilters.tsx`, `src/components/search/FilterTag.tsx`, `src/components/search/EmptyResults.tsx`
-- **Store:** `src/store/useFilterStore.ts` (search query, active filters)
-- **Supabase queries:** `src/lib/queries/entries.ts` uitbreiden met filter parameters
-- **Hooks:** `src/hooks/useSearch.ts`, `src/hooks/useFilters.ts`
-- Debounce op input (300ms)
-- Full-text search via Supabase of client-side filtering
-- Compound filters bouwen als Supabase query
+- **Bestanden aangemaakt:** `src/components/search/SearchBar.tsx`, `src/components/search/AdvancedFilters.tsx`, `src/components/search/FilterTag.tsx`, `src/components/search/EmptyResults.tsx`, `src/components/search/ActiveFilters.tsx`
+- **Store:** `src/store/useFilterStore.ts` (search query, selected tags, types, statuses, date range)
+- **Hooks:** `src/hooks/useSearch.ts` (debounced value), `src/hooks/useFilters.ts` (useFilteredEntries — compound client-side filtering)
+- **Integratie:** SearchBar in Header.tsx, AdvancedFilters + ActiveFilters in App.tsx, filtered entries via useFilteredEntries in App.tsx passed naar MainArea, EmptyResults in MainArea.tsx
+- Debounce op search input (300ms)
+- Client-side filtering met AND logica (alle filters moeten matchen)
+- `/` keyboard shortcut om search bar te focussen
+- Geen externe dependencies toegevoegd
 
 ### Definition of Done
-- [ ] Smart search bar is zichtbaar en functioneel
-- [ ] Typen in search bar filtert entries real-time
-- [ ] Geavanceerde filters panel is toegankelijk
-- [ ] Filteren op meerdere tags tegelijk werkt
-- [ ] Filteren op datumbereik werkt
-- [ ] Filteren op entry type werkt
-- [ ] Filteren op status werkt
-- [ ] Combineren van meerdere filters werkt
-- [ ] Clear button reset alle filters
-- [ ] `/` keyboard shortcut focust search bar
-- [ ] Filters blijven behouden bij view switch
-- [ ] Lege resultaten tonen friendly message
+- [x] Smart search bar is zichtbaar en functioneel
+- [x] Typen in search bar filtert entries real-time
+- [x] Geavanceerde filters panel is toegankelijk
+- [x] Filteren op meerdere tags tegelijk werkt
+- [x] Filteren op datumbereik werkt
+- [x] Filteren op entry type werkt
+- [x] Filteren op status werkt
+- [x] Combineren van meerdere filters werkt
+- [x] Clear button reset alle filters
+- [x] `/` keyboard shortcut focust search bar
+- [x] Filters blijven behouden bij view switch
+- [x] Lege resultaten tonen friendly message
 
 ### Niet in scope
 - AI-powered zoeksuggesties
@@ -324,19 +325,22 @@ Dashboard verrijken met reflectie-elementen die terugblikken op eerdere entries 
 
 ### Technische details
 - **Bestanden aangemaakt:** `src/components/dashboard/RandomHighlight.tsx`, `src/components/dashboard/Flashbacks.tsx`, `src/components/dashboard/TopTags.tsx`
-- **Supabase queries:** `src/lib/queries/reflections.ts` (random entry, entries by month offset)
-- **Hooks:** `src/hooks/useReflections.ts`, `src/hooks/useTopTags.ts`
-- Random entry: query met random ordering + filter op minimum leeftijd (bijv. > 2 weken)
-- Maand-flashbacks: query per maandoffset van huidige datum
+- **Supabase queries:** `src/lib/queries/reflections.ts` (random entry via client-side pool picking, entries by month offset ±2 dagen window)
+- **Hooks:** `src/hooks/useReflections.ts` (useRandomHighlight, useFlashbacks), `src/hooks/useTopTags.ts` (useTopTags met useMemo)
+- **Dashboard uitbreiding:** Dashboard.tsx integreert RandomHighlight, Flashbacks, TopTags. QuickActions uitgebreid met "Review deze week" actie (set dateRange filter).
+- Random entry: fetch pool van 50 entries ouder dan 14 dagen, client-side random selectie
+- Maand-flashbacks: query per maandoffset (tot 6 maanden) met ±2 dagen window, max 5 entries per stap
+- TopTags: computed uit entryTagsMap in useTagStore via useMemo
+- Geen externe dependencies toegevoegd
 
 ### Definition of Done
-- [ ] "Herontdek dit..." toont een willekeurige oude entry
-- [ ] Flashbacks tonen entries per maandstap (1, 2, 3 maanden geleden)
-- [ ] Top 3-5 meest gebruikte tags zijn zichtbaar op dashboard
-- [ ] Quick actions zijn contextueel (laatste entry, review deze week)
-- [ ] Klik op reflectie-element opent entry modal
-- [ ] Random highlight kan worden ververst
-- [ ] Dashboard voelt informatief maar niet overweldigend
+- [x] "Herontdek dit..." toont een willekeurige oude entry
+- [x] Flashbacks tonen entries per maandstap (1, 2, 3 maanden geleden)
+- [x] Top 3-5 meest gebruikte tags zijn zichtbaar op dashboard
+- [x] Quick actions zijn contextueel (laatste entry, review deze week)
+- [x] Klik op reflectie-element opent entry modal
+- [x] Random highlight kan worden ververst
+- [x] Dashboard voelt informatief maar niet overweldigend
 
 ### Niet in scope
 - AI-gestuurde reflectie-suggesties
@@ -522,9 +526,9 @@ Platform volledig responsive maken, toegankelijk voor iedereen, en visueel gepol
 | 2 | ✅ Done | Entry CRUD, modal, formulieren, toast, auto-save |
 | 3 | ✅ Done | Timeline view met datum-groepen, dashboard met stats en quick actions, infinite scroll |
 | 4 | ✅ Done | Tags systeem met kleuren, autocomplete, tag management, integratie in modal en timeline |
-| 5 | ⏳ Todo | List view, grid view, view switching |
-| 6 | ⏳ Todo | Smart search, geavanceerde filters |
-| 7 | ⏳ Todo | Reflectie-elementen, dashboard verrijking |
+| 5 | ✅ Done | List view, grid view, view switching |
+| 6 | ✅ Done | Smart search bar, geavanceerde filters, client-side filtering, / shortcut |
+| 7 | 🔨 In Progress | Reflectie-elementen: RandomHighlight, Flashbacks, TopTags, contextuele QuickActions |
 | 8 | ⏳ Todo | Entry verwijzingen, graph view |
 | 9 | ⏳ Todo | AI tag suggesties |
 | 10 | ⏳ Todo | Responsive, accessibility, polish |

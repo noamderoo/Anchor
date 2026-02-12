@@ -1,8 +1,8 @@
 {
   "currentPhase": {
-    "number": 6,
-    "name": "Zoeken & Filteren",
-    "status": "todo"
+    "number": 7,
+    "name": "Reflectie & Dashboard Elementen",
+    "status": "in-progress"
   },
   "completedPhases": [
     {
@@ -71,9 +71,33 @@
         { "id": "view-6", "description": "viewSwitch keyframe animatie (180ms fade + translateY)", "done": true },
         { "id": "view-7", "description": "line-clamp-3 utility toegevoegd", "done": true }
       ]
+    },
+    {
+      "number": 6,
+      "name": "Zoeken & Filteren",
+      "status": "done",
+      "completedTasks": [
+        { "id": "search-1", "description": "SearchBar.tsx met debounced input (300ms), / shortcut, clear button", "done": true },
+        { "id": "search-2", "description": "Smart search doorzoekt titel, content, status, entry type en tags", "done": true },
+        { "id": "search-3", "description": "AdvancedFilters.tsx met toggle panel", "done": true },
+        { "id": "search-4", "description": "Filteren op entry type, tags, status, datumbereik (multi-select)", "done": true },
+        { "id": "search-5", "description": "ActiveFilters.tsx met filter pills en remove buttons", "done": true },
+        { "id": "search-6", "description": "EmptyResults.tsx met friendly message", "done": true },
+        { "id": "search-7", "description": "useFilterStore.ts, useSearch.ts, useFilters.ts hooks", "done": true },
+        { "id": "search-8", "description": "Integratie in Header, App, MainArea", "done": true }
+      ]
     }
   ],
-  "activeTasks": [],
+  "activeTasks": [
+    { "id": "refl-1", "description": "reflections.ts Supabase queries (fetchRandomEntry, fetchFlashbackEntries, fetchAllFlashbacks)", "done": true },
+    { "id": "refl-2", "description": "useReflections.ts hooks (useRandomHighlight, useFlashbacks)", "done": true },
+    { "id": "refl-3", "description": "useTopTags.ts hook (computed uit entryTagsMap via useMemo)", "done": true },
+    { "id": "refl-4", "description": "RandomHighlight.tsx — Herontdek dit... met refresh knop", "done": true },
+    { "id": "refl-5", "description": "Flashbacks.tsx — entries van 1-6 maanden geleden per maandstap", "done": true },
+    { "id": "refl-6", "description": "TopTags.tsx — top 5 meest gebruikte tags met kleur en count", "done": true },
+    { "id": "refl-7", "description": "Dashboard.tsx uitgebreid met reflectie componenten", "done": true },
+    { "id": "refl-8", "description": "QuickActions.tsx uitgebreid met Review deze week actie", "done": true }
+  ],
   "parkingLot": [
     { "id": "pl-1", "description": "Bookmark entries converteren naar andere entry types", "targetPhase": "later" },
     { "id": "pl-2", "description": "Afbeelding upload bij entries", "targetPhase": "na fase 2" },

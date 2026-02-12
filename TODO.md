@@ -2,7 +2,60 @@
 
 > ⚠️ **BELANGRIJK:** Dit bestand heeft een JSON tegenhanger (`TODO.json`). Bij elke wijziging in dit bestand MOET `TODO.json` ook worden bijgewerkt, en vice versa. Dezelfde regel geldt voor `ROADMAP.md` ↔ `ROADMAP.json`. Deze bestanden mogen NOOIT worden verwijderd.
 
-## Huidige Fase: Fase 6 — Zoeken & Filteren
+## Huidige Fase: Fase 7 — Reflectie & Dashboard Elementen 🔨
+
+### Fase 7: Reflectie & Dashboard Elementen 🔨
+
+**Reflectie componenten**
+- [x] RandomHighlight.tsx — "Herontdek dit..." met willekeurige oude entry (min. 2 weken oud)
+- [x] Flashbacks.tsx — entries van 1, 2, 3, ... maanden geleden (±2 dagen window)
+- [x] TopTags.tsx — top 5 meest gebruikte tags met kleur en count
+- [x] Refresh knop op random highlight om ander item te tonen
+
+**Queries & Hooks**
+- [x] reflections.ts queries (fetchRandomEntry, fetchFlashbackEntries, fetchAllFlashbacks)
+- [x] useReflections.ts (useRandomHighlight, useFlashbacks)
+- [x] useTopTags.ts — computed uit entryTagsMap via useMemo
+
+**Dashboard integratie**
+- [x] Dashboard.tsx uitgebreid met RandomHighlight, Flashbacks, TopTags
+- [x] QuickActions.tsx uitgebreid met "Review deze week" actie (set dateRange filter)
+- [x] Klik op reflectie-element opent entry modal
+
+### Fase 6 afgerond: Zoeken & Filteren ✅
+
+**Search**
+- [x] SearchBar.tsx met debounced input (300ms), / keyboard shortcut, clear button
+- [x] Smart search doorzoekt titel, content, status, entry type en tags
+- [x] Zoekresultaten updaten real-time terwijl je typt
+
+**Geavanceerde Filters**
+- [x] AdvancedFilters.tsx met toggle panel vanuit Header
+- [x] Filteren op entry type (multi-select met iconen en kleuren)
+- [x] Filteren op tags (multi-select met gekleurde pills)
+- [x] Filteren op status (multi-select)
+- [x] Filteren op datumbereik (van/tot date inputs)
+- [x] Combineren van meerdere filters (AND logica)
+- [x] Clear button reset alle filters
+
+**Filter Indicatoren**
+- [x] ActiveFilters.tsx toont actieve filter pills met remove buttons
+- [x] FilterTag.tsx pill component met kleur en X knop
+- [x] Filter count badge op filter toggle button
+- [x] EmptyResults.tsx met friendly message en "Filters wissen" knop
+
+**Integratie**
+- [x] SearchBar in Header.tsx tussen view toggles en actie knoppen
+- [x] AdvancedFilters + ActiveFilters in App.tsx onder Header
+- [x] useFilteredEntries hook in App.tsx filtert entries client-side
+- [x] Gefilterde entries doorgegeven aan MainArea en alle views
+- [x] Filters behouden bij view switch (Zustand store)
+- [x] EmptyResults getoond in MainArea wanneer filters geen resultaten opleveren
+
+**Store & Hooks**
+- [x] useFilterStore.ts (Zustand) — searchQuery, selectedTags, selectedTypes, selectedStatuses, dateRange
+- [x] useSearch.ts — debounced value hook (300ms)
+- [x] useFilters.ts — useFilteredEntries hook met compound client-side filtering
 
 ### Vorige fase afgerond: Fase 5 — Alternatieve Views (List & Grid) ✅
 

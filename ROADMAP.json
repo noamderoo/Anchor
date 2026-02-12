@@ -1,7 +1,7 @@
 {
   "project": "Anchor — Persoonlijk Leer- en Ideeënplatform",
   "status": "In ontwikkeling",
-  "currentPhase": 5,
+  "currentPhase": 7,
   "phases": [
     {
       "number": 1,
@@ -252,7 +252,7 @@
     {
       "number": 6,
       "name": "Zoeken & Filteren",
-      "status": "todo",
+      "status": "done",
       "goal": "Entries snel vinden via smart search en geavanceerde filters.",
       "scope": [
         "Smart search bar: typ tag, datum, of woord → automatisch filteren",
@@ -263,30 +263,32 @@
         "Keyboard shortcut: / om focus naar search te zetten",
         "Filter state behouden bij view switch",
         "Lege resultaten: friendly message met suggestie",
-        "WACHT OP INPUT: Kies UI componenten voor search bar en filter panel"
+        "Custom UI componenten gekozen (geen externe library)"
       ],
       "technicalDetails": {
         "filesCreated": [
           "src/components/search/SearchBar.tsx", "src/components/search/AdvancedFilters.tsx",
           "src/components/search/FilterTag.tsx", "src/components/search/EmptyResults.tsx",
+          "src/components/search/ActiveFilters.tsx",
           "src/store/useFilterStore.ts",
           "src/hooks/useSearch.ts", "src/hooks/useFilters.ts"
         ],
-        "notes": "Debounce op input (300ms), Full-text search via Supabase of client-side filtering"
+        "dependencies": [],
+        "notes": "Client-side filtering met AND logica. Debounce 300ms op search. / keyboard shortcut. SearchBar in Header, AdvancedFilters + ActiveFilters in App, EmptyResults in MainArea. useFilteredEntries hook past alle filters toe."
       },
       "definitionOfDone": [
-        { "id": "dod-6-1", "description": "Smart search bar is zichtbaar en functioneel", "done": false },
-        { "id": "dod-6-2", "description": "Typen in search bar filtert entries real-time", "done": false },
-        { "id": "dod-6-3", "description": "Geavanceerde filters panel is toegankelijk", "done": false },
-        { "id": "dod-6-4", "description": "Filteren op meerdere tags tegelijk werkt", "done": false },
-        { "id": "dod-6-5", "description": "Filteren op datumbereik werkt", "done": false },
-        { "id": "dod-6-6", "description": "Filteren op entry type werkt", "done": false },
-        { "id": "dod-6-7", "description": "Filteren op status werkt", "done": false },
-        { "id": "dod-6-8", "description": "Combineren van meerdere filters werkt", "done": false },
-        { "id": "dod-6-9", "description": "Clear button reset alle filters", "done": false },
-        { "id": "dod-6-10", "description": "/ keyboard shortcut focust search bar", "done": false },
-        { "id": "dod-6-11", "description": "Filters blijven behouden bij view switch", "done": false },
-        { "id": "dod-6-12", "description": "Lege resultaten tonen friendly message", "done": false }
+        { "id": "dod-6-1", "description": "Smart search bar is zichtbaar en functioneel", "done": true },
+        { "id": "dod-6-2", "description": "Typen in search bar filtert entries real-time", "done": true },
+        { "id": "dod-6-3", "description": "Geavanceerde filters panel is toegankelijk", "done": true },
+        { "id": "dod-6-4", "description": "Filteren op meerdere tags tegelijk werkt", "done": true },
+        { "id": "dod-6-5", "description": "Filteren op datumbereik werkt", "done": true },
+        { "id": "dod-6-6", "description": "Filteren op entry type werkt", "done": true },
+        { "id": "dod-6-7", "description": "Filteren op status werkt", "done": true },
+        { "id": "dod-6-8", "description": "Combineren van meerdere filters werkt", "done": true },
+        { "id": "dod-6-9", "description": "Clear button reset alle filters", "done": true },
+        { "id": "dod-6-10", "description": "/ keyboard shortcut focust search bar", "done": true },
+        { "id": "dod-6-11", "description": "Filters blijven behouden bij view switch", "done": true },
+        { "id": "dod-6-12", "description": "Lege resultaten tonen friendly message", "done": true }
       ],
       "notInScope": [
         "AI-powered zoeksuggesties",
@@ -297,7 +299,7 @@
     {
       "number": 7,
       "name": "Reflectie & Dashboard Elementen",
-      "status": "todo",
+      "status": "in-progress",
       "goal": "Dashboard verrijken met reflectie-elementen die terugblikken op eerdere entries stimuleren.",
       "scope": [
         "Random highlight: willekeurige oude entry tonen onder 'Herontdek dit...'",
@@ -318,13 +320,13 @@
         "notes": "Random entry: query met random ordering + filter op minimum leeftijd (> 2 weken), Maand-flashbacks: query per maandoffset"
       },
       "definitionOfDone": [
-        { "id": "dod-7-1", "description": "Herontdek dit... toont een willekeurige oude entry", "done": false },
-        { "id": "dod-7-2", "description": "Flashbacks tonen entries per maandstap (1, 2, 3 maanden geleden)", "done": false },
-        { "id": "dod-7-3", "description": "Top 3-5 meest gebruikte tags zijn zichtbaar op dashboard", "done": false },
-        { "id": "dod-7-4", "description": "Quick actions zijn contextueel (laatste entry, review deze week)", "done": false },
-        { "id": "dod-7-5", "description": "Klik op reflectie-element opent entry modal", "done": false },
-        { "id": "dod-7-6", "description": "Random highlight kan worden ververst", "done": false },
-        { "id": "dod-7-7", "description": "Dashboard voelt informatief maar niet overweldigend", "done": false }
+        { "id": "dod-7-1", "description": "Herontdek dit... toont een willekeurige oude entry", "done": true },
+        { "id": "dod-7-2", "description": "Flashbacks tonen entries per maandstap (1, 2, 3 maanden geleden)", "done": true },
+        { "id": "dod-7-3", "description": "Top 3-5 meest gebruikte tags zijn zichtbaar op dashboard", "done": true },
+        { "id": "dod-7-4", "description": "Quick actions zijn contextueel (laatste entry, review deze week)", "done": true },
+        { "id": "dod-7-5", "description": "Klik op reflectie-element opent entry modal", "done": true },
+        { "id": "dod-7-6", "description": "Random highlight kan worden ververst", "done": true },
+        { "id": "dod-7-7", "description": "Dashboard voelt informatief maar niet overweldigend", "done": true }
       ],
       "notInScope": [
         "AI-gestuurde reflectie-suggesties",
@@ -475,12 +477,12 @@
   ],
   "changelog": [
     { "phase": 1, "status": "done", "summary": "Project setup, layout, database schema" },
-    { "phase": 2, "status": "todo", "summary": "Entry CRUD, modal, formulieren" },
-    { "phase": 3, "status": "todo", "summary": "Timeline view, homepage dashboard" },
-    { "phase": 4, "status": "todo", "summary": "Tags systeem met kleuren" },
-    { "phase": 5, "status": "todo", "summary": "List view, grid view, view switching" },
-    { "phase": 6, "status": "todo", "summary": "Smart search, geavanceerde filters" },
-    { "phase": 7, "status": "todo", "summary": "Reflectie-elementen, dashboard verrijking" },
+    { "phase": 2, "status": "done", "summary": "Entry CRUD, modal, formulieren, toast, auto-save" },
+    { "phase": 3, "status": "done", "summary": "Timeline view, homepage dashboard, infinite scroll" },
+    { "phase": 4, "status": "done", "summary": "Tags systeem met kleuren, autocomplete, tag management" },
+    { "phase": 5, "status": "done", "summary": "List view, grid view, view switching" },
+    { "phase": 6, "status": "done", "summary": "Smart search bar, geavanceerde filters, client-side filtering, / shortcut" },
+    { "phase": 7, "status": "in-progress", "summary": "Reflectie-elementen: RandomHighlight, Flashbacks, TopTags, contextuele QuickActions" },
     { "phase": 8, "status": "todo", "summary": "Entry verwijzingen, graph view" },
     { "phase": 9, "status": "todo", "summary": "AI tag suggesties" },
     { "phase": 10, "status": "todo", "summary": "Responsive, accessibility, polish" }

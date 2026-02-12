@@ -9,6 +9,7 @@ import {
 } from 'lucide-react'
 import { useAppStore } from '@/store/useAppStore'
 import { useEntryStore } from '@/store/useEntryStore'
+import { SearchBar } from '@/components/search/SearchBar'
 import type { ViewType } from '@/types'
 
 const viewOptions: { type: ViewType; icon: typeof GitCommitVertical; label: string }[] = [
@@ -53,6 +54,9 @@ export function Header() {
           </button>
         ))}
       </nav>
+
+      {/* Search */}
+      <SearchBar />
 
       {/* Right: New entry + sidebar toggle */}
       <div className="flex items-center gap-2">

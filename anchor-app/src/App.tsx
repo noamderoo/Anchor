@@ -5,8 +5,11 @@ import { MainArea } from '@/components/layout/MainArea'
 import { EntryModal } from '@/components/entry/EntryModal'
 import { EntryTypeSelector } from '@/components/entry/EntryTypeSelector'
 import { ToastContainer } from '@/components/ui/ToastContainer'
+import { AdvancedFilters } from '@/components/search/AdvancedFilters'
+import { ActiveFilters } from '@/components/search/ActiveFilters'
 import { useEntryStore } from '@/store/useEntryStore'
 import { useTagStore } from '@/store/useTagStore'
+import { useFilteredEntries } from '@/hooks/useFilters'
 
 export default function App() {
   const loadEntries = useEntryStore((s) => s.loadEntries)
@@ -17,6 +20,9 @@ export default function App() {
   const loadMore = useEntryStore((s) => s.loadMore)
   const loadTags = useTagStore((s) => s.loadTags)
   const loadTagsForEntries = useTagStore((s) => s.loadTagsForEntries)
+
+  // Apply filters
+  const filteredEntries = useFilteredEntries(entries)
 
   useEffect(() => {
     loadEntries()
@@ -36,9 +42,11 @@ export default function App() {
   return (
     <div className="h-screen flex flex-col">
       <Header />
+      <AdvancedFilters entries={entries} />
+      <ActiveFilters />
       <div className="flex-1 flex overflow-hidden">
         <MainArea
-          entries={entries}
+          entries={filteredEntries}
           isLoading={isLoading}
           hasMore={hasMore}
           isLoadingMore={isLoadingMore}
