@@ -6,7 +6,27 @@
 
 ### Fase 9: AI Tag Suggesties ⏳
 
-_Nog niet gestart — wacht op input: kies AI provider (Anthropic Claude of OpenAI)_
+**AI Module & Edge Function**
+- [x] tagSuggestions.ts — client-side module met Supabase Edge Function invoke, rate limiting (max 10/min)
+- [x] suggest-tags Edge Function — Deno edge function met OpenAI gpt-4o-mini, prompt engineering voor tag suggesties
+- [x] AI provider gekozen: OpenAI (gpt-4o-mini via Supabase Edge Function)
+
+**Hook**
+- [x] useTagSuggestions.ts — 500ms debounce, min 10 chars, max 5 suggesties, 30s auto-dismiss, loading/error states
+
+**Component**
+- [x] TagSuggestions.tsx — subtiele violet pills met Sparkles icoon, klik om toe te voegen, dismiss per suggestie of alles
+- [x] Loading state met spinning Loader2 icoon
+- [x] Alles negeren knop
+
+**Integratie**
+- [x] TagSuggestions geïntegreerd in EntryModal.tsx onder TagInput sectie
+- [x] handleAcceptSuggestion: bestaande tag hergebruiken of nieuwe aanmaken + toevoegen
+- [x] Werkt voor zowel nieuwe als bestaande entries (pending tags flow)
+
+**Nog te doen: Deployment**
+- [ ] OPENAI_API_KEY instellen als Supabase secret: `supabase secrets set OPENAI_API_KEY=sk-...`
+- [ ] Edge function deployen: `supabase functions deploy suggest-tags --no-verify-jwt`
 
 ### Fase 8 afgerond: Entry Verwijzingen & Graph View ✅
 

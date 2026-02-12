@@ -5,7 +5,7 @@
 > ⚠️ **BELANGRIJK:** Dit bestand heeft een JSON tegenhanger (`ROADMAP.json`). Bij elke wijziging in dit bestand MOET `ROADMAP.json` ook worden bijgewerkt, en vice versa. Dezelfde regel geldt voor `TODO.md` ↔ `TODO.json`. Deze bestanden mogen NOOIT worden verwijderd.
 
 **Status:** In ontwikkeling
-**Huidige fase:** ⏳ Fase 9: AI Tag Suggesties
+**Huidige fase:** ⏳ Fase 9: AI Tag Suggesties (in uitvoering)
 
 ## Overzicht Fases
 
@@ -19,7 +19,7 @@
 | 6 | Zoeken & Filteren | ✅ Done |
 | 7 | Reflectie & Dashboard Elementen | ✅ Done |
 | 8 | Entry Verwijzingen & Graph View | ✅ Done |
-| 9 | AI Tag Suggesties | ⏳ Todo |
+| 9 | AI Tag Suggesties | ⏳ In uitvoering |
 | 10 | Responsive Design, Accessibility & Polish | ⏳ Todo |
 
 ## Fase 1: Project Setup & Basisstructuur
@@ -415,28 +415,29 @@ AI-gestuurde tag suggesties bij het aanmaken of bewerken van entries.
 - Fallback bij API error: geen suggesties tonen, error loggen
 - Rate limiting: client-side throttling
 - Bestaande tags meenemen als context voor betere suggesties
-- 🛑 **WACHT OP INPUT:** Kies AI provider (Anthropic Claude of OpenAI)
+- ✅ **AI provider gekozen:** OpenAI (gpt-4o-mini via Supabase Edge Function)
 
 ### Technische details
 - **Bestanden aangemaakt:** `src/lib/ai/tagSuggestions.ts`, `src/components/tags/TagSuggestions.tsx`
 - **Hooks:** `src/hooks/useTagSuggestions.ts`
-- **API route:** server-side proxy voor API key veiligheid (of Supabase Edge Function)
-- **Dependencies:** AI provider SDK
+- **Supabase Edge Function:** `supabase/functions/suggest-tags/index.ts` (OpenAI proxy)
+- **Dependencies:** geen extra client-side dependencies (OpenAI SDK alleen server-side in edge function)
 - Debounce 500ms op input
-- Client-side rate limiting (max X requests per minuut)
+- Client-side rate limiting (max 10 requests per minuut)
 - Suggesties gebaseerd op bestaande tags in systeem + entry content
+- Auto-dismiss na 30 seconden
 
 ### Definition of Done
-- [ ] AI genereert relevante tag suggesties bij het typen
-- [ ] Suggesties verschijnen na 500ms inactiviteit (minimum 10 karakters)
-- [ ] Maximaal 5 suggesties worden getoond
-- [ ] Klik op suggestie voegt tag toe aan entry
-- [ ] Dismiss verwijdert suggestie
-- [ ] Loading state is zichtbaar tijdens API call
-- [ ] Bij API error worden geen suggesties getoond (geen crash)
-- [ ] Rate limiting voorkomt excessive API calls
-- [ ] Handmatig tags toevoegen blijft altijd mogelijk
-- [ ] AI voelt subtiel en niet opdringerig
+- [x] AI genereert relevante tag suggesties bij het typen
+- [x] Suggesties verschijnen na 500ms inactiviteit (minimum 10 karakters)
+- [x] Maximaal 5 suggesties worden getoond
+- [x] Klik op suggestie voegt tag toe aan entry
+- [x] Dismiss verwijdert suggestie
+- [x] Loading state is zichtbaar tijdens API call
+- [x] Bij API error worden geen suggesties getoond (geen crash)
+- [x] Rate limiting voorkomt excessive API calls
+- [x] Handmatig tags toevoegen blijft altijd mogelijk
+- [x] AI voelt subtiel en niet opdringerig
 
 ### Niet in scope
 - AI patroonherkenning over meerdere entries
@@ -532,5 +533,5 @@ Platform volledig responsive maken, toegankelijk voor iedereen, en visueel gepol
 | 6 | ✅ Done | Smart search bar, geavanceerde filters, client-side filtering, / shortcut |
 | 7 | ✅ Done | Reflectie-elementen: RandomHighlight, Flashbacks, TopTags, contextuele QuickActions |
 | 8 | ✅ Done | Entry verwijzingen & graph view met d3-force, ReferenceSelector, EntryReferences, GraphView met zoom/pan |
-| 9 | ⏳ Todo | AI tag suggesties |
+| 9 | ⏳ In uitvoering | AI tag suggesties via OpenAI (gpt-4o-mini), Supabase Edge Function, TagSuggestions component |
 | 10 | ⏳ Todo | Responsive, accessibility, polish |

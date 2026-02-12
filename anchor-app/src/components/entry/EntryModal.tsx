@@ -15,8 +15,10 @@ import { useTagStore } from '@/store/useTagStore'
 import { useToastStore } from '@/store/useToastStore'
 import { useAutoSave } from '@/hooks/useAutoSave'
 import { useReferences } from '@/hooks/useReferences'
+import { useTagSuggestions } from '@/hooks/useTagSuggestions'
 import { EntryForm } from '@/components/entry/EntryForm'
 import { TagInput } from '@/components/tags/TagInput'
+import { TagSuggestions } from '@/components/tags/TagSuggestions'
 import { EntryReferences } from '@/components/entry/EntryReferences'
 import { ENTRY_TYPE_CONFIGS } from '@/types'
 import type { Entry, EntryUpdate, Tag } from '@/types'
@@ -89,6 +91,62 @@ export function EntryModal() {
 
   // Get current entry tags (from store for existing, local for new)
   const entryTags = isNew ? pendingTags : (editingEntry ? (entryTagsMap[editingEntry.id] || []) : [])
+
+  // AI tag suggestions
+  const allTags = useTagStore((s) => s.tags)
+  const {
+    suggestions: tagSuggestions,
+    isLoading: isSuggestionsLoading,
+    dismiss: dismissSuggestion,
+    dismissAll: dismissAllSuggestions,
+  } = useTagSuggestions({
+    title: editingEntry?.title || '',
+    content: editingEntry?.content || '',
+    entryType: editingEntry?.entry_type || '',
+    existingTagNames: entryTags.map((t) => t.name),
+    allTagNames: allTags.map((t) => t.name),
+    enabled: isModalOpen && !!editingEntry,
+  })
+
+  // Handle accepting an AI-suggested tag
+  const handleAcceptSuggestion = useCallback(
+    async (tagName: string) => {
+      // Check if tag already exists in the system
+      const existingTag = allTags.find(
+        (t) => t.name.toLowerCase() === tagName.toLowerCase()
+      )
+
+      if (existingTag) {
+        // Add existing tag
+        if (isNew) {
+          setPendingTags((prev) => [...prev, existingTag])
+        } else if (editingEntry) {
+          try {
+            await addTagToEntry(editingEntry.id, existingTag.id)
+          } catch {
+            addToast('Tag toevoegen mislukt', 'error')
+          }
+        }
+      } else {
+        // Create new tag and add
+        try {
+          if (isNew) {
+            const created = await useTagStore.getState().createTag(tagName)
+            setPendingTags((prev) => [...prev, created])
+          } else if (editingEntry) {
+            const { createAndAddTag } = useTagStore.getState()
+            await createAndAddTag(editingEntry.id, tagName)
+          }
+        } catch {
+          addToast('Tag aanmaken mislukt', 'error')
+        }
+      }
+
+      // Remove from suggestions
+      dismissSuggestion(tagName)
+    },
+    [allTags, isNew, editingEntry, addTagToEntry, addToast, dismissSuggestion]
+  )
 
   // Auto-save for existing entries
   const { schedule, flush, cancel } = useAutoSave({
@@ -333,6 +391,15 @@ export function EntryModal() {
                   setPendingTags((prev) => prev.filter((t) => t.id !== tagId))
                 }
               }}
+            />
+
+            {/* AI Tag Suggestions */}
+            <TagSuggestions
+              suggestions={tagSuggestions}
+              isLoading={isSuggestionsLoading}
+              onAccept={handleAcceptSuggestion}
+              onDismiss={dismissSuggestion}
+              onDismissAll={dismissAllSuggestions}
             />
           </div>
 

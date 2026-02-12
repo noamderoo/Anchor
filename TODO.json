@@ -2,7 +2,7 @@
   "currentPhase": {
     "number": 9,
     "name": "AI Tag Suggesties",
-    "status": "todo"
+    "status": "in-progress"
   },
   "completedPhases": [
     {
@@ -123,6 +123,13 @@
     }
   ],
   "activeTasks": [
+    { "id": "ai-1", "description": "tagSuggestions.ts — client-side module met Supabase Edge Function invoke, rate limiting", "done": true },
+    { "id": "ai-2", "description": "suggest-tags Edge Function — Deno edge function met OpenAI gpt-4o-mini", "done": true },
+    { "id": "ai-3", "description": "useTagSuggestions.ts — 500ms debounce, min 10 chars, max 5 suggesties, 30s auto-dismiss", "done": true },
+    { "id": "ai-4", "description": "TagSuggestions.tsx — subtiele violet pills met Sparkles icoon, dismiss", "done": true },
+    { "id": "ai-5", "description": "Integratie in EntryModal.tsx met handleAcceptSuggestion", "done": true },
+    { "id": "ai-6", "description": "OPENAI_API_KEY instellen als Supabase secret", "done": false },
+    { "id": "ai-7", "description": "Edge function deployen: supabase functions deploy suggest-tags", "done": false }
   ],
   "parkingLot": [
     { "id": "pl-1", "description": "Bookmark entries converteren naar andere entry types", "targetPhase": "later" },

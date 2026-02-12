@@ -386,7 +386,7 @@
     {
       "number": 9,
       "name": "AI Tag Suggesties",
-      "status": "todo",
+      "status": "in-progress",
       "goal": "AI-gestuurde tag suggesties bij het aanmaken of bewerken van entries.",
       "scope": [
         "API integratie met Claude of OpenAI",
@@ -398,27 +398,28 @@
         "Fallback bij API error: geen suggesties tonen, error loggen",
         "Rate limiting: client-side throttling",
         "Bestaande tags meenemen als context voor betere suggesties",
-        "WACHT OP INPUT: Kies AI provider (Anthropic Claude of OpenAI)"
+        "AI provider gekozen: OpenAI (gpt-4o-mini via Supabase Edge Function)"
       ],
       "technicalDetails": {
         "filesCreated": [
           "src/lib/ai/tagSuggestions.ts", "src/components/tags/TagSuggestions.tsx",
-          "src/hooks/useTagSuggestions.ts"
+          "src/hooks/useTagSuggestions.ts",
+          "supabase/functions/suggest-tags/index.ts"
         ],
-        "dependencies": ["AI provider SDK"],
-        "notes": "Server-side proxy voor API key veiligheid (of Supabase Edge Function), Client-side rate limiting"
+        "dependencies": [],
+        "notes": "OpenAI gpt-4o-mini via Supabase Edge Function voor API key veiligheid. Client-side rate limiting (max 10/min). 500ms debounce, min 10 chars, max 5 suggesties, 30s auto-dismiss. TagSuggestions in EntryModal onder TagInput."
       },
       "definitionOfDone": [
-        { "id": "dod-9-1", "description": "AI genereert relevante tag suggesties bij het typen", "done": false },
-        { "id": "dod-9-2", "description": "Suggesties verschijnen na 500ms inactiviteit (minimum 10 karakters)", "done": false },
-        { "id": "dod-9-3", "description": "Maximaal 5 suggesties worden getoond", "done": false },
-        { "id": "dod-9-4", "description": "Klik op suggestie voegt tag toe aan entry", "done": false },
-        { "id": "dod-9-5", "description": "Dismiss verwijdert suggestie", "done": false },
-        { "id": "dod-9-6", "description": "Loading state is zichtbaar tijdens API call", "done": false },
-        { "id": "dod-9-7", "description": "Bij API error worden geen suggesties getoond (geen crash)", "done": false },
-        { "id": "dod-9-8", "description": "Rate limiting voorkomt excessive API calls", "done": false },
-        { "id": "dod-9-9", "description": "Handmatig tags toevoegen blijft altijd mogelijk", "done": false },
-        { "id": "dod-9-10", "description": "AI voelt subtiel en niet opdringerig", "done": false }
+        { "id": "dod-9-1", "description": "AI genereert relevante tag suggesties bij het typen", "done": true },
+        { "id": "dod-9-2", "description": "Suggesties verschijnen na 500ms inactiviteit (minimum 10 karakters)", "done": true },
+        { "id": "dod-9-3", "description": "Maximaal 5 suggesties worden getoond", "done": true },
+        { "id": "dod-9-4", "description": "Klik op suggestie voegt tag toe aan entry", "done": true },
+        { "id": "dod-9-5", "description": "Dismiss verwijdert suggestie", "done": true },
+        { "id": "dod-9-6", "description": "Loading state is zichtbaar tijdens API call", "done": true },
+        { "id": "dod-9-7", "description": "Bij API error worden geen suggesties getoond (geen crash)", "done": true },
+        { "id": "dod-9-8", "description": "Rate limiting voorkomt excessive API calls", "done": true },
+        { "id": "dod-9-9", "description": "Handmatig tags toevoegen blijft altijd mogelijk", "done": true },
+        { "id": "dod-9-10", "description": "AI voelt subtiel en niet opdringerig", "done": true }
       ],
       "notInScope": [
         "AI patroonherkenning over meerdere entries",
@@ -484,7 +485,7 @@
     { "phase": 6, "status": "done", "summary": "Smart search bar, geavanceerde filters, client-side filtering, / shortcut" },
     { "phase": 7, "status": "done", "summary": "Reflectie-elementen: RandomHighlight, Flashbacks, TopTags, contextuele QuickActions" },
     { "phase": 8, "status": "done", "summary": "Entry verwijzingen & graph view met d3-force, ReferenceSelector, EntryReferences, GraphView met zoom/pan" },
-    { "phase": 9, "status": "todo", "summary": "AI tag suggesties" },
+    { "phase": 9, "status": "in-progress", "summary": "AI tag suggesties via OpenAI gpt-4o-mini, Supabase Edge Function, TagSuggestions component, useTagSuggestions hook, rate limiting" },
     { "phase": 10, "status": "todo", "summary": "Responsive, accessibility, polish" }
   ]
 }
