@@ -42,7 +42,7 @@ export function TagManager() {
       <div className="p-4">
         <div className="animate-pulse space-y-3">
           {[1, 2, 3].map((i) => (
-            <div key={i} className="h-8 bg-neutral-100 rounded-lg" />
+            <div key={i} className="h-8 bg-neutral-100 dark:bg-neutral-700 rounded-lg" />
           ))}
         </div>
       </div>
@@ -52,8 +52,8 @@ export function TagManager() {
   if (tags.length === 0) {
     return (
       <div className="p-6 text-center">
-        <Settings size={24} className="text-neutral-300 mx-auto mb-2" />
-        <p className="text-sm text-neutral-400">
+        <Settings size={24} className="text-neutral-300 dark:text-neutral-600 mx-auto mb-2" />
+        <p className="text-sm text-neutral-400 dark:text-neutral-500">
           Nog geen tags. Maak tags aan bij het bewerken van een entry.
         </p>
       </div>
@@ -62,13 +62,13 @@ export function TagManager() {
 
   return (
     <div className="space-y-1">
-      <h3 className="text-xs font-medium text-neutral-400 uppercase tracking-wider px-3 mb-2">
+      <h3 className="text-xs font-medium text-neutral-400 dark:text-neutral-500 uppercase tracking-wider px-3 mb-2">
         Tags beheren
       </h3>
 
       {tags.map((tag) => (
         <div key={tag.id} className="relative">
-          <div className="flex items-center gap-2 px-3 py-2 rounded-lg hover:bg-neutral-50 group transition-colors">
+            <div className="flex items-center gap-2 px-3 py-2 rounded-lg hover:bg-neutral-50 dark:hover:bg-neutral-800 group transition-colors">
             <TagBadge tag={tag} size="md" />
             <span className="flex-1" />
 
@@ -93,8 +93,8 @@ export function TagManager() {
 
           {/* Color picker */}
           {editingId === tag.id && (
-            <div className="mx-3 mb-2 p-3 bg-neutral-50 rounded-lg border border-neutral-100">
-              <p className="text-xs text-neutral-400 mb-2">Kies een kleur</p>
+            <div className="mx-3 mb-2 p-3 bg-neutral-50 dark:bg-neutral-800 rounded-lg border border-neutral-100 dark:border-neutral-700">
+              <p className="text-xs text-neutral-400 dark:text-neutral-500 mb-2">Kies een kleur</p>
               <div className="flex flex-wrap gap-1.5">
                 {colors.map((color) => (
                   <button
@@ -115,14 +115,14 @@ export function TagManager() {
 
           {/* Delete confirm */}
           {confirmDeleteId === tag.id && (
-            <div className="mx-3 mb-2 p-3 bg-red-50 rounded-lg border border-red-100">
-              <p className="text-xs text-red-600 mb-2">
+            <div className="mx-3 mb-2 p-3 bg-red-50 dark:bg-red-950/30 rounded-lg border border-red-100 dark:border-red-900/50">
+              <p className="text-xs text-red-600 dark:text-red-400 mb-2">
                 Tag "{tag.name}" verwijderen? Dit verwijdert de tag van alle entries.
               </p>
               <div className="flex gap-2">
                 <button
                   onClick={() => setConfirmDeleteId(null)}
-                  className="px-2.5 py-1 text-xs font-medium text-neutral-600 bg-white border border-neutral-200 rounded-md hover:bg-neutral-50 transition-colors cursor-pointer"
+                  className="px-2.5 py-1 text-xs font-medium text-neutral-600 dark:text-neutral-300 bg-white dark:bg-neutral-700 border border-neutral-200 dark:border-neutral-600 rounded-md hover:bg-neutral-50 dark:hover:bg-neutral-600 transition-colors cursor-pointer"
                 >
                   Annuleren
                 </button>

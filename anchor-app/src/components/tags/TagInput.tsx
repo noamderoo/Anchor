@@ -162,7 +162,7 @@ export function TagInput({ entryId, entryTags, onTagAdded, onTagRemoved }: TagIn
             setTimeout(() => inputRef.current?.focus(), 0)
           }}
           className={`
-            flex items-center gap-1.5 text-xs text-neutral-400 hover:text-neutral-600
+            flex items-center gap-1.5 text-xs text-neutral-400 hover:text-neutral-600 dark:hover:text-neutral-300
             transition-colors cursor-pointer
             ${isOpen ? 'hidden' : ''}
           `}
@@ -173,7 +173,7 @@ export function TagInput({ entryId, entryTags, onTagAdded, onTagRemoved }: TagIn
 
         {isOpen && (
           <div className="relative">
-            <div className="flex items-center gap-2 border border-neutral-200 rounded-lg px-3 py-2 bg-white focus-within:border-primary-300 transition-colors">
+            <div className="flex items-center gap-2 border border-neutral-200 dark:border-neutral-600 rounded-lg px-3 py-2 bg-white dark:bg-neutral-800 focus-within:border-primary-300 dark:focus-within:border-primary-500 transition-colors">
               <Hash size={14} className="text-neutral-400 shrink-0" />
               <input
                 ref={inputRef}
@@ -182,7 +182,7 @@ export function TagInput({ entryId, entryTags, onTagAdded, onTagRemoved }: TagIn
                 onChange={(e) => setQuery(e.target.value)}
                 onKeyDown={handleKeyDown}
                 placeholder="Zoek of maak tag..."
-                className="flex-1 text-sm text-neutral-700 placeholder-neutral-300 outline-none bg-transparent"
+                className="flex-1 text-sm text-neutral-700 dark:text-neutral-200 placeholder-neutral-300 dark:placeholder-neutral-500 outline-none bg-transparent"
                 autoFocus
               />
             </div>
@@ -191,7 +191,7 @@ export function TagInput({ entryId, entryTags, onTagAdded, onTagRemoved }: TagIn
             {options.length > 0 && (
               <div
                 ref={dropdownRef}
-                className="absolute top-full left-0 right-0 mt-1 bg-white border border-neutral-200 rounded-lg shadow-lg overflow-hidden z-20 max-h-48 overflow-y-auto"
+                className="absolute top-full left-0 right-0 mt-1 bg-white dark:bg-neutral-800 border border-neutral-200 dark:border-neutral-700 rounded-lg shadow-lg overflow-hidden z-20 max-h-48 overflow-y-auto"
               >
                 {options.map((option, index) => (
                   <button
@@ -199,7 +199,7 @@ export function TagInput({ entryId, entryTags, onTagAdded, onTagRemoved }: TagIn
                     onClick={() => handleSelect(option)}
                     className={`
                       w-full flex items-center gap-2 px-3 py-2 text-sm text-left transition-colors cursor-pointer
-                      ${index === highlightIndex ? 'bg-primary-50 text-primary-700' : 'text-neutral-700 hover:bg-neutral-50'}
+                      ${index === highlightIndex ? 'bg-primary-50 dark:bg-primary-900/30 text-primary-700 dark:text-primary-300' : 'text-neutral-700 dark:text-neutral-300 hover:bg-neutral-50 dark:hover:bg-neutral-700'}
                     `}
                   >
                     {option.id === '__create__' ? (
@@ -227,7 +227,7 @@ export function TagInput({ entryId, entryTags, onTagAdded, onTagRemoved }: TagIn
             {options.length === 0 && query.trim() === '' && (
               <div
                 ref={dropdownRef}
-                className="absolute top-full left-0 right-0 mt-1 bg-white border border-neutral-200 rounded-lg shadow-lg p-3 z-20"
+                className="absolute top-full left-0 right-0 mt-1 bg-white dark:bg-neutral-800 border border-neutral-200 dark:border-neutral-700 rounded-lg shadow-lg p-3 z-20"
               >
                 <p className="text-xs text-neutral-400 text-center">
                   Typ om een tag te zoeken of aan te maken

@@ -37,7 +37,7 @@ export function TagSuggestions({
         {suggestions.length > 0 && (
           <button
             onClick={onDismissAll}
-            className="text-[11px] text-neutral-400 hover:text-neutral-600 transition-colors cursor-pointer"
+            className="text-[11px] text-neutral-400 hover:text-neutral-600 dark:hover:text-neutral-300 transition-colors cursor-pointer"
           >
             Alles negeren
           </button>
@@ -50,7 +50,7 @@ export function TagSuggestions({
           {suggestions.map((suggestion) => (
             <div
               key={suggestion.name}
-              className="group flex items-center gap-1 bg-violet-50 border border-violet-100 text-violet-700 rounded-full pl-2.5 pr-1 py-1 text-xs transition-all hover:bg-violet-100 hover:border-violet-200"
+              className="group flex items-center gap-1 bg-violet-50 dark:bg-violet-950/30 border border-violet-100 dark:border-violet-800/50 text-violet-700 dark:text-violet-300 rounded-full pl-2.5 pr-1 py-1 text-xs transition-all hover:bg-violet-100 dark:hover:bg-violet-900/40 hover:border-violet-200 dark:hover:border-violet-700"
             >
               <button
                 onClick={() => onAccept(suggestion.name)}

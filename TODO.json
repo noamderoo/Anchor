@@ -1,7 +1,7 @@
 {
   "currentPhase": {
-    "number": 9,
-    "name": "AI Tag Suggesties",
+    "number": 10,
+    "name": "Responsive Design, Accessibility & Polish",
     "status": "in-progress"
   },
   "completedPhases": [
@@ -120,16 +120,39 @@
         { "id": "ref-11", "description": "Integratie in EntryModal.tsx en MainArea.tsx", "done": true },
         { "id": "ref-12", "description": "d3-force en @types/d3-force dependencies geïnstalleerd", "done": true }
       ]
+    },
+    {
+      "number": 9,
+      "name": "AI Tag Suggesties",
+      "status": "done",
+      "completedTasks": [
+        { "id": "ai-1", "description": "tagSuggestions.ts — client-side module met Supabase Edge Function invoke, rate limiting", "done": true },
+        { "id": "ai-2", "description": "suggest-tags Edge Function — Deno edge function met OpenAI gpt-4o-mini", "done": true },
+        { "id": "ai-3", "description": "useTagSuggestions.ts — 500ms debounce, min 10 chars, max 5 suggesties, 30s auto-dismiss", "done": true },
+        { "id": "ai-4", "description": "TagSuggestions.tsx — subtiele violet pills met Sparkles icoon, dismiss", "done": true },
+        { "id": "ai-5", "description": "Integratie in EntryModal.tsx met handleAcceptSuggestion", "done": true },
+        { "id": "ai-6", "description": "OPENAI_API_KEY instellen als Supabase secret (deployment stap)", "done": false },
+        { "id": "ai-7", "description": "Edge function deployen: supabase functions deploy suggest-tags (deployment stap)", "done": false }
+      ]
     }
   ],
   "activeTasks": [
-    { "id": "ai-1", "description": "tagSuggestions.ts — client-side module met Supabase Edge Function invoke, rate limiting", "done": true },
-    { "id": "ai-2", "description": "suggest-tags Edge Function — Deno edge function met OpenAI gpt-4o-mini", "done": true },
-    { "id": "ai-3", "description": "useTagSuggestions.ts — 500ms debounce, min 10 chars, max 5 suggesties, 30s auto-dismiss", "done": true },
-    { "id": "ai-4", "description": "TagSuggestions.tsx — subtiele violet pills met Sparkles icoon, dismiss", "done": true },
-    { "id": "ai-5", "description": "Integratie in EntryModal.tsx met handleAcceptSuggestion", "done": true },
-    { "id": "ai-6", "description": "OPENAI_API_KEY instellen als Supabase secret", "done": false },
-    { "id": "ai-7", "description": "Edge function deployen: supabase functions deploy suggest-tags", "done": false }
+    { "id": "resp-1", "description": "useAppStore uitgebreid met theme state (light/dark/system), localStorage, prefers-color-scheme listener", "done": true },
+    { "id": "resp-2", "description": "CSS dark mode variabelen (.dark klasse, scrollbar, body, skeleton, touch-target)", "done": true },
+    { "id": "resp-3", "description": "MobileNav.tsx — sticky bottom bar met view toggles en FAB", "done": true },
+    { "id": "resp-4", "description": "SkeletonLoader.tsx — Timeline/List/Grid/Dashboard skeleton components", "done": true },
+    { "id": "resp-5", "description": "3-weg theme toggle in Sidebar (Licht/Donker/Systeem)", "done": true },
+    { "id": "resp-6", "description": "Responsive Header (hamburger, hidden elements on mobile)", "done": true },
+    { "id": "resp-7", "description": "Responsive Sidebar (mobile overlay, slide animation, backdrop)", "done": true },
+    { "id": "resp-8", "description": "Responsive MainArea (flex-col mobile, lazy GraphView, skeleton loaders)", "done": true },
+    { "id": "resp-9", "description": "Responsive EntryModal (full-screen mobile, slide-up animation)", "done": true },
+    { "id": "resp-10", "description": "Dark mode op alle 35+ componenten (layout, entry, search, dashboard, timeline, views, tags, graph, UI)", "done": true },
+    { "id": "resp-11", "description": "prefers-reduced-motion: alle animaties uitgeschakeld bij voorkeur", "done": true },
+    { "id": "resp-12", "description": "Touch targets (min 44x44px) op interactieve elementen", "done": true },
+    { "id": "resp-13", "description": "ARIA labels en semantische HTML (<aside>, role=complementary, role=status)", "done": true },
+    { "id": "resp-14", "description": "React.lazy voor GraphView met Suspense fallback", "done": true },
+    { "id": "resp-15", "description": "Kleurcontrast audit (WCAG 4.5:1)", "done": false },
+    { "id": "resp-16", "description": "Performance meting (FCP < 2s target)", "done": false }
   ],
   "parkingLot": [
     { "id": "pl-1", "description": "Bookmark entries converteren naar andere entry types", "targetPhase": "later" },

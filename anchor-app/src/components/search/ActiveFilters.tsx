@@ -28,8 +28,8 @@ export function ActiveFilters() {
   const tagMap = new Map(tags.map((t) => [t.id, t]))
 
   return (
-    <div className="px-4 py-2 border-b border-neutral-100 bg-neutral-50/50 flex items-center gap-2 flex-wrap">
-      <span className="text-[10px] font-semibold text-neutral-400 uppercase tracking-wider mr-1">
+    <div className="px-4 py-2 border-b border-neutral-100 dark:border-neutral-700 bg-neutral-50/50 dark:bg-neutral-800/50 flex items-center gap-2 flex-wrap">
+      <span className="text-[10px] font-semibold text-neutral-400 dark:text-neutral-500 uppercase tracking-wider mr-1">
         Actief:
       </span>
 

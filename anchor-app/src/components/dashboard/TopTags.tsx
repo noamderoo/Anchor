@@ -29,10 +29,10 @@ export function TopTags() {
               className="w-2 h-2 rounded-full shrink-0"
               style={{ backgroundColor: tag.color }}
             />
-            <span className="text-xs font-medium text-neutral-700 flex-1 truncate">
+            <span className="text-xs font-medium text-neutral-700 dark:text-neutral-200 flex-1 truncate">
               {tag.name}
             </span>
-            <span className="text-[10px] text-neutral-400 font-medium tabular-nums">
+            <span className="text-[10px] text-neutral-400 dark:text-neutral-500 font-medium tabular-nums">
               {count} {count === 1 ? 'entry' : 'entries'}
             </span>
           </div>

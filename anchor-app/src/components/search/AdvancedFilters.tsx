@@ -35,9 +35,9 @@ export function AdvancedFilters({ entries }: AdvancedFiltersProps) {
   const entryTypes: EntryType[] = ['lesson', 'idea', 'milestone', 'note', 'resource', 'bookmark']
 
   return (
-    <div className="border-b border-neutral-200 bg-white px-4 py-3 animate-slide-in-up">
+    <div className="border-b border-neutral-200 dark:border-neutral-700 bg-white dark:bg-neutral-900 px-4 py-3 animate-slide-in-up">
       <div className="flex items-center justify-between mb-3">
-        <h3 className="text-xs font-semibold text-neutral-400 uppercase tracking-wider">
+        <h3 className="text-xs font-semibold text-neutral-400 dark:text-neutral-500 uppercase tracking-wider">
           Filters
         </h3>
         {hasActiveFilters() && (
@@ -53,7 +53,7 @@ export function AdvancedFilters({ entries }: AdvancedFiltersProps) {
       <div className="flex flex-wrap gap-4">
         {/* Entry types */}
         <div className="min-w-[140px]">
-          <label className="flex items-center gap-1.5 text-xs font-medium text-neutral-500 mb-2">
+          <label className="flex items-center gap-1.5 text-xs font-medium text-neutral-500 dark:text-neutral-400 mb-2">
             <FileText size={12} />
             Type
           </label>
@@ -72,7 +72,7 @@ export function AdvancedFilters({ entries }: AdvancedFiltersProps) {
                     flex items-center gap-1 px-2 py-1 rounded-md text-xs font-medium transition-colors cursor-pointer
                     ${isSelected
                       ? `${colors.bg} ${colors.text} ring-1 ring-current`
-                      : 'bg-neutral-100 text-neutral-500 hover:bg-neutral-200'
+                      : 'bg-neutral-100 dark:bg-neutral-800 text-neutral-500 dark:text-neutral-400 hover:bg-neutral-200 dark:hover:bg-neutral-700'
                     }
                   `}
                   aria-pressed={isSelected}
@@ -88,7 +88,7 @@ export function AdvancedFilters({ entries }: AdvancedFiltersProps) {
         {/* Tags */}
         {tags.length > 0 && (
           <div className="min-w-[140px]">
-            <label className="flex items-center gap-1.5 text-xs font-medium text-neutral-500 mb-2">
+            <label className="flex items-center gap-1.5 text-xs font-medium text-neutral-500 dark:text-neutral-400 mb-2">
               <TagIcon size={12} />
               Tags
             </label>
@@ -128,7 +128,7 @@ export function AdvancedFilters({ entries }: AdvancedFiltersProps) {
         {/* Status */}
         {uniqueStatuses.length > 0 && (
           <div className="min-w-[100px]">
-            <label className="flex items-center gap-1.5 text-xs font-medium text-neutral-500 mb-2">
+            <label className="flex items-center gap-1.5 text-xs font-medium text-neutral-500 dark:text-neutral-400 mb-2">
               <Activity size={12} />
               Status
             </label>
@@ -142,8 +142,8 @@ export function AdvancedFilters({ entries }: AdvancedFiltersProps) {
                     className={`
                       px-2 py-1 rounded-md text-xs font-medium transition-colors cursor-pointer
                       ${isSelected
-                        ? 'bg-primary-50 text-primary-700 ring-1 ring-primary-300'
-                        : 'bg-neutral-100 text-neutral-500 hover:bg-neutral-200'
+                        ? 'bg-primary-50 dark:bg-primary-950/50 text-primary-700 dark:text-primary-400 ring-1 ring-primary-300 dark:ring-primary-700'
+                        : 'bg-neutral-100 dark:bg-neutral-800 text-neutral-500 dark:text-neutral-400 hover:bg-neutral-200 dark:hover:bg-neutral-700'
                       }
                     `}
                     aria-pressed={isSelected}
@@ -158,7 +158,7 @@ export function AdvancedFilters({ entries }: AdvancedFiltersProps) {
 
         {/* Date range */}
         <div className="min-w-[200px]">
-          <label className="flex items-center gap-1.5 text-xs font-medium text-neutral-500 mb-2">
+          <label className="flex items-center gap-1.5 text-xs font-medium text-neutral-500 dark:text-neutral-400 mb-2">
             <Calendar size={12} />
             Periode
           </label>
@@ -169,17 +169,17 @@ export function AdvancedFilters({ entries }: AdvancedFiltersProps) {
               onChange={(e) =>
                 setDateRange({ ...dateRange, from: e.target.value || null })
               }
-              className="px-2 py-1 text-xs bg-neutral-100 border border-transparent rounded-md text-neutral-700 focus:bg-white focus:border-primary-300 focus:outline-none"
+              className="px-2 py-1 text-xs bg-neutral-100 dark:bg-neutral-800 border border-transparent rounded-md text-neutral-700 dark:text-neutral-200 focus:bg-white dark:focus:bg-neutral-700 focus:border-primary-300 dark:focus:border-primary-600 focus:outline-none"
               aria-label="Startdatum"
             />
-            <span className="text-xs text-neutral-400">–</span>
+            <span className="text-xs text-neutral-400 dark:text-neutral-500">–</span>
             <input
               type="date"
               value={dateRange.to || ''}
               onChange={(e) =>
                 setDateRange({ ...dateRange, to: e.target.value || null })
               }
-              className="px-2 py-1 text-xs bg-neutral-100 border border-transparent rounded-md text-neutral-700 focus:bg-white focus:border-primary-300 focus:outline-none"
+              className="px-2 py-1 text-xs bg-neutral-100 dark:bg-neutral-800 border border-transparent rounded-md text-neutral-700 dark:text-neutral-200 focus:bg-white dark:focus:bg-neutral-700 focus:border-primary-300 dark:focus:border-primary-600 focus:outline-none"
               aria-label="Einddatum"
             />
             {(dateRange.from || dateRange.to) && (

@@ -1,17 +1,22 @@
 import { create } from 'zustand'
 import type { ViewType } from '@/types'
 
+export type Theme = 'light' | 'dark' | 'system'
+
 interface AppStore {
   // State
   currentView: ViewType
   sidebarOpen: boolean
   selectedEntryId: string | null
+  theme: Theme
+  resolvedTheme: 'light' | 'dark'
 
   // Actions
   setCurrentView: (view: ViewType) => void
   toggleSidebar: () => void
   setSidebarOpen: (open: boolean) => void
   setSelectedEntryId: (id: string | null) => void
+  setTheme: (theme: Theme) => void
 }
 
 // ─── URL Param Helpers ───
@@ -49,12 +54,38 @@ function updateURLParams(updates: Record<string, string | null>) {
   window.history.replaceState({}, '', newURL)
 }
 
+// ─── Theme Helpers ───
+
+function getStoredTheme(): Theme {
+  const stored = localStorage.getItem('anchor-theme')
+  if (stored === 'light' || stored === 'dark' || stored === 'system') return stored
+  return 'system'
+}
+
+function getSystemTheme(): 'light' | 'dark' {
+  return window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light'
+}
+
+function resolveTheme(theme: Theme): 'light' | 'dark' {
+  return theme === 'system' ? getSystemTheme() : theme
+}
+
+function applyTheme(resolved: 'light' | 'dark') {
+  document.documentElement.classList.toggle('dark', resolved === 'dark')
+}
+
 // ─── Store ───
+
+const initialTheme = getStoredTheme()
+const initialResolved = resolveTheme(initialTheme)
+applyTheme(initialResolved)
 
 export const useAppStore = create<AppStore>((set) => ({
   currentView: getViewFromURL(),
   sidebarOpen: true,
   selectedEntryId: getEntryIdFromURL(),
+  theme: initialTheme,
+  resolvedTheme: initialResolved,
 
   setCurrentView: (view) => {
     updateURLParams({ view: view === 'timeline' ? null : view })
@@ -69,4 +100,21 @@ export const useAppStore = create<AppStore>((set) => ({
     updateURLParams({ entry: id })
     set({ selectedEntryId: id })
   },
+
+  setTheme: (theme) => {
+    localStorage.setItem('anchor-theme', theme)
+    const resolved = resolveTheme(theme)
+    applyTheme(resolved)
+    set({ theme, resolvedTheme: resolved })
+  },
 }))
+
+// Listen for system theme changes
+window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', () => {
+  const state = useAppStore.getState()
+  if (state.theme === 'system') {
+    const resolved = getSystemTheme()
+    applyTheme(resolved)
+    useAppStore.setState({ resolvedTheme: resolved })
+  }
+})

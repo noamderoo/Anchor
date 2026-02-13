@@ -50,13 +50,13 @@ export function SearchBar() {
           value={searchQuery}
           onChange={(e) => setSearchQuery(e.target.value)}
           placeholder="Zoeken... ( / )"
-          className="w-48 pl-8 pr-8 py-1.5 text-sm bg-neutral-100 border border-transparent rounded-lg text-neutral-700 placeholder:text-neutral-400 focus:bg-white focus:border-primary-300 focus:outline-none transition-colors"
+          className="w-48 pl-8 pr-8 py-1.5 text-sm bg-neutral-100 dark:bg-neutral-800 border border-transparent rounded-lg text-neutral-700 dark:text-neutral-200 placeholder:text-neutral-400 dark:placeholder:text-neutral-500 focus:bg-white dark:focus:bg-neutral-700 focus:border-primary-300 dark:focus:border-primary-600 focus:outline-none transition-colors"
           aria-label="Zoek entries"
         />
         {searchQuery && (
           <button
             onClick={() => setSearchQuery('')}
-            className="absolute right-2 text-neutral-400 hover:text-neutral-600 cursor-pointer"
+            className="absolute right-2 text-neutral-400 dark:text-neutral-500 hover:text-neutral-600 dark:hover:text-neutral-300 cursor-pointer"
             aria-label="Zoekopdracht wissen"
           >
             <X size={14} />
@@ -70,8 +70,8 @@ export function SearchBar() {
         className={`
           relative flex items-center gap-1 px-2 py-1.5 rounded-lg text-sm font-medium transition-colors cursor-pointer
           ${isAdvancedOpen || filtersActive
-            ? 'bg-primary-50 text-primary-700'
-            : 'text-neutral-500 hover:text-neutral-700 hover:bg-neutral-100'
+            ? 'bg-primary-50 dark:bg-primary-950/50 text-primary-700 dark:text-primary-400'
+            : 'text-neutral-500 dark:text-neutral-400 hover:text-neutral-700 dark:hover:text-neutral-200 hover:bg-neutral-100 dark:hover:bg-neutral-800'
           }
         `}
         aria-label="Geavanceerde filters"

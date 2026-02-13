@@ -95,11 +95,11 @@ export function ListView({ entries, isLoading, hasMore, onLoadMore, isLoadingMor
   if (!isLoading && visibleEntries.length === 0) {
     return (
       <div className="flex flex-col items-center justify-center h-[60vh]">
-        <div className="w-16 h-16 rounded-2xl bg-primary-50 flex items-center justify-center mb-4">
+        <div className="w-16 h-16 rounded-2xl bg-primary-50 dark:bg-primary-950/40 flex items-center justify-center mb-4">
           <Anchor size={28} className="text-primary-400" />
         </div>
-        <h2 className="text-lg font-semibold text-neutral-800 mb-1">Nog geen entries</h2>
-        <p className="text-sm text-neutral-400 mb-5 text-center max-w-xs">
+        <h2 className="text-lg font-semibold text-neutral-800 dark:text-neutral-200 mb-1">Nog geen entries</h2>
+        <p className="text-sm text-neutral-400 dark:text-neutral-500 mb-5 text-center max-w-xs">
           Begin met je eerste entry — leg een les, idee, of gedachte vast.
         </p>
         <button
@@ -119,10 +119,10 @@ export function ListView({ entries, isLoading, hasMore, onLoadMore, isLoadingMor
         <div key={group.label} className="mb-4 last:mb-0">
           {/* Date label */}
           <div className="flex items-center gap-3 mb-1 px-4">
-            <h2 className="text-xs font-semibold text-neutral-400 uppercase tracking-wider">
+            <h2 className="text-xs font-semibold text-neutral-400 dark:text-neutral-500 uppercase tracking-wider">
               {group.label}
             </h2>
-            <div className="flex-1 h-px bg-neutral-200" />
+            <div className="flex-1 h-px bg-neutral-200 dark:bg-neutral-700" />
           </div>
 
           {/* Entries */}
@@ -148,9 +148,9 @@ export function ListView({ entries, isLoading, hasMore, onLoadMore, isLoadingMor
       {/* End of list */}
       {!hasMore && visibleEntries.length > 0 && (
         <div className="flex items-center gap-3 px-4 py-6">
-          <div className="flex-1 h-px bg-neutral-200" />
-          <span className="text-xs text-neutral-300 font-medium">Alles geladen</span>
-          <div className="flex-1 h-px bg-neutral-200" />
+          <div className="flex-1 h-px bg-neutral-200 dark:bg-neutral-700" />
+          <span className="text-xs text-neutral-300 dark:text-neutral-600 font-medium">Alles geladen</span>
+          <div className="flex-1 h-px bg-neutral-200 dark:bg-neutral-700" />
         </div>
       )}
     </div>

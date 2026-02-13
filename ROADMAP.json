@@ -1,7 +1,7 @@
 {
   "project": "Anchor — Persoonlijk Leer- en Ideeënplatform",
   "status": "In ontwikkeling",
-  "currentPhase": 9,
+  "currentPhase": 10,
   "phases": [
     {
       "number": 1,
@@ -386,7 +386,7 @@
     {
       "number": 9,
       "name": "AI Tag Suggesties",
-      "status": "in-progress",
+      "status": "done",
       "goal": "AI-gestuurde tag suggesties bij het aanmaken of bewerken van entries.",
       "scope": [
         "API integratie met Claude of OpenAI",
@@ -431,7 +431,7 @@
     {
       "number": 10,
       "name": "Responsive Design, Accessibility & Polish",
-      "status": "todo",
+      "status": "in-progress",
       "goal": "Platform volledig responsive maken, toegankelijk voor iedereen, en visueel gepolijst.",
       "scope": [
         "Mobile layout (< 640px): tijdlijn wordt verticale lijst, sidebar wordt hamburger menu, modal full-screen",
@@ -439,32 +439,53 @@
         "Accessibility (WCAG 2.1 AA): keyboard navigatie, focus indicators, ARIA labels, semantische HTML, kleurcontrast 4.5:1",
         "Animaties: modal fade-in/scale-up, view switch fade, hover states, prefers-reduced-motion",
         "Performance: code splitting, image lazy loading, skeleton screens, < 2s FCP",
-        "Dark mode ready: CSS variables voor light/dark",
+        "Dark mode: class-based toggling, light/dark/system toggle, all components updated",
         "Empty states: friendly messages",
         "Error states: duidelijke foutmeldingen"
       ],
       "technicalDetails": {
         "filesCreated": [
-          "src/components/ui/SkeletonLoader.tsx", "src/components/ui/EmptyState.tsx",
-          "src/components/ui/ErrorState.tsx", "src/components/layout/MobileNav.tsx"
+          "src/components/layout/MobileNav.tsx", "src/components/ui/SkeletonLoader.tsx"
         ],
-        "notes": "Responsive Tailwind classes (sm:, md:, lg:), Dynamic imports voor graph view (React.lazy)"
+        "filesModified": [
+          "src/store/useAppStore.ts", "src/index.css", "src/App.tsx",
+          "src/components/layout/Header.tsx", "src/components/layout/Sidebar.tsx", "src/components/layout/MainArea.tsx",
+          "src/components/dashboard/Dashboard.tsx", "src/components/dashboard/LatestEntry.tsx",
+          "src/components/dashboard/StatsPanel.tsx", "src/components/dashboard/QuickActions.tsx",
+          "src/components/dashboard/RandomHighlight.tsx", "src/components/dashboard/Flashbacks.tsx",
+          "src/components/dashboard/TopTags.tsx",
+          "src/components/entry/EntryModal.tsx", "src/components/entry/EntryForm.tsx",
+          "src/components/entry/EntryTypeSelector.tsx", "src/components/entry/EntryReferences.tsx",
+          "src/components/entry/ReferenceSelector.tsx",
+          "src/components/search/SearchBar.tsx", "src/components/search/AdvancedFilters.tsx",
+          "src/components/search/ActiveFilters.tsx", "src/components/search/EmptyResults.tsx",
+          "src/components/search/FilterTag.tsx",
+          "src/components/timeline/Timeline.tsx", "src/components/timeline/TimelinePin.tsx",
+          "src/components/views/ListView.tsx", "src/components/views/ListItem.tsx",
+          "src/components/views/GridView.tsx", "src/components/views/GridCard.tsx",
+          "src/components/tags/TagInput.tsx", "src/components/tags/TagManager.tsx",
+          "src/components/tags/TagSuggestions.tsx",
+          "src/components/graph/GraphView.tsx", "src/components/graph/GraphNode.tsx",
+          "src/components/graph/GraphControls.tsx",
+          "src/components/ui/ToastContainer.tsx"
+        ],
+        "notes": "Dark mode via .dark class op html element. Theme: light/dark/system met localStorage (anchor-theme). prefers-color-scheme listener voor system mode. MobileNav met sticky bottom bar en FAB. Sidebar overlay op mobile. EntryModal full-screen op mobile. React.lazy voor GraphView. SkeletonLoaders voor alle views."
       },
       "definitionOfDone": [
-        { "id": "dod-10-1", "description": "Mobile layout werkt correct op schermen < 640px", "done": false },
-        { "id": "dod-10-2", "description": "Tablet layout werkt correct op schermen 640-1024px", "done": false },
-        { "id": "dod-10-3", "description": "Desktop layout is optimaal op schermen > 1024px", "done": false },
-        { "id": "dod-10-4", "description": "Alle functionaliteit is bereikbaar via keyboard", "done": false },
-        { "id": "dod-10-5", "description": "Focus indicators zijn duidelijk zichtbaar", "done": false },
-        { "id": "dod-10-6", "description": "ARIA labels zijn aanwezig op interactieve elementen", "done": false },
+        { "id": "dod-10-1", "description": "Mobile layout werkt correct op schermen < 640px", "done": true },
+        { "id": "dod-10-2", "description": "Tablet layout werkt correct op schermen 640-1024px", "done": true },
+        { "id": "dod-10-3", "description": "Desktop layout is optimaal op schermen > 1024px", "done": true },
+        { "id": "dod-10-4", "description": "Alle functionaliteit is bereikbaar via keyboard", "done": true },
+        { "id": "dod-10-5", "description": "Focus indicators zijn duidelijk zichtbaar", "done": true },
+        { "id": "dod-10-6", "description": "ARIA labels zijn aanwezig op interactieve elementen", "done": true },
         { "id": "dod-10-7", "description": "Kleurcontrast voldoet aan WCAG 2.1 AA (4.5:1)", "done": false },
-        { "id": "dod-10-8", "description": "Animaties respecteren prefers-reduced-motion", "done": false },
-        { "id": "dod-10-9", "description": "Graph view wordt lazy geladen", "done": false },
-        { "id": "dod-10-10", "description": "Empty states tonen friendly messages", "done": false },
-        { "id": "dod-10-11", "description": "Error states zijn informatief en helpend", "done": false },
-        { "id": "dod-10-12", "description": "Dark mode is beschikbaar en werkt correct", "done": false },
+        { "id": "dod-10-8", "description": "Animaties respecteren prefers-reduced-motion", "done": true },
+        { "id": "dod-10-9", "description": "Graph view wordt lazy geladen", "done": true },
+        { "id": "dod-10-10", "description": "Empty states tonen friendly messages", "done": true },
+        { "id": "dod-10-11", "description": "Error states zijn informatief en helpend", "done": true },
+        { "id": "dod-10-12", "description": "Dark mode is beschikbaar en werkt correct", "done": true },
         { "id": "dod-10-13", "description": "First Contentful Paint < 2s", "done": false },
-        { "id": "dod-10-14", "description": "Platform voelt gepolijst en professioneel", "done": false }
+        { "id": "dod-10-14", "description": "Platform voelt gepolijst en professioneel", "done": true }
       ],
       "notInScope": [
         "PWA (Progressive Web App)",
@@ -485,7 +506,7 @@
     { "phase": 6, "status": "done", "summary": "Smart search bar, geavanceerde filters, client-side filtering, / shortcut" },
     { "phase": 7, "status": "done", "summary": "Reflectie-elementen: RandomHighlight, Flashbacks, TopTags, contextuele QuickActions" },
     { "phase": 8, "status": "done", "summary": "Entry verwijzingen & graph view met d3-force, ReferenceSelector, EntryReferences, GraphView met zoom/pan" },
-    { "phase": 9, "status": "in-progress", "summary": "AI tag suggesties via OpenAI gpt-4o-mini, Supabase Edge Function, TagSuggestions component, useTagSuggestions hook, rate limiting" },
-    { "phase": 10, "status": "todo", "summary": "Responsive, accessibility, polish" }
+    { "phase": 9, "status": "done", "summary": "AI tag suggesties via OpenAI gpt-4o-mini, Supabase Edge Function, TagSuggestions component, useTagSuggestions hook, rate limiting" },
+    { "phase": 10, "status": "in-progress", "summary": "Dark mode (light/dark/system), responsive mobile layout, MobileNav, SkeletonLoaders, prefers-reduced-motion, touch targets, lazy GraphView, ARIA labels" }
   ]
 }

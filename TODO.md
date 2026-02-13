@@ -2,9 +2,46 @@
 
 > ⚠️ **BELANGRIJK:** Dit bestand heeft een JSON tegenhanger (`TODO.json`). Bij elke wijziging in dit bestand MOET `TODO.json` ook worden bijgewerkt, en vice versa. Dezelfde regel geldt voor `ROADMAP.md` ↔ `ROADMAP.json`. Deze bestanden mogen NOOIT worden verwijderd.
 
-## Huidige Fase: Fase 9 — AI Tag Suggesties ⏳
+## Huidige Fase: Fase 10 — Responsive Design, Accessibility & Polish ⏳
 
-### Fase 9: AI Tag Suggesties ⏳
+### Fase 10: Responsive Design, Accessibility & Polish ⏳
+
+**Dark Mode**
+- [x] useAppStore uitgebreid met theme state (light/dark/system), localStorage persistence, prefers-color-scheme listener
+- [x] CSS dark mode variabelen in index.css (.dark klasse, dark scrollbar, dark body)
+- [x] 3-weg theme toggle in Sidebar (Licht/Donker/Systeem met Sun/Moon/Monitor iconen)
+- [x] Dark mode op alle layout componenten (Header, Sidebar, MainArea, Dashboard)
+- [x] Dark mode op alle entry componenten (EntryModal, EntryForm, EntryTypeSelector, EntryReferences, ReferenceSelector)
+- [x] Dark mode op alle search componenten (SearchBar, AdvancedFilters, ActiveFilters, EmptyResults, FilterTag)
+- [x] Dark mode op alle dashboard componenten (LatestEntry, StatsPanel, QuickActions, RandomHighlight, Flashbacks, TopTags)
+- [x] Dark mode op alle timeline componenten (Timeline, TimelinePin)
+- [x] Dark mode op alle view componenten (ListView, ListItem, GridView, GridCard)
+- [x] Dark mode op alle tag componenten (TagInput, TagManager, TagSuggestions)
+- [x] Dark mode op alle graph componenten (GraphView, GraphNode, GraphControls)
+- [x] Dark mode op UI componenten (ToastContainer)
+
+**Responsive Design**
+- [x] MobileNav.tsx — sticky bottom navigation bar voor mobile met view toggles en FAB "+" knop
+- [x] Header.tsx — hamburger menu op mobile, verborgen elementen op kleine schermen
+- [x] Sidebar.tsx — mobile overlay van rechts met backdrop en slide animatie
+- [x] MainArea.tsx — flex-col op mobile, flex-row op desktop, mobile bottom padding voor MobileNav
+- [x] EntryModal.tsx — full-screen op mobile (h-[95vh], rounded-t-2xl, slide-up), centered op desktop
+- [x] App.tsx — MobileNav component toegevoegd
+
+**Accessibility & Performance**
+- [x] prefers-reduced-motion: alle animaties uitgeschakeld bij voorkeur
+- [x] Touch targets: .touch-target utility (min 44x44px) op interactieve elementen
+- [x] ARIA labels op interactieve elementen
+- [x] Semantische HTML (<aside> met role="complementary" voor Dashboard)
+- [x] SkeletonLoader.tsx — TimelineSkeleton, ListSkeleton, GridSkeleton, DashboardSkeleton met role="status"
+- [x] React.lazy voor GraphView met Suspense fallback
+- [x] Skeleton loaders bij view loading states
+
+**Nog te doen**
+- [ ] Kleurcontrast audit (WCAG 4.5:1)
+- [ ] Performance meting (FCP < 2s target)
+
+### Fase 9 afgerond: AI Tag Suggesties ✅
 
 **AI Module & Edge Function**
 - [x] tagSuggestions.ts — client-side module met Supabase Edge Function invoke, rate limiting (max 10/min)

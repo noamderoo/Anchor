@@ -93,14 +93,14 @@ export function GraphNode({
       {/* Label (shown on hover or for well-connected nodes) */}
       {(isHovered || connectionCount >= 3) && (
         <g>
-          {/* Label background */}
+          {/* Label background — uses CSS var for dark mode */}
           <rect
             x={radius + 6}
             y={-9}
             width={Math.min(title.length * 5.5 + 12, 140)}
             height={18}
             rx={4}
-            fill="white"
+            className="fill-white dark:fill-neutral-800"
             stroke={colors.stroke}
             strokeWidth={0.5}
             opacity={0.95}

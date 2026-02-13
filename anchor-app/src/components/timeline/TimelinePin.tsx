@@ -65,7 +65,7 @@ export function TimelinePin({ entry, onClick }: TimelinePinProps) {
         onClick={() => onClick(entry)}
         onMouseEnter={handleMouseEnter}
         onMouseLeave={handleMouseLeave}
-        className="w-full flex items-start gap-3 py-3 px-3 rounded-xl text-left transition-all cursor-pointer hover:bg-white hover:shadow-sm"
+        className="w-full flex items-start gap-3 py-3 px-3 rounded-xl text-left transition-all cursor-pointer hover:bg-white dark:hover:bg-neutral-800 hover:shadow-sm"
       >
         {/* Pin dot + connector */}
         <div className="relative flex flex-col items-center shrink-0">
@@ -79,7 +79,7 @@ export function TimelinePin({ entry, onClick }: TimelinePinProps) {
 
         {/* Content */}
         <div className="flex-1 min-w-0 pt-1">
-          <h3 className="text-sm font-semibold text-neutral-900 truncate group-hover:text-primary-700 transition-colors">
+          <h3 className="text-sm font-semibold text-neutral-900 dark:text-neutral-100 truncate group-hover:text-primary-700 dark:group-hover:text-primary-400 transition-colors">
             {entry.title || 'Zonder titel'}
           </h3>
           <div className="flex items-center gap-2 mt-0.5">
@@ -87,7 +87,7 @@ export function TimelinePin({ entry, onClick }: TimelinePinProps) {
             {entry.status && (
               <>
                 <span className="text-neutral-300">·</span>
-                <span className="text-xs px-1.5 py-0.5 rounded-md bg-neutral-100 text-neutral-500 font-medium">
+                <span className="text-xs px-1.5 py-0.5 rounded-md bg-neutral-100 dark:bg-neutral-700 text-neutral-500 dark:text-neutral-400 font-medium">
                   {entry.status}
                 </span>
               </>

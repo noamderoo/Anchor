@@ -77,14 +77,14 @@ function StatCard({
   bgColor: string
 }) {
   return (
-    <div className="rounded-xl border border-neutral-200 bg-white p-3">
+    <div className="rounded-xl border border-neutral-200 dark:border-neutral-700 bg-white dark:bg-neutral-800 p-3">
       <div className="flex items-center gap-2 mb-1.5">
         <div className={`w-6 h-6 rounded-md ${bgColor} flex items-center justify-center`}>
           <Icon size={12} className={color} />
         </div>
       </div>
-      <p className="text-xl font-bold text-neutral-900 leading-none">{value}</p>
-      <p className="text-[11px] text-neutral-400 mt-0.5">{label}</p>
+      <p className="text-xl font-bold text-neutral-900 dark:text-neutral-100 leading-none">{value}</p>
+      <p className="text-[11px] text-neutral-400 dark:text-neutral-500 mt-0.5">{label}</p>
     </div>
   )
 }

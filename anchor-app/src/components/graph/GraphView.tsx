@@ -95,9 +95,9 @@ export function GraphView({ entries }: GraphViewProps) {
     return (
       <div className="flex items-center justify-center h-full min-h-[400px]">
         <div className="text-center">
-          <Network size={40} className="text-neutral-200 mx-auto mb-3" />
-          <p className="text-neutral-400 text-sm font-medium">Geen entries</p>
-          <p className="text-neutral-300 text-xs mt-1">
+          <Network size={40} className="text-neutral-200 dark:text-neutral-600 mx-auto mb-3" />
+          <p className="text-neutral-400 dark:text-neutral-500 text-sm font-medium">Geen entries</p>
+          <p className="text-neutral-300 dark:text-neutral-600 text-xs mt-1">
             Maak entries aan om de graph te zien
           </p>
         </div>
@@ -110,9 +110,9 @@ export function GraphView({ entries }: GraphViewProps) {
     return (
       <div className="flex items-center justify-center h-full min-h-[400px]">
         <div className="text-center">
-          <Network size={40} className="text-neutral-200 mx-auto mb-3" />
-          <p className="text-neutral-400 text-sm font-medium">Geen connecties</p>
-          <p className="text-neutral-300 text-xs mt-1 max-w-xs mx-auto">
+          <Network size={40} className="text-neutral-200 dark:text-neutral-600 mx-auto mb-3" />
+          <p className="text-neutral-400 dark:text-neutral-500 text-sm font-medium">Geen connecties</p>
+          <p className="text-neutral-300 dark:text-neutral-600 text-xs mt-1 max-w-xs mx-auto">
             Voeg tags of verwijzingen toe aan entries om verbindingen te zien
           </p>
         </div>
@@ -123,7 +123,7 @@ export function GraphView({ entries }: GraphViewProps) {
   return (
     <div
       ref={containerRef}
-      className="relative w-full h-full min-h-[400px] rounded-xl border border-neutral-200 bg-white overflow-hidden"
+      className="relative w-full h-full min-h-[400px] rounded-xl border border-neutral-200 dark:border-neutral-700 bg-white dark:bg-neutral-900 overflow-hidden"
     >
       <svg
         ref={svgRef}
@@ -210,16 +210,16 @@ export function GraphView({ entries }: GraphViewProps) {
 
         return (
           <div
-            className="absolute pointer-events-none bg-white rounded-lg border border-neutral-200 shadow-lg px-3 py-2 z-10"
+            className="absolute pointer-events-none bg-white dark:bg-neutral-800 rounded-lg border border-neutral-200 dark:border-neutral-700 shadow-lg px-3 py-2 z-10"
             style={{
               left: Math.min(dimensions.width - 200, Math.max(10, node.x * zoom + panX + 30)),
               top: Math.max(10, node.y * zoom + panY - 20),
             }}
           >
-            <p className="text-sm font-medium text-neutral-900 truncate max-w-[180px]">
+            <p className="text-sm font-medium text-neutral-900 dark:text-neutral-100 truncate max-w-[180px]">
               {node.title}
             </p>
-            <p className="text-[11px] text-neutral-500 mt-0.5">
+            <p className="text-[11px] text-neutral-500 dark:text-neutral-400 mt-0.5">
               {node.connectionCount} connectie{node.connectionCount !== 1 ? 's' : ''}
             </p>
             {node.entry.content && (

@@ -29,7 +29,7 @@ export function QuickActions({ latestEntry, thisWeekCount, onNewEntry, onOpenEnt
       <div className="space-y-1.5">
         <button
           onClick={onNewEntry}
-          className="w-full flex items-center gap-2.5 px-3 py-2.5 rounded-xl text-sm text-neutral-600 hover:bg-white hover:text-neutral-800 border border-transparent hover:border-neutral-200 hover:shadow-sm transition-all cursor-pointer"
+          className="w-full flex items-center gap-2.5 px-3 py-2.5 rounded-xl text-sm text-neutral-600 dark:text-neutral-300 hover:bg-white dark:hover:bg-neutral-800 hover:text-neutral-800 dark:hover:text-neutral-100 border border-transparent hover:border-neutral-200 dark:hover:border-neutral-700 hover:shadow-sm transition-all cursor-pointer"
         >
           <Plus size={15} className="text-primary-500" />
           Nieuwe entry
@@ -37,7 +37,7 @@ export function QuickActions({ latestEntry, thisWeekCount, onNewEntry, onOpenEnt
         {latestEntry && (
           <button
             onClick={() => onOpenEntry(latestEntry)}
-            className="w-full flex items-center gap-2.5 px-3 py-2.5 rounded-xl text-sm text-neutral-600 hover:bg-white hover:text-neutral-800 border border-transparent hover:border-neutral-200 hover:shadow-sm transition-all cursor-pointer"
+            className="w-full flex items-center gap-2.5 px-3 py-2.5 rounded-xl text-sm text-neutral-600 dark:text-neutral-300 hover:bg-white dark:hover:bg-neutral-800 hover:text-neutral-800 dark:hover:text-neutral-100 border border-transparent hover:border-neutral-200 dark:hover:border-neutral-700 hover:shadow-sm transition-all cursor-pointer"
           >
             <Pencil size={15} className="text-neutral-400" />
             <span className="truncate">
@@ -48,7 +48,7 @@ export function QuickActions({ latestEntry, thisWeekCount, onNewEntry, onOpenEnt
         {thisWeekCount > 0 && (
           <button
             onClick={handleReviewThisWeek}
-            className="w-full flex items-center gap-2.5 px-3 py-2.5 rounded-xl text-sm text-neutral-600 hover:bg-white hover:text-neutral-800 border border-transparent hover:border-neutral-200 hover:shadow-sm transition-all cursor-pointer"
+            className="w-full flex items-center gap-2.5 px-3 py-2.5 rounded-xl text-sm text-neutral-600 dark:text-neutral-300 hover:bg-white dark:hover:bg-neutral-800 hover:text-neutral-800 dark:hover:text-neutral-100 border border-transparent hover:border-neutral-200 dark:hover:border-neutral-700 hover:shadow-sm transition-all cursor-pointer"
           >
             <CalendarDays size={15} className="text-indigo-400" />
             <span className="truncate">

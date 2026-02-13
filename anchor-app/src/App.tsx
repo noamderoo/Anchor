@@ -2,6 +2,7 @@ import { useEffect } from 'react'
 import { Header } from '@/components/layout/Header'
 import { Sidebar } from '@/components/layout/Sidebar'
 import { MainArea } from '@/components/layout/MainArea'
+import { MobileNav } from '@/components/layout/MobileNav'
 import { EntryModal } from '@/components/entry/EntryModal'
 import { EntryTypeSelector } from '@/components/entry/EntryTypeSelector'
 import { ToastContainer } from '@/components/ui/ToastContainer'
@@ -40,7 +41,7 @@ export default function App() {
   }, [entries, loadTagsForEntries])
 
   return (
-    <div className="h-screen flex flex-col">
+    <div className="h-screen flex flex-col bg-white dark:bg-neutral-900">
       <Header />
       <AdvancedFilters entries={entries} />
       <ActiveFilters />
@@ -54,6 +55,9 @@ export default function App() {
         />
         <Sidebar />
       </div>
+
+      {/* Mobile bottom navigation */}
+      <MobileNav />
 
       {/* Overlays */}
       <EntryTypeSelector />

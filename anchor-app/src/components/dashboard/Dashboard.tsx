@@ -22,7 +22,11 @@ export function Dashboard({ entries, onOpenEntry, onNewEntry }: DashboardProps) 
   })
 
   return (
-    <div className="w-80 border-l border-neutral-200 bg-neutral-50/50 overflow-y-auto p-6 hidden lg:block">
+    <aside
+      className="w-80 border-l border-neutral-200 dark:border-neutral-700 bg-neutral-50/50 dark:bg-neutral-900/50 overflow-y-auto p-6 hidden lg:block"
+      role="complementary"
+      aria-label="Dashboard"
+    >
       <LatestEntry entry={latestEntry} onOpen={onOpenEntry} />
       <RandomHighlight onOpenEntry={onOpenEntry} />
       <StatsPanel entries={entries} />
@@ -34,6 +38,6 @@ export function Dashboard({ entries, onOpenEntry, onNewEntry }: DashboardProps) 
         onNewEntry={onNewEntry}
         onOpenEntry={onOpenEntry}
       />
-    </div>
+    </aside>
   )
 }

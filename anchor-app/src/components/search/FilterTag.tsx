@@ -13,7 +13,7 @@ interface FilterTagProps {
 export function FilterTag({ label, color, onRemove }: FilterTagProps) {
   return (
     <span
-      className="inline-flex items-center gap-1 px-2 py-0.5 rounded-full text-xs font-medium bg-primary-50 text-primary-700"
+      className="inline-flex items-center gap-1 px-2 py-0.5 rounded-full text-xs font-medium bg-primary-50 dark:bg-primary-950/50 text-primary-700 dark:text-primary-300"
       style={color ? { backgroundColor: `${color}15`, color } : undefined}
     >
       {label}

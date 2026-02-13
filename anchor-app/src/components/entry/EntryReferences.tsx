@@ -55,21 +55,21 @@ export function EntryReferences({
 
   if (isLoading) {
     return (
-      <div className="mt-4 pt-4 border-t border-neutral-100">
-        <label className="block text-xs font-medium text-neutral-400 uppercase tracking-wider mb-2">
+      <div className="mt-4 pt-4 border-t border-neutral-100 dark:border-neutral-700">
+        <label className="block text-xs font-medium text-neutral-400 dark:text-neutral-500 uppercase tracking-wider mb-2">
           Verwijzingen
         </label>
         <div className="animate-pulse space-y-2">
-          <div className="h-8 bg-neutral-100 rounded w-full" />
+          <div className="h-8 bg-neutral-100 dark:bg-neutral-700 rounded w-full" />
         </div>
       </div>
     )
   }
 
   return (
-    <div className="mt-4 pt-4 border-t border-neutral-100">
+    <div className="mt-4 pt-4 border-t border-neutral-100 dark:border-neutral-700">
       <div className="flex items-center justify-between mb-2">
-        <label className="block text-xs font-medium text-neutral-400 uppercase tracking-wider">
+        <label className="block text-xs font-medium text-neutral-400 dark:text-neutral-500 uppercase tracking-wider">
           Verwijzingen
         </label>
         {!showSelector && entryId && entryId !== '' && (
@@ -99,7 +99,7 @@ export function EntryReferences({
 
       {/* Referenced entries */}
       {!hasReferences && !showSelector && (
-        <p className="text-xs text-neutral-400">Geen verwijzingen</p>
+        <p className="text-xs text-neutral-400 dark:text-neutral-500">Geen verwijzingen</p>
       )}
 
       {/* Outgoing references (from this entry) */}
@@ -162,7 +162,7 @@ function ReferenceItem({
   if (!entry) {
     // Broken reference
     return (
-      <div className="flex items-center gap-2 px-2 py-1.5 rounded-lg bg-red-50 border border-red-100">
+      <div className="flex items-center gap-2 px-2 py-1.5 rounded-lg bg-red-50 dark:bg-red-950/30 border border-red-100 dark:border-red-900/50">
         <AlertTriangle size={12} className="text-red-400 shrink-0" />
         <span className="text-xs text-red-400 flex-1">[Verwijderde entry]</span>
         {onRemove && (
@@ -182,7 +182,7 @@ function ReferenceItem({
   const Icon = ENTRY_ICONS[entry.entry_type]
 
   return (
-    <div className="flex items-center gap-2 px-2 py-1.5 rounded-lg hover:bg-neutral-50 transition-colors group">
+    <div className="flex items-center gap-2 px-2 py-1.5 rounded-lg hover:bg-neutral-50 dark:hover:bg-neutral-800 transition-colors group">
       <DirectionIcon size={12} className={`${directionColor} shrink-0`} />
       <div
         className="w-5 h-5 rounded flex items-center justify-center shrink-0"
@@ -193,12 +193,12 @@ function ReferenceItem({
       {onOpen ? (
         <button
           onClick={onOpen}
-          className="text-xs text-neutral-700 hover:text-primary-600 truncate flex-1 text-left cursor-pointer transition-colors"
+          className="text-xs text-neutral-700 dark:text-neutral-300 hover:text-primary-600 dark:hover:text-primary-400 truncate flex-1 text-left cursor-pointer transition-colors"
         >
           {entry.title || 'Zonder titel'}
         </button>
       ) : (
-        <span className="text-xs text-neutral-700 truncate flex-1">
+        <span className="text-xs text-neutral-700 dark:text-neutral-300 truncate flex-1">
           {entry.title || 'Zonder titel'}
         </span>
       )}

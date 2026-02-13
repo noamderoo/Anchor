@@ -34,10 +34,10 @@ export function RandomHighlight({ onOpenEntry }: RandomHighlightProps) {
           <Sparkles size={12} className="text-amber-400" />
           Herontdek dit...
         </h2>
-        <div className="rounded-xl border border-neutral-200 bg-white p-4 animate-pulse">
-          <div className="h-4 bg-neutral-100 rounded w-3/4 mb-2" />
-          <div className="h-3 bg-neutral-100 rounded w-full mb-1" />
-          <div className="h-3 bg-neutral-100 rounded w-2/3" />
+        <div className="rounded-xl border border-neutral-200 dark:border-neutral-700 bg-white dark:bg-neutral-800 p-4 animate-pulse">
+          <div className="h-4 bg-neutral-100 dark:bg-neutral-700 rounded w-3/4 mb-2" />
+          <div className="h-3 bg-neutral-100 dark:bg-neutral-700 rounded w-full mb-1" />
+          <div className="h-3 bg-neutral-100 dark:bg-neutral-700 rounded w-2/3" />
         </div>
       </section>
     )
@@ -74,7 +74,7 @@ export function RandomHighlight({ onOpenEntry }: RandomHighlightProps) {
             e.stopPropagation()
             refresh()
           }}
-          className="p-1 rounded-md text-neutral-300 hover:text-neutral-500 hover:bg-neutral-100 transition-colors cursor-pointer"
+          className="p-1 rounded-md text-neutral-300 hover:text-neutral-500 dark:hover:text-neutral-300 hover:bg-neutral-100 dark:hover:bg-neutral-700 transition-colors cursor-pointer"
           title="Ander item tonen"
         >
           <RefreshCw size={12} />
@@ -82,7 +82,7 @@ export function RandomHighlight({ onOpenEntry }: RandomHighlightProps) {
       </div>
       <button
         onClick={() => onOpenEntry(entry)}
-        className="w-full text-left rounded-xl border border-amber-100 bg-amber-50/30 p-4 hover:border-amber-200 hover:shadow-sm transition-all cursor-pointer group"
+        className="w-full text-left rounded-xl border border-amber-100 dark:border-amber-900/50 bg-amber-50/30 dark:bg-amber-950/20 p-4 hover:border-amber-200 dark:hover:border-amber-800 hover:shadow-sm transition-all cursor-pointer group"
       >
         <div className="flex items-start gap-3">
           <div
@@ -92,11 +92,11 @@ export function RandomHighlight({ onOpenEntry }: RandomHighlightProps) {
             <Icon size={14} style={{ color: `var(--color-${config.color})` }} />
           </div>
           <div className="flex-1 min-w-0">
-            <h3 className="text-sm font-semibold text-neutral-900 truncate group-hover:text-amber-700 transition-colors">
+            <h3 className="text-sm font-semibold text-neutral-900 dark:text-neutral-100 truncate group-hover:text-amber-700 dark:group-hover:text-amber-400 transition-colors">
               {entry.title || 'Zonder titel'}
             </h3>
             {entry.content && (
-              <p className="text-xs text-neutral-500 line-clamp-2 mt-0.5">{entry.content}</p>
+              <p className="text-xs text-neutral-500 dark:text-neutral-400 line-clamp-2 mt-0.5">{entry.content}</p>
             )}
             <p className="text-[11px] text-amber-500/70 mt-1.5">{timeAgo(entry.created_at)}</p>
           </div>

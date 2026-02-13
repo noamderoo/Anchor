@@ -61,14 +61,14 @@ export function EntryForm({ entry, onChange }: EntryFormProps) {
           value={localTitle}
           onChange={(e) => handleTitleChange(e.target.value)}
           placeholder="Titel"
-          className="w-full text-xl font-semibold text-neutral-900 placeholder-neutral-300 border-0 border-b-2 border-transparent focus:border-primary-300 bg-transparent outline-none pb-2 transition-colors"
+          className="w-full text-xl font-semibold text-neutral-900 dark:text-neutral-100 placeholder-neutral-300 dark:placeholder-neutral-600 border-0 border-b-2 border-transparent focus:border-primary-300 dark:focus:border-primary-600 bg-transparent outline-none pb-2 transition-colors"
           autoFocus
         />
       </div>
 
       {/* Content */}
       <div>
-        <label className="block text-xs font-medium text-neutral-400 uppercase tracking-wider mb-1.5">
+        <label className="block text-xs font-medium text-neutral-400 dark:text-neutral-500 uppercase tracking-wider mb-1.5">
           {contentLabel}
         </label>
         <textarea
@@ -76,14 +76,14 @@ export function EntryForm({ entry, onChange }: EntryFormProps) {
           onChange={(e) => handleContentChange(e.target.value)}
           placeholder={getContentPlaceholder(entry.entry_type)}
           rows={6}
-          className="w-full text-sm text-neutral-700 placeholder-neutral-300 bg-neutral-50 border border-neutral-200 rounded-lg p-3 outline-none focus:border-primary-300 focus:bg-white resize-y transition-colors"
+          className="w-full text-sm text-neutral-700 dark:text-neutral-200 placeholder-neutral-300 dark:placeholder-neutral-600 bg-neutral-50 dark:bg-neutral-700/50 border border-neutral-200 dark:border-neutral-600 rounded-lg p-3 outline-none focus:border-primary-300 dark:focus:border-primary-600 focus:bg-white dark:focus:bg-neutral-700 resize-y transition-colors"
         />
       </div>
 
       {/* Status */}
       {showStatus && (
         <div>
-          <label className="block text-xs font-medium text-neutral-400 uppercase tracking-wider mb-1.5">
+          <label className="block text-xs font-medium text-neutral-400 dark:text-neutral-500 uppercase tracking-wider mb-1.5">
             Status
           </label>
           <input
@@ -91,7 +91,7 @@ export function EntryForm({ entry, onChange }: EntryFormProps) {
             value={localStatus}
             onChange={(e) => handleStatusChange(e.target.value)}
             placeholder="Bijv. in progress, afgerond, idee fase..."
-            className="w-full text-sm text-neutral-700 placeholder-neutral-300 bg-neutral-50 border border-neutral-200 rounded-lg px-3 py-2 outline-none focus:border-primary-300 focus:bg-white transition-colors"
+            className="w-full text-sm text-neutral-700 dark:text-neutral-200 placeholder-neutral-300 dark:placeholder-neutral-600 bg-neutral-50 dark:bg-neutral-700/50 border border-neutral-200 dark:border-neutral-600 rounded-lg px-3 py-2 outline-none focus:border-primary-300 dark:focus:border-primary-600 focus:bg-white dark:focus:bg-neutral-700 transition-colors"
           />
         </div>
       )}
@@ -99,14 +99,14 @@ export function EntryForm({ entry, onChange }: EntryFormProps) {
       {/* Custom Date */}
       {showDate && (
         <div>
-          <label className="block text-xs font-medium text-neutral-400 uppercase tracking-wider mb-1.5">
+          <label className="block text-xs font-medium text-neutral-400 dark:text-neutral-500 uppercase tracking-wider mb-1.5">
             Datum
           </label>
           <input
             type="date"
             value={localCustomDate}
             onChange={(e) => handleDateChange(e.target.value)}
-            className="text-sm text-neutral-700 bg-neutral-50 border border-neutral-200 rounded-lg px-3 py-2 outline-none focus:border-primary-300 focus:bg-white transition-colors"
+            className="text-sm text-neutral-700 dark:text-neutral-200 bg-neutral-50 dark:bg-neutral-700/50 border border-neutral-200 dark:border-neutral-600 rounded-lg px-3 py-2 outline-none focus:border-primary-300 dark:focus:border-primary-600 focus:bg-white dark:focus:bg-neutral-700 transition-colors"
           />
         </div>
       )}

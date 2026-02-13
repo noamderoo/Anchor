@@ -49,7 +49,7 @@ export function ListItem({ entry, onClick }: ListItemProps) {
   return (
     <button
       onClick={() => onClick(entry)}
-      className="w-full flex items-center gap-3 py-3 px-4 rounded-xl text-left transition-all cursor-pointer hover:bg-white hover:shadow-sm group"
+      className="w-full flex items-center gap-3 py-3 px-4 rounded-xl text-left transition-all cursor-pointer hover:bg-white dark:hover:bg-neutral-800 hover:shadow-sm group"
     >
       {/* Type icon */}
       <div
@@ -60,11 +60,11 @@ export function ListItem({ entry, onClick }: ListItemProps) {
 
       {/* Title + content preview */}
       <div className="flex-1 min-w-0">
-        <h3 className="text-sm font-semibold text-neutral-900 truncate group-hover:text-primary-700 transition-colors">
+        <h3 className="text-sm font-semibold text-neutral-900 dark:text-neutral-100 truncate group-hover:text-primary-700 dark:group-hover:text-primary-400 transition-colors">
           {entry.title || 'Zonder titel'}
         </h3>
         {entry.content && (
-          <p className="text-xs text-neutral-400 truncate mt-0.5">
+          <p className="text-xs text-neutral-400 dark:text-neutral-500 truncate mt-0.5">
             {entry.content}
           </p>
         )}
@@ -84,7 +84,7 @@ export function ListItem({ entry, onClick }: ListItemProps) {
 
       {/* Status */}
       {entry.status && (
-        <span className="hidden md:inline text-xs px-1.5 py-0.5 rounded-md bg-neutral-100 text-neutral-500 font-medium shrink-0">
+        <span className="hidden md:inline text-xs px-1.5 py-0.5 rounded-md bg-neutral-100 dark:bg-neutral-700 text-neutral-500 dark:text-neutral-400 font-medium shrink-0">
           {entry.status}
         </span>
       )}
@@ -101,7 +101,7 @@ export function ListItem({ entry, onClick }: ListItemProps) {
       </span>
 
       {/* Date */}
-      <span className="text-xs text-neutral-400 shrink-0 w-16 text-right">
+      <span className="text-xs text-neutral-400 dark:text-neutral-500 shrink-0 w-16 text-right">
         {formatDate(entry.created_at)}
       </span>
     </button>

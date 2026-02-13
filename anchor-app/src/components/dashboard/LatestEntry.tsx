@@ -30,8 +30,8 @@ export function LatestEntry({ entry, onOpen }: LatestEntryProps) {
         <h2 className="text-xs font-semibold text-neutral-400 uppercase tracking-wider mb-3">
           Laatste entry
         </h2>
-        <div className="rounded-xl border border-neutral-200 bg-white p-4 h-20 flex items-center justify-center">
-          <p className="text-neutral-300 text-sm">Nog geen entries</p>
+        <div className="rounded-xl border border-neutral-200 dark:border-neutral-700 bg-white dark:bg-neutral-800 p-4 h-20 flex items-center justify-center">
+          <p className="text-neutral-300 dark:text-neutral-600 text-sm">Nog geen entries</p>
         </div>
       </section>
     )
@@ -67,7 +67,7 @@ export function LatestEntry({ entry, onOpen }: LatestEntryProps) {
       </h2>
       <button
         onClick={() => onOpen(entry)}
-        className="w-full text-left rounded-xl border border-neutral-200 bg-white p-4 hover:border-neutral-300 hover:shadow-sm transition-all cursor-pointer group"
+        className="w-full text-left rounded-xl border border-neutral-200 dark:border-neutral-700 bg-white dark:bg-neutral-800 p-4 hover:border-neutral-300 dark:hover:border-neutral-600 hover:shadow-sm transition-all cursor-pointer group"
         style={{ borderLeftWidth: '3px', borderLeftColor: `var(--color-${config.color})` }}
       >
         <div className="flex items-start gap-3">
@@ -78,11 +78,11 @@ export function LatestEntry({ entry, onOpen }: LatestEntryProps) {
             <Icon size={14} style={{ color: `var(--color-${config.color})` }} />
           </div>
           <div className="flex-1 min-w-0">
-            <h3 className="text-sm font-semibold text-neutral-900 truncate group-hover:text-primary-700 transition-colors">
+            <h3 className="text-sm font-semibold text-neutral-900 dark:text-neutral-100 truncate group-hover:text-primary-700 dark:group-hover:text-primary-400 transition-colors">
               {entry.title || 'Zonder titel'}
             </h3>
             {entry.content && (
-              <p className="text-xs text-neutral-500 line-clamp-2 mt-0.5">{entry.content}</p>
+              <p className="text-xs text-neutral-500 dark:text-neutral-400 line-clamp-2 mt-0.5">{entry.content}</p>
             )}
             <p className="text-[11px] text-neutral-400 mt-1.5">{timeAgo(entry.updated_at)}</p>
           </div>

@@ -96,11 +96,11 @@ export function Timeline({ entries, isLoading, hasMore, onLoadMore, isLoadingMor
   if (!isLoading && visibleEntries.length === 0) {
     return (
       <div className="flex flex-col items-center justify-center h-[60vh]">
-        <div className="w-16 h-16 rounded-2xl bg-primary-50 flex items-center justify-center mb-4">
+        <div className="w-16 h-16 rounded-2xl bg-primary-50 dark:bg-primary-950/50 flex items-center justify-center mb-4">
           <Anchor size={28} className="text-primary-400" />
         </div>
-        <h2 className="text-lg font-semibold text-neutral-800 mb-1">Welkom bij Anchor</h2>
-        <p className="text-sm text-neutral-400 mb-5 text-center max-w-xs">
+        <h2 className="text-lg font-semibold text-neutral-800 dark:text-neutral-200 mb-1">Welkom bij Anchor</h2>
+        <p className="text-sm text-neutral-400 dark:text-neutral-500 mb-5 text-center max-w-xs">
           Begin met je eerste entry — leg een les, idee, of gedachte vast.
         </p>
         <button
@@ -120,20 +120,20 @@ export function Timeline({ entries, isLoading, hasMore, onLoadMore, isLoadingMor
         <div key={group.label} className="mb-6 last:mb-0">
           {/* Date label */}
           <div className="flex items-center gap-3 mb-2 px-3">
-            <div className="w-2 h-2 rounded-full bg-neutral-300 shrink-0" />
-            <h2 className="text-xs font-semibold text-neutral-400 uppercase tracking-wider">
+            <div className="w-2 h-2 rounded-full bg-neutral-300 dark:bg-neutral-600 shrink-0" />
+            <h2 className="text-xs font-semibold text-neutral-400 dark:text-neutral-500 uppercase tracking-wider">
               {group.label}
             </h2>
-            <div className="flex-1 h-px bg-neutral-200" />
+            <div className="flex-1 h-px bg-neutral-200 dark:bg-neutral-700" />
           </div>
 
           {/* Entries in this date group */}
-          <div className="relative ml-[18px] border-l-2 border-neutral-200 pl-4">
+          <div className="relative ml-[18px] border-l-2 border-neutral-200 dark:border-neutral-700 pl-4">
             {group.entries.map((entry, i) => (
               <div key={entry.id} className="relative">
                 {/* Connector dot on the timeline line */}
                 <div
-                  className="absolute -left-[21px] top-6 w-2 h-2 rounded-full bg-neutral-300 border-2 border-neutral-50"
+                  className="absolute -left-[21px] top-6 w-2 h-2 rounded-full bg-neutral-300 dark:bg-neutral-600 border-2 border-neutral-50 dark:border-neutral-900"
                   style={{
                     backgroundColor: `var(--color-${entry.entry_type === 'lesson' ? 'entry-lesson' : entry.entry_type === 'idea' ? 'entry-idea' : entry.entry_type === 'milestone' ? 'entry-milestone' : entry.entry_type === 'note' ? 'entry-note' : entry.entry_type === 'resource' ? 'entry-resource' : 'entry-bookmark'})`,
                   }}
@@ -164,9 +164,9 @@ export function Timeline({ entries, isLoading, hasMore, onLoadMore, isLoadingMor
       {/* End of timeline */}
       {!hasMore && visibleEntries.length > 0 && (
         <div className="flex items-center gap-3 px-3 py-6">
-          <div className="flex-1 h-px bg-neutral-200" />
-          <span className="text-xs text-neutral-300 font-medium">Begin van je tijdlijn</span>
-          <div className="flex-1 h-px bg-neutral-200" />
+          <div className="flex-1 h-px bg-neutral-200 dark:bg-neutral-700" />
+          <span className="text-xs text-neutral-300 dark:text-neutral-600 font-medium">Begin van je tijdlijn</span>
+          <div className="flex-1 h-px bg-neutral-200 dark:bg-neutral-700" />
         </div>
       )}
     </div>

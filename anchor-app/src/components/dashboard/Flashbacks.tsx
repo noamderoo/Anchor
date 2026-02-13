@@ -40,9 +40,9 @@ export function Flashbacks({ onOpenEntry }: FlashbacksProps) {
           Terugblik
         </h2>
         <div className="space-y-2">
-          <div className="rounded-lg border border-neutral-200 bg-white p-3 animate-pulse">
-            <div className="h-3 bg-neutral-100 rounded w-1/3 mb-2" />
-            <div className="h-3 bg-neutral-100 rounded w-2/3" />
+          <div className="rounded-lg border border-neutral-200 dark:border-neutral-700 bg-white dark:bg-neutral-800 p-3 animate-pulse">
+            <div className="h-3 bg-neutral-100 dark:bg-neutral-700 rounded w-1/3 mb-2" />
+            <div className="h-3 bg-neutral-100 dark:bg-neutral-700 rounded w-2/3" />
           </div>
         </div>
       </section>
@@ -87,7 +87,7 @@ function FlashbackGroup({
   const remaining = entries.length - visibleEntries.length
 
   return (
-    <div className="rounded-xl border border-indigo-50 bg-indigo-50/20 p-3">
+    <div className="rounded-xl border border-indigo-50 dark:border-indigo-900/50 bg-indigo-50/20 dark:bg-indigo-950/20 p-3">
       <p className="text-[11px] font-medium text-indigo-400 mb-2">
         {formatMonthsAgo(monthsAgo)}
       </p>
@@ -100,7 +100,7 @@ function FlashbackGroup({
             <button
               key={entry.id}
               onClick={() => onOpenEntry(entry)}
-              className="w-full text-left flex items-center gap-2 px-2 py-1.5 rounded-lg hover:bg-white/60 transition-colors cursor-pointer group"
+              className="w-full text-left flex items-center gap-2 px-2 py-1.5 rounded-lg hover:bg-white/60 dark:hover:bg-neutral-700/40 transition-colors cursor-pointer group"
             >
               <div
                 className="w-5 h-5 rounded flex items-center justify-center shrink-0"
@@ -108,7 +108,7 @@ function FlashbackGroup({
               >
                 <Icon size={10} style={{ color: `var(--color-${config.color})` }} />
               </div>
-              <span className="text-xs text-neutral-700 truncate flex-1 group-hover:text-indigo-700 transition-colors">
+              <span className="text-xs text-neutral-700 dark:text-neutral-300 truncate flex-1 group-hover:text-indigo-700 dark:group-hover:text-indigo-400 transition-colors">
                 {entry.title || 'Zonder titel'}
               </span>
               <ChevronRight size={10} className="text-neutral-300 group-hover:text-indigo-400 transition-colors shrink-0" />

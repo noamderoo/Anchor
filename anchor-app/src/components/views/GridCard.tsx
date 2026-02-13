@@ -49,7 +49,7 @@ export function GridCard({ entry, onClick }: GridCardProps) {
   return (
     <button
       onClick={() => onClick(entry)}
-      className="relative w-full text-left rounded-xl bg-white border border-neutral-200 p-4 transition-all cursor-pointer hover:shadow-md hover:border-neutral-300 hover:-translate-y-0.5 group flex flex-col overflow-hidden"
+      className="relative w-full text-left rounded-xl bg-white dark:bg-neutral-800 border border-neutral-200 dark:border-neutral-700 p-4 transition-all cursor-pointer hover:shadow-md hover:border-neutral-300 dark:hover:border-neutral-600 hover:-translate-y-0.5 group flex flex-col overflow-hidden"
     >
       {/* Header: type icon + type label + date */}
       <div className="flex items-center justify-between mb-3">
@@ -69,26 +69,26 @@ export function GridCard({ entry, onClick }: GridCardProps) {
             {config.label}
           </span>
         </div>
-        <span className="text-xs text-neutral-400">
+        <span className="text-xs text-neutral-400 dark:text-neutral-500">
           {formatDate(entry.created_at)}
         </span>
       </div>
 
       {/* Title */}
-      <h3 className="text-sm font-semibold text-neutral-900 mb-1 line-clamp-2 group-hover:text-primary-700 transition-colors">
+      <h3 className="text-sm font-semibold text-neutral-900 dark:text-neutral-100 mb-1 line-clamp-2 group-hover:text-primary-700 dark:group-hover:text-primary-400 transition-colors">
         {entry.title || 'Zonder titel'}
       </h3>
 
       {/* Content preview */}
       {entry.content && (
-        <p className="text-xs text-neutral-400 line-clamp-3 mb-3 flex-1">
+        <p className="text-xs text-neutral-400 dark:text-neutral-500 line-clamp-3 mb-3 flex-1">
           {entry.content}
         </p>
       )}
       {!entry.content && <div className="flex-1" />}
 
       {/* Footer: tags + status */}
-      <div className="flex items-center justify-between mt-auto pt-3 border-t border-neutral-100">
+      <div className="flex items-center justify-between mt-auto pt-3 border-t border-neutral-100 dark:border-neutral-700">
         {/* Tags */}
         <div className="flex items-center gap-1 min-w-0 flex-1">
           {entryTags.slice(0, 2).map((tag) => (
@@ -101,7 +101,7 @@ export function GridCard({ entry, onClick }: GridCardProps) {
 
         {/* Status */}
         {entry.status && (
-          <span className="text-[11px] px-1.5 py-0.5 rounded-md bg-neutral-100 text-neutral-500 font-medium shrink-0 ml-2">
+          <span className="text-[11px] px-1.5 py-0.5 rounded-md bg-neutral-100 dark:bg-neutral-700 text-neutral-500 dark:text-neutral-400 font-medium shrink-0 ml-2">
             {entry.status}
           </span>
         )}

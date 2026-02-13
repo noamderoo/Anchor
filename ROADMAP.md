@@ -5,7 +5,7 @@
 > ⚠️ **BELANGRIJK:** Dit bestand heeft een JSON tegenhanger (`ROADMAP.json`). Bij elke wijziging in dit bestand MOET `ROADMAP.json` ook worden bijgewerkt, en vice versa. Dezelfde regel geldt voor `TODO.md` ↔ `TODO.json`. Deze bestanden mogen NOOIT worden verwijderd.
 
 **Status:** In ontwikkeling
-**Huidige fase:** ⏳ Fase 9: AI Tag Suggesties (in uitvoering)
+**Huidige fase:** ⏳ Fase 10: Responsive Design, Accessibility & Polish (in uitvoering)
 
 ## Overzicht Fases
 
@@ -19,8 +19,8 @@
 | 6 | Zoeken & Filteren | ✅ Done |
 | 7 | Reflectie & Dashboard Elementen | ✅ Done |
 | 8 | Entry Verwijzingen & Graph View | ✅ Done |
-| 9 | AI Tag Suggesties | ⏳ In uitvoering |
-| 10 | Responsive Design, Accessibility & Polish | ⏳ Todo |
+| 9 | AI Tag Suggesties | ✅ Done |
+| 10 | Responsive Design, Accessibility & Polish | ⏳ In uitvoering |
 
 ## Fase 1: Project Setup & Basisstructuur
 
@@ -490,28 +490,32 @@ Platform volledig responsive maken, toegankelijk voor iedereen, en visueel gepol
   - Suggesties voor oplossing
 
 ### Technische details
-- **Bestanden gewijzigd:** alle component bestanden voor responsive styles
-- **Bestanden aangemaakt:** `src/components/ui/SkeletonLoader.tsx`, `src/components/ui/EmptyState.tsx`, `src/components/ui/ErrorState.tsx`, `src/components/layout/MobileNav.tsx`
-- **CSS:** media queries, CSS custom properties voor theming
+- **Bestanden aangemaakt:** `src/components/layout/MobileNav.tsx`, `src/components/ui/SkeletonLoader.tsx`
+- **Bestanden gewijzigd:** alle component bestanden voor responsive styles en dark mode
+- **Store uitbreiding:** `src/store/useAppStore.ts` (theme: 'light' | 'dark' | 'system', resolvedTheme, localStorage persistence, prefers-color-scheme listener)
+- **CSS uitbreiding:** `src/index.css` (dark mode variabelen, .dark klasse, prefers-reduced-motion, skeleton loaders, touch-target utility, slideInFromBottom animatie)
+- **Dark mode:** class-based toggling (.dark op <html>), 3-weg toggle (Licht/Donker/Systeem) in Sidebar
+- **Responsive:** mobile-first met md: breakpoints, MobileNav bottom bar, sidebar overlay op mobile, full-screen modals op mobile
+- **Performance:** React.lazy voor GraphView, Suspense met fallback
+- **Accessibility:** prefers-reduced-motion, touch-target class (44x44px), ARIA labels, semantic HTML, skeleton loaders
 - Responsive Tailwind classes (sm:, md:, lg:)
 - Dynamic imports voor graph view (`React.lazy`)
-- Image optimization pipeline
 
 ### Definition of Done
-- [ ] Mobile layout werkt correct op schermen < 640px
-- [ ] Tablet layout werkt correct op schermen 640-1024px
-- [ ] Desktop layout is optimaal op schermen > 1024px
-- [ ] Alle functionaliteit is bereikbaar via keyboard
-- [ ] Focus indicators zijn duidelijk zichtbaar
-- [ ] ARIA labels zijn aanwezig op interactieve elementen
+- [x] Mobile layout werkt correct op schermen < 640px
+- [x] Tablet layout werkt correct op schermen 640-1024px
+- [x] Desktop layout is optimaal op schermen > 1024px
+- [x] Alle functionaliteit is bereikbaar via keyboard
+- [x] Focus indicators zijn duidelijk zichtbaar
+- [x] ARIA labels zijn aanwezig op interactieve elementen
 - [ ] Kleurcontrast voldoet aan WCAG 2.1 AA (4.5:1)
-- [ ] Animaties respecteren prefers-reduced-motion
-- [ ] Graph view wordt lazy geladen
-- [ ] Empty states tonen friendly messages
-- [ ] Error states zijn informatief en helpend
-- [ ] Dark mode is beschikbaar en werkt correct
+- [x] Animaties respecteren prefers-reduced-motion
+- [x] Graph view wordt lazy geladen
+- [x] Empty states tonen friendly messages
+- [x] Error states zijn informatief en helpend
+- [x] Dark mode is beschikbaar en werkt correct
 - [ ] First Contentful Paint < 2s
-- [ ] Platform voelt gepolijst en professioneel
+- [x] Platform voelt gepolijst en professioneel
 
 ### Niet in scope
 - PWA (Progressive Web App)
@@ -533,5 +537,5 @@ Platform volledig responsive maken, toegankelijk voor iedereen, en visueel gepol
 | 6 | ✅ Done | Smart search bar, geavanceerde filters, client-side filtering, / shortcut |
 | 7 | ✅ Done | Reflectie-elementen: RandomHighlight, Flashbacks, TopTags, contextuele QuickActions |
 | 8 | ✅ Done | Entry verwijzingen & graph view met d3-force, ReferenceSelector, EntryReferences, GraphView met zoom/pan |
-| 9 | ⏳ In uitvoering | AI tag suggesties via OpenAI (gpt-4o-mini), Supabase Edge Function, TagSuggestions component |
-| 10 | ⏳ Todo | Responsive, accessibility, polish |
+| 9 | ✅ Done | AI tag suggesties via OpenAI (gpt-4o-mini), Supabase Edge Function, TagSuggestions component |
+| 10 | ⏳ In uitvoering | Dark mode (light/dark/system), responsive mobile layout, MobileNav, SkeletonLoaders, prefers-reduced-motion, touch targets, lazy GraphView |

@@ -13,8 +13,8 @@ export function GraphControls({ nodeCount, edgeCount, isSimulating }: GraphContr
   return (
     <div className="absolute bottom-4 right-4 flex flex-col gap-2">
       {/* Stats */}
-      <div className="bg-white/90 backdrop-blur-sm rounded-lg border border-neutral-200 px-3 py-2 shadow-sm">
-        <div className="flex items-center gap-3 text-[11px] text-neutral-500">
+      <div className="bg-white/90 dark:bg-neutral-800/90 backdrop-blur-sm rounded-lg border border-neutral-200 dark:border-neutral-700 px-3 py-2 shadow-sm">
+        <div className="flex items-center gap-3 text-[11px] text-neutral-500 dark:text-neutral-400">
           <span>{nodeCount} entries</span>
           <span>·</span>
           <span>{edgeCount} connecties</span>
@@ -31,27 +31,27 @@ export function GraphControls({ nodeCount, edgeCount, isSimulating }: GraphContr
       </div>
 
       {/* Zoom controls */}
-      <div className="bg-white/90 backdrop-blur-sm rounded-lg border border-neutral-200 shadow-sm flex items-center">
+      <div className="bg-white/90 dark:bg-neutral-800/90 backdrop-blur-sm rounded-lg border border-neutral-200 dark:border-neutral-700 shadow-sm flex items-center">
         <button
           onClick={zoomOut}
-          className="p-2 text-neutral-500 hover:text-neutral-800 hover:bg-neutral-100 rounded-l-lg transition-colors cursor-pointer"
+          className="p-2 text-neutral-500 hover:text-neutral-800 dark:text-neutral-400 dark:hover:text-neutral-200 hover:bg-neutral-100 dark:hover:bg-neutral-700 rounded-l-lg transition-colors cursor-pointer"
           title="Uitzoomen"
         >
           <ZoomOut size={16} />
         </button>
-        <span className="text-[11px] text-neutral-500 px-2 border-x border-neutral-200 min-w-[3.5rem] text-center tabular-nums">
+        <span className="text-[11px] text-neutral-500 dark:text-neutral-400 px-2 border-x border-neutral-200 dark:border-neutral-700 min-w-[3.5rem] text-center tabular-nums">
           {Math.round(zoom * 100)}%
         </span>
         <button
           onClick={zoomIn}
-          className="p-2 text-neutral-500 hover:text-neutral-800 hover:bg-neutral-100 transition-colors cursor-pointer"
+          className="p-2 text-neutral-500 hover:text-neutral-800 dark:text-neutral-400 dark:hover:text-neutral-200 hover:bg-neutral-100 dark:hover:bg-neutral-700 transition-colors cursor-pointer"
           title="Inzoomen"
         >
           <ZoomIn size={16} />
         </button>
         <button
           onClick={resetView}
-          className="p-2 text-neutral-500 hover:text-neutral-800 hover:bg-neutral-100 rounded-r-lg transition-colors cursor-pointer border-l border-neutral-200"
+          className="p-2 text-neutral-500 hover:text-neutral-800 dark:text-neutral-400 dark:hover:text-neutral-200 hover:bg-neutral-100 dark:hover:bg-neutral-700 rounded-r-lg transition-colors cursor-pointer border-l border-neutral-200 dark:border-neutral-700"
           title="Reset weergave"
         >
           <Maximize2 size={16} />

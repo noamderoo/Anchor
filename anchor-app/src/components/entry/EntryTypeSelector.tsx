@@ -58,16 +58,16 @@ export function EntryTypeSelector() {
 
       {/* Content */}
       <div
-        className="relative bg-white rounded-2xl shadow-lg p-6 w-full max-w-lg mx-4 animate-scale-in"
+        className="relative bg-white dark:bg-neutral-800 rounded-2xl shadow-lg p-4 md:p-6 w-full max-w-lg mx-4 animate-scale-in"
         onClick={(e) => e.stopPropagation()}
       >
         <div className="flex items-center justify-between mb-5">
-          <h2 className="text-lg font-semibold text-neutral-900">
+          <h2 className="text-lg font-semibold text-neutral-900 dark:text-neutral-100">
             Wat wil je toevoegen?
           </h2>
           <button
             onClick={closeTypeSelector}
-            className="p-1.5 rounded-lg text-neutral-400 hover:text-neutral-600 hover:bg-neutral-100 transition-colors cursor-pointer"
+            className="touch-target p-1.5 rounded-lg text-neutral-400 dark:text-neutral-500 hover:text-neutral-600 dark:hover:text-neutral-300 hover:bg-neutral-100 dark:hover:bg-neutral-700 transition-colors cursor-pointer"
             aria-label="Sluiten"
           >
             <X size={18} />
@@ -82,7 +82,7 @@ export function EntryTypeSelector() {
                 key={config.type}
                 onClick={() => handleSelect(config.type)}
                 className={`
-                  flex items-start gap-3 p-4 rounded-xl border border-neutral-200
+                  touch-target flex items-start gap-3 p-4 rounded-xl border border-neutral-200 dark:border-neutral-700
                   text-left transition-all cursor-pointer
                   ${bgColors[config.type]}
                 `}
@@ -91,8 +91,8 @@ export function EntryTypeSelector() {
                   <Icon size={20} />
                 </div>
                 <div>
-                  <p className="font-medium text-sm text-neutral-900">{config.label}</p>
-                  <p className="text-xs text-neutral-500 mt-0.5">{config.description}</p>
+                  <p className="font-medium text-sm text-neutral-900 dark:text-neutral-100">{config.label}</p>
+                  <p className="text-xs text-neutral-500 dark:text-neutral-400 mt-0.5">{config.description}</p>
                 </div>
               </button>
             )

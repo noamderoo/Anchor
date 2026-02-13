@@ -80,7 +80,7 @@ export function ReferenceSelector({
 
   return (
     <div ref={containerRef} className="relative">
-      <div className="flex items-center gap-2 px-3 py-2 rounded-lg border border-neutral-200 bg-white focus-within:border-primary-300 focus-within:ring-2 focus-within:ring-primary-100 transition-all">
+      <div className="flex items-center gap-2 px-3 py-2 rounded-lg border border-neutral-200 dark:border-neutral-600 bg-white dark:bg-neutral-800 focus-within:border-primary-300 dark:focus-within:border-primary-500 focus-within:ring-2 focus-within:ring-primary-100 dark:focus-within:ring-primary-900/30 transition-all">
         <Search size={14} className="text-neutral-400 shrink-0" />
         <input
           ref={inputRef}
@@ -88,7 +88,7 @@ export function ReferenceSelector({
           value={query}
           onChange={(e) => setQuery(e.target.value)}
           placeholder="Zoek een entry om te verwijzen..."
-          className="flex-1 text-sm text-neutral-900 placeholder:text-neutral-400 outline-none bg-transparent"
+          className="flex-1 text-sm text-neutral-900 dark:text-neutral-100 placeholder:text-neutral-400 dark:placeholder:text-neutral-500 outline-none bg-transparent"
         />
         {query && (
           <button
@@ -102,9 +102,9 @@ export function ReferenceSelector({
 
       {/* Results dropdown */}
       {(query.trim() || filtered.length > 0) && (
-        <div className="absolute top-full left-0 right-0 mt-1 bg-white rounded-lg border border-neutral-200 shadow-lg max-h-52 overflow-y-auto z-20">
+        <div className="absolute top-full left-0 right-0 mt-1 bg-white dark:bg-neutral-800 rounded-lg border border-neutral-200 dark:border-neutral-700 shadow-lg max-h-52 overflow-y-auto z-20">
           {filtered.length === 0 ? (
-            <div className="px-3 py-4 text-center text-sm text-neutral-400">
+            <div className="px-3 py-4 text-center text-sm text-neutral-400 dark:text-neutral-500">
               Geen resultaten
             </div>
           ) : (
@@ -119,7 +119,7 @@ export function ReferenceSelector({
                     onSelect(entry)
                     onClose()
                   }}
-                  className="w-full text-left flex items-center gap-2.5 px-3 py-2 hover:bg-neutral-50 transition-colors cursor-pointer"
+                  className="w-full text-left flex items-center gap-2.5 px-3 py-2 hover:bg-neutral-50 dark:hover:bg-neutral-700 transition-colors cursor-pointer"
                 >
                   <div
                     className="w-6 h-6 rounded flex items-center justify-center shrink-0"
@@ -128,10 +128,10 @@ export function ReferenceSelector({
                     <Icon size={12} style={{ color: `var(--color-${config.color})` }} />
                   </div>
                   <div className="flex-1 min-w-0">
-                    <p className="text-sm text-neutral-900 truncate">
+                    <p className="text-sm text-neutral-900 dark:text-neutral-100 truncate">
                       {entry.title || 'Zonder titel'}
                     </p>
-                    <p className="text-[11px] text-neutral-400">{config.label}</p>
+                    <p className="text-[11px] text-neutral-400 dark:text-neutral-500">{config.label}</p>
                   </div>
                 </button>
               )
