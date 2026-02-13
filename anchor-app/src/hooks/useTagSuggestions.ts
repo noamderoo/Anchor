@@ -1,4 +1,4 @@
-import { useState, useEffect, useRef, useCallback } from 'react'
+import { useState, useEffect, useRef, useCallback, useMemo } from 'react'
 import { suggestTags, type TagSuggestion, type SuggestTagsParams } from '@/lib/ai/tagSuggestions'
 
 interface UseTagSuggestionsOptions {
@@ -35,6 +35,14 @@ export function useTagSuggestions({
   const dismissTimerRef = useRef<ReturnType<typeof setTimeout> | null>(null)
   const abortRef = useRef<AbortController | null>(null)
   const lastInputRef = useRef('')
+
+  // Stabilize array deps — join into strings so they don't trigger re-renders
+  const existingTagsKey = existingTagNames.join('\0')
+  const allTagsKey = allTagNames.join('\0')
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  const stableExistingTagNames = useMemo(() => existingTagNames, [existingTagsKey])
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  const stableAllTagNames = useMemo(() => allTagNames, [allTagsKey])
 
   // Clear auto-dismiss timer
   const clearDismissTimer = useCallback(() => {
@@ -137,8 +145,8 @@ export function useTagSuggestions({
         title,
         content,
         entryType,
-        existingTags: existingTagNames,
-        allTags: allTagNames,
+        existingTags: stableExistingTagNames,
+        allTags: stableAllTagNames,
       })
     }, DEBOUNCE_MS)
 
@@ -147,7 +155,7 @@ export function useTagSuggestions({
         clearTimeout(debounceRef.current)
       }
     }
-  }, [title, content, entryType, existingTagNames, allTagNames, enabled, fetchSuggestions, clearDismissTimer])
+  }, [title, content, entryType, stableExistingTagNames, stableAllTagNames, enabled, fetchSuggestions, clearDismissTimer])
 
   // Cleanup on unmount
   useEffect(() => {
