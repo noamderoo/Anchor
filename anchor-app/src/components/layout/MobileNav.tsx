@@ -34,7 +34,7 @@ export function MobileNav() {
             transition-colors cursor-pointer px-2 py-1
             ${currentView === type
               ? 'text-primary-600 dark:text-primary-400'
-              : 'text-neutral-400 dark:text-neutral-500'
+              : 'text-neutral-500 dark:text-neutral-400'
             }
           `}
           aria-label={label}

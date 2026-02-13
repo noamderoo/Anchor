@@ -64,7 +64,7 @@ export function ListItem({ entry, onClick }: ListItemProps) {
           {entry.title || 'Zonder titel'}
         </h3>
         {entry.content && (
-          <p className="text-xs text-neutral-400 dark:text-neutral-500 truncate mt-0.5">
+          <p className="text-xs text-neutral-500 dark:text-neutral-400 truncate mt-0.5">
             {entry.content}
           </p>
         )}
@@ -101,7 +101,7 @@ export function ListItem({ entry, onClick }: ListItemProps) {
       </span>
 
       {/* Date */}
-      <span className="text-xs text-neutral-400 dark:text-neutral-500 shrink-0 w-16 text-right">
+      <span className="text-xs text-neutral-500 dark:text-neutral-400 shrink-0 w-16 text-right">
         {formatDate(entry.created_at)}
       </span>
     </button>

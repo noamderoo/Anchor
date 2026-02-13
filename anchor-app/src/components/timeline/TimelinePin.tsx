@@ -1,4 +1,4 @@
-import { useState, useRef, useMemo } from 'react'
+import { useState, useRef } from 'react'
 import {
   GraduationCap,
   Lightbulb,
@@ -83,7 +83,7 @@ export function TimelinePin({ entry, onClick }: TimelinePinProps) {
             {entry.title || 'Zonder titel'}
           </h3>
           <div className="flex items-center gap-2 mt-0.5">
-            <span className="text-xs text-neutral-400">{formatTime(entry.created_at)}</span>
+            <span className="text-xs text-neutral-500">{formatTime(entry.created_at)}</span>
             {entry.status && (
               <>
                 <span className="text-neutral-300">·</span>

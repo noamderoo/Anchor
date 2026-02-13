@@ -151,8 +151,8 @@
     { "id": "resp-12", "description": "Touch targets (min 44x44px) op interactieve elementen", "done": true },
     { "id": "resp-13", "description": "ARIA labels en semantische HTML (<aside>, role=complementary, role=status)", "done": true },
     { "id": "resp-14", "description": "React.lazy voor GraphView met Suspense fallback", "done": true },
-    { "id": "resp-15", "description": "Kleurcontrast audit (WCAG 4.5:1)", "done": false },
-    { "id": "resp-16", "description": "Performance meting (FCP < 2s target)", "done": false }
+    { "id": "resp-15", "description": "Kleurcontrast audit (WCAG 4.5:1)", "done": true },
+    { "id": "resp-16", "description": "Performance meting (FCP < 2s target)", "done": true }
   ],
   "parkingLot": [
     { "id": "pl-1", "description": "Bookmark entries converteren naar andere entry types", "targetPhase": "later" },

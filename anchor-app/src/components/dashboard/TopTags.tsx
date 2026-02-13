@@ -11,7 +11,7 @@ export function TopTags() {
 
   return (
     <section className="mb-6">
-      <h2 className="text-xs font-semibold text-neutral-400 uppercase tracking-wider mb-3 flex items-center gap-1.5">
+      <h2 className="text-xs font-semibold text-neutral-500 uppercase tracking-wider mb-3 flex items-center gap-1.5">
         <Hash size={12} className="text-emerald-400" />
         Top tags
       </h2>
@@ -32,7 +32,7 @@ export function TopTags() {
             <span className="text-xs font-medium text-neutral-700 dark:text-neutral-200 flex-1 truncate">
               {tag.name}
             </span>
-            <span className="text-[10px] text-neutral-400 dark:text-neutral-500 font-medium tabular-nums">
+            <span className="text-[10px] text-neutral-500 dark:text-neutral-400 font-medium tabular-nums">
               {count} {count === 1 ? 'entry' : 'entries'}
             </span>
           </div>

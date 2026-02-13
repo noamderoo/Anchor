@@ -69,7 +69,7 @@ export function GridCard({ entry, onClick }: GridCardProps) {
             {config.label}
           </span>
         </div>
-        <span className="text-xs text-neutral-400 dark:text-neutral-500">
+        <span className="text-xs text-neutral-500 dark:text-neutral-400">
           {formatDate(entry.created_at)}
         </span>
       </div>
@@ -81,7 +81,7 @@ export function GridCard({ entry, onClick }: GridCardProps) {
 
       {/* Content preview */}
       {entry.content && (
-        <p className="text-xs text-neutral-400 dark:text-neutral-500 line-clamp-3 mb-3 flex-1">
+        <p className="text-xs text-neutral-500 dark:text-neutral-400 line-clamp-3 mb-3 flex-1">
           {entry.content}
         </p>
       )}

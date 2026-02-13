@@ -23,7 +23,7 @@ export function QuickActions({ latestEntry, thisWeekCount, onNewEntry, onOpenEnt
 
   return (
     <section>
-      <h2 className="text-xs font-semibold text-neutral-400 uppercase tracking-wider mb-3">
+      <h2 className="text-xs font-semibold text-neutral-500 uppercase tracking-wider mb-3">
         Quick actions
       </h2>
       <div className="space-y-1.5">

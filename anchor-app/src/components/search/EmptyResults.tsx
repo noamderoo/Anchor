@@ -10,12 +10,12 @@ export function EmptyResults() {
   return (
     <div className="flex flex-col items-center justify-center py-16 text-center">
       <div className="w-12 h-12 rounded-xl bg-neutral-100 dark:bg-neutral-800 flex items-center justify-center mb-4">
-        <SearchX size={24} className="text-neutral-400 dark:text-neutral-500" />
+        <SearchX size={24} className="text-neutral-500 dark:text-neutral-400" />
       </div>
       <h3 className="text-sm font-semibold text-neutral-700 dark:text-neutral-200 mb-1">
         Geen resultaten gevonden
       </h3>
-      <p className="text-xs text-neutral-400 dark:text-neutral-500 mb-4 max-w-xs">
+      <p className="text-xs text-neutral-500 dark:text-neutral-400 mb-4 max-w-xs">
         Probeer andere zoektermen of filters...
       </p>
       <button

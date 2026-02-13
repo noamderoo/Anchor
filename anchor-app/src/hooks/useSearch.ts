@@ -6,7 +6,7 @@ import { useState, useEffect, useRef } from 'react'
  */
 export function useSearch(value: string, delay = 300): string {
   const [debouncedValue, setDebouncedValue] = useState(value)
-  const timerRef = useRef<ReturnType<typeof setTimeout>>()
+  const timerRef = useRef<ReturnType<typeof setTimeout>>(undefined)
 
   useEffect(() => {
     timerRef.current = setTimeout(() => {

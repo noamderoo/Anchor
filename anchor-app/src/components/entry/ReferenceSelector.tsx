@@ -104,7 +104,7 @@ export function ReferenceSelector({
       {(query.trim() || filtered.length > 0) && (
         <div className="absolute top-full left-0 right-0 mt-1 bg-white dark:bg-neutral-800 rounded-lg border border-neutral-200 dark:border-neutral-700 shadow-lg max-h-52 overflow-y-auto z-20">
           {filtered.length === 0 ? (
-            <div className="px-3 py-4 text-center text-sm text-neutral-400 dark:text-neutral-500">
+            <div className="px-3 py-4 text-center text-sm text-neutral-500 dark:text-neutral-400">
               Geen resultaten
             </div>
           ) : (
@@ -131,7 +131,7 @@ export function ReferenceSelector({
                     <p className="text-sm text-neutral-900 dark:text-neutral-100 truncate">
                       {entry.title || 'Zonder titel'}
                     </p>
-                    <p className="text-[11px] text-neutral-400 dark:text-neutral-500">{config.label}</p>
+                    <p className="text-[11px] text-neutral-500 dark:text-neutral-400">{config.label}</p>
                   </div>
                 </button>
               )

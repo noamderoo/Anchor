@@ -68,7 +68,7 @@ export function EntryForm({ entry, onChange }: EntryFormProps) {
 
       {/* Content */}
       <div>
-        <label className="block text-xs font-medium text-neutral-400 dark:text-neutral-500 uppercase tracking-wider mb-1.5">
+        <label className="block text-xs font-medium text-neutral-500 dark:text-neutral-400 uppercase tracking-wider mb-1.5">
           {contentLabel}
         </label>
         <textarea
@@ -83,7 +83,7 @@ export function EntryForm({ entry, onChange }: EntryFormProps) {
       {/* Status */}
       {showStatus && (
         <div>
-          <label className="block text-xs font-medium text-neutral-400 dark:text-neutral-500 uppercase tracking-wider mb-1.5">
+          <label className="block text-xs font-medium text-neutral-500 dark:text-neutral-400 uppercase tracking-wider mb-1.5">
             Status
           </label>
           <input
@@ -99,7 +99,7 @@ export function EntryForm({ entry, onChange }: EntryFormProps) {
       {/* Custom Date */}
       {showDate && (
         <div>
-          <label className="block text-xs font-medium text-neutral-400 dark:text-neutral-500 uppercase tracking-wider mb-1.5">
+          <label className="block text-xs font-medium text-neutral-500 dark:text-neutral-400 uppercase tracking-wider mb-1.5">
             Datum
           </label>
           <input

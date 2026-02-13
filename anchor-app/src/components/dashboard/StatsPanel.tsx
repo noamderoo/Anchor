@@ -22,11 +22,12 @@ export function StatsPanel({ entries }: StatsPanelProps) {
   const bookmarkCount = entries.filter((e) => e.entry_type === 'bookmark').length
 
   // Streak: consecutive days with entries (simplified)
-  const streak = calculateStreak(entries)
+  // TODO: Display streak in UI
+  // const streak = calculateStreak(entries)
 
   return (
     <section className="mb-6">
-      <h2 className="text-xs font-semibold text-neutral-400 uppercase tracking-wider mb-3">
+      <h2 className="text-xs font-semibold text-neutral-500 uppercase tracking-wider mb-3">
         Stats
       </h2>
       <div className="grid grid-cols-2 gap-2.5">
@@ -84,11 +85,13 @@ function StatCard({
         </div>
       </div>
       <p className="text-xl font-bold text-neutral-900 dark:text-neutral-100 leading-none">{value}</p>
-      <p className="text-[11px] text-neutral-400 dark:text-neutral-500 mt-0.5">{label}</p>
+      <p className="text-[11px] text-neutral-500 dark:text-neutral-400 mt-0.5">{label}</p>
     </div>
   )
 }
 
+// TODO: Display streak in UI
+/*
 function calculateStreak(entries: Entry[]): number {
   if (entries.length === 0) return 0
 
@@ -122,3 +125,4 @@ function calculateStreak(entries: Entry[]): number {
 
   return streak
 }
+*/

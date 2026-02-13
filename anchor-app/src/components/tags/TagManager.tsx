@@ -52,8 +52,8 @@ export function TagManager() {
   if (tags.length === 0) {
     return (
       <div className="p-6 text-center">
-        <Settings size={24} className="text-neutral-300 dark:text-neutral-600 mx-auto mb-2" />
-        <p className="text-sm text-neutral-400 dark:text-neutral-500">
+        <Settings size={24} className="text-neutral-500 dark:text-neutral-400 mx-auto mb-2" />
+        <p className="text-sm text-neutral-500 dark:text-neutral-400">
           Nog geen tags. Maak tags aan bij het bewerken van een entry.
         </p>
       </div>
@@ -62,7 +62,7 @@ export function TagManager() {
 
   return (
     <div className="space-y-1">
-      <h3 className="text-xs font-medium text-neutral-400 dark:text-neutral-500 uppercase tracking-wider px-3 mb-2">
+      <h3 className="text-xs font-medium text-neutral-500 dark:text-neutral-400 uppercase tracking-wider px-3 mb-2">
         Tags beheren
       </h3>
 
@@ -94,7 +94,7 @@ export function TagManager() {
           {/* Color picker */}
           {editingId === tag.id && (
             <div className="mx-3 mb-2 p-3 bg-neutral-50 dark:bg-neutral-800 rounded-lg border border-neutral-100 dark:border-neutral-700">
-              <p className="text-xs text-neutral-400 dark:text-neutral-500 mb-2">Kies een kleur</p>
+              <p className="text-xs text-neutral-500 dark:text-neutral-400 mb-2">Kies een kleur</p>
               <div className="flex flex-wrap gap-1.5">
                 {colors.map((color) => (
                   <button

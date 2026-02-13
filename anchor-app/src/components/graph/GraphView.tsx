@@ -96,8 +96,8 @@ export function GraphView({ entries }: GraphViewProps) {
       <div className="flex items-center justify-center h-full min-h-[400px]">
         <div className="text-center">
           <Network size={40} className="text-neutral-200 dark:text-neutral-600 mx-auto mb-3" />
-          <p className="text-neutral-400 dark:text-neutral-500 text-sm font-medium">Geen entries</p>
-          <p className="text-neutral-300 dark:text-neutral-600 text-xs mt-1">
+          <p className="text-neutral-500 dark:text-neutral-400 text-sm font-medium">Geen entries</p>
+          <p className="text-neutral-500 dark:text-neutral-400 text-xs mt-1">
             Maak entries aan om de graph te zien
           </p>
         </div>
@@ -111,8 +111,8 @@ export function GraphView({ entries }: GraphViewProps) {
       <div className="flex items-center justify-center h-full min-h-[400px]">
         <div className="text-center">
           <Network size={40} className="text-neutral-200 dark:text-neutral-600 mx-auto mb-3" />
-          <p className="text-neutral-400 dark:text-neutral-500 text-sm font-medium">Geen connecties</p>
-          <p className="text-neutral-300 dark:text-neutral-600 text-xs mt-1 max-w-xs mx-auto">
+          <p className="text-neutral-500 dark:text-neutral-400 text-sm font-medium">Geen connecties</p>
+          <p className="text-neutral-500 dark:text-neutral-400 text-xs mt-1 max-w-xs mx-auto">
             Voeg tags of verwijzingen toe aan entries om verbindingen te zien
           </p>
         </div>

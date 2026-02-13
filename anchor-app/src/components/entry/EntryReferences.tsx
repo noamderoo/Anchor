@@ -56,7 +56,7 @@ export function EntryReferences({
   if (isLoading) {
     return (
       <div className="mt-4 pt-4 border-t border-neutral-100 dark:border-neutral-700">
-        <label className="block text-xs font-medium text-neutral-400 dark:text-neutral-500 uppercase tracking-wider mb-2">
+        <label className="block text-xs font-medium text-neutral-500 dark:text-neutral-400 uppercase tracking-wider mb-2">
           Verwijzingen
         </label>
         <div className="animate-pulse space-y-2">
@@ -69,7 +69,7 @@ export function EntryReferences({
   return (
     <div className="mt-4 pt-4 border-t border-neutral-100 dark:border-neutral-700">
       <div className="flex items-center justify-between mb-2">
-        <label className="block text-xs font-medium text-neutral-400 dark:text-neutral-500 uppercase tracking-wider">
+        <label className="block text-xs font-medium text-neutral-500 dark:text-neutral-400 uppercase tracking-wider">
           Verwijzingen
         </label>
         {!showSelector && entryId && entryId !== '' && (
@@ -99,7 +99,7 @@ export function EntryReferences({
 
       {/* Referenced entries */}
       {!hasReferences && !showSelector && (
-        <p className="text-xs text-neutral-400 dark:text-neutral-500">Geen verwijzingen</p>
+        <p className="text-xs text-neutral-500 dark:text-neutral-400">Geen verwijzingen</p>
       )}
 
       {/* Outgoing references (from this entry) */}
@@ -124,7 +124,7 @@ export function EntryReferences({
       {incoming.length > 0 && (
         <div className="space-y-1">
           {incoming.length > 0 && outgoing.length > 0 && (
-            <p className="text-[10px] text-neutral-400 uppercase tracking-wider mt-2 mb-1">
+            <p className="text-[10px] text-neutral-500 uppercase tracking-wider mt-2 mb-1">
               Verwezen door
             </p>
           )}

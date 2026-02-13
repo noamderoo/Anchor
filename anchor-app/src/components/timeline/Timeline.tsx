@@ -100,7 +100,7 @@ export function Timeline({ entries, isLoading, hasMore, onLoadMore, isLoadingMor
           <Anchor size={28} className="text-primary-400" />
         </div>
         <h2 className="text-lg font-semibold text-neutral-800 dark:text-neutral-200 mb-1">Welkom bij Anchor</h2>
-        <p className="text-sm text-neutral-400 dark:text-neutral-500 mb-5 text-center max-w-xs">
+        <p className="text-sm text-neutral-500 dark:text-neutral-400 mb-5 text-center max-w-xs">
           Begin met je eerste entry — leg een les, idee, of gedachte vast.
         </p>
         <button
@@ -121,9 +121,9 @@ export function Timeline({ entries, isLoading, hasMore, onLoadMore, isLoadingMor
           {/* Date label */}
           <div className="flex items-center gap-3 mb-2 px-3">
             <div className="w-2 h-2 rounded-full bg-neutral-300 dark:bg-neutral-600 shrink-0" />
-            <h2 className="text-xs font-semibold text-neutral-400 dark:text-neutral-500 uppercase tracking-wider">
+            <span className="text-xs font-semibold text-neutral-500 dark:text-neutral-400 uppercase tracking-wider">
               {group.label}
-            </h2>
+            </span>
             <div className="flex-1 h-px bg-neutral-200 dark:bg-neutral-700" />
           </div>
 
@@ -165,7 +165,7 @@ export function Timeline({ entries, isLoading, hasMore, onLoadMore, isLoadingMor
       {!hasMore && visibleEntries.length > 0 && (
         <div className="flex items-center gap-3 px-3 py-6">
           <div className="flex-1 h-px bg-neutral-200 dark:bg-neutral-700" />
-          <span className="text-xs text-neutral-300 dark:text-neutral-600 font-medium">Begin van je tijdlijn</span>
+          <span className="text-xs text-neutral-500 dark:text-neutral-400 font-medium">Begin van je tijdlijn</span>
           <div className="flex-1 h-px bg-neutral-200 dark:bg-neutral-700" />
         </div>
       )}

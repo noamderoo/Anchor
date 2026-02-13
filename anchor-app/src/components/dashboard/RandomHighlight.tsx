@@ -30,7 +30,7 @@ export function RandomHighlight({ onOpenEntry }: RandomHighlightProps) {
   if (isLoading) {
     return (
       <section className="mb-6">
-        <h2 className="text-xs font-semibold text-neutral-400 uppercase tracking-wider mb-3 flex items-center gap-1.5">
+        <h2 className="text-xs font-semibold text-neutral-500 uppercase tracking-wider mb-3 flex items-center gap-1.5">
           <Sparkles size={12} className="text-amber-400" />
           Herontdek dit...
         </h2>
@@ -65,7 +65,7 @@ export function RandomHighlight({ onOpenEntry }: RandomHighlightProps) {
   return (
     <section className="mb-6">
       <div className="flex items-center justify-between mb-3">
-        <h2 className="text-xs font-semibold text-neutral-400 uppercase tracking-wider flex items-center gap-1.5">
+        <h2 className="text-xs font-semibold text-neutral-500 uppercase tracking-wider flex items-center gap-1.5">
           <Sparkles size={12} className="text-amber-400" />
           Herontdek dit...
         </h2>

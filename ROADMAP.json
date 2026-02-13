@@ -431,7 +431,7 @@
     {
       "number": 10,
       "name": "Responsive Design, Accessibility & Polish",
-      "status": "in-progress",
+      "status": "done",
       "goal": "Platform volledig responsive maken, toegankelijk voor iedereen, en visueel gepolijst.",
       "scope": [
         "Mobile layout (< 640px): tijdlijn wordt verticale lijst, sidebar wordt hamburger menu, modal full-screen",
@@ -478,13 +478,13 @@
         { "id": "dod-10-4", "description": "Alle functionaliteit is bereikbaar via keyboard", "done": true },
         { "id": "dod-10-5", "description": "Focus indicators zijn duidelijk zichtbaar", "done": true },
         { "id": "dod-10-6", "description": "ARIA labels zijn aanwezig op interactieve elementen", "done": true },
-        { "id": "dod-10-7", "description": "Kleurcontrast voldoet aan WCAG 2.1 AA (4.5:1)", "done": false },
+        { "id": "dod-10-7", "description": "Kleurcontrast voldoet aan WCAG 2.1 AA (4.5:1)", "done": true },
         { "id": "dod-10-8", "description": "Animaties respecteren prefers-reduced-motion", "done": true },
         { "id": "dod-10-9", "description": "Graph view wordt lazy geladen", "done": true },
         { "id": "dod-10-10", "description": "Empty states tonen friendly messages", "done": true },
         { "id": "dod-10-11", "description": "Error states zijn informatief en helpend", "done": true },
         { "id": "dod-10-12", "description": "Dark mode is beschikbaar en werkt correct", "done": true },
-        { "id": "dod-10-13", "description": "First Contentful Paint < 2s", "done": false },
+        { "id": "dod-10-13", "description": "First Contentful Paint < 2s", "done": true },
         { "id": "dod-10-14", "description": "Platform voelt gepolijst en professioneel", "done": true }
       ],
       "notInScope": [
@@ -507,6 +507,6 @@
     { "phase": 7, "status": "done", "summary": "Reflectie-elementen: RandomHighlight, Flashbacks, TopTags, contextuele QuickActions" },
     { "phase": 8, "status": "done", "summary": "Entry verwijzingen & graph view met d3-force, ReferenceSelector, EntryReferences, GraphView met zoom/pan" },
     { "phase": 9, "status": "done", "summary": "AI tag suggesties via OpenAI gpt-4o-mini, Supabase Edge Function, TagSuggestions component, useTagSuggestions hook, rate limiting" },
-    { "phase": 10, "status": "in-progress", "summary": "Dark mode (light/dark/system), responsive mobile layout, MobileNav, SkeletonLoaders, prefers-reduced-motion, touch targets, lazy GraphView, ARIA labels" }
+    { "phase": 10, "status": "done", "summary": "Dark mode (light/dark/system), responsive mobile layout, MobileNav, SkeletonLoaders, prefers-reduced-motion, touch targets, lazy GraphView, WCAG contrast audit (4.5:1 AA), FCP < 2s, ARIA labels" }
   ]
 }

@@ -5,7 +5,7 @@
 > ⚠️ **BELANGRIJK:** Dit bestand heeft een JSON tegenhanger (`ROADMAP.json`). Bij elke wijziging in dit bestand MOET `ROADMAP.json` ook worden bijgewerkt, en vice versa. Dezelfde regel geldt voor `TODO.md` ↔ `TODO.json`. Deze bestanden mogen NOOIT worden verwijderd.
 
 **Status:** In ontwikkeling
-**Huidige fase:** ⏳ Fase 10: Responsive Design, Accessibility & Polish (in uitvoering)
+**Huidige fase:** ✅ Fase 10: Responsive Design, Accessibility & Polish (afgerond)
 
 ## Overzicht Fases
 
@@ -20,7 +20,7 @@
 | 7 | Reflectie & Dashboard Elementen | ✅ Done |
 | 8 | Entry Verwijzingen & Graph View | ✅ Done |
 | 9 | AI Tag Suggesties | ✅ Done |
-| 10 | Responsive Design, Accessibility & Polish | ⏳ In uitvoering |
+| 10 | Responsive Design, Accessibility & Polish | ✅ Done |
 
 ## Fase 1: Project Setup & Basisstructuur
 
@@ -508,13 +508,13 @@ Platform volledig responsive maken, toegankelijk voor iedereen, en visueel gepol
 - [x] Alle functionaliteit is bereikbaar via keyboard
 - [x] Focus indicators zijn duidelijk zichtbaar
 - [x] ARIA labels zijn aanwezig op interactieve elementen
-- [ ] Kleurcontrast voldoet aan WCAG 2.1 AA (4.5:1)
+- [x] Kleurcontrast voldoet aan WCAG 2.1 AA (4.5:1)
 - [x] Animaties respecteren prefers-reduced-motion
 - [x] Graph view wordt lazy geladen
 - [x] Empty states tonen friendly messages
 - [x] Error states zijn informatief en helpend
 - [x] Dark mode is beschikbaar en werkt correct
-- [ ] First Contentful Paint < 2s
+- [x] First Contentful Paint < 2s
 - [x] Platform voelt gepolijst en professioneel
 
 ### Niet in scope
@@ -538,4 +538,4 @@ Platform volledig responsive maken, toegankelijk voor iedereen, en visueel gepol
 | 7 | ✅ Done | Reflectie-elementen: RandomHighlight, Flashbacks, TopTags, contextuele QuickActions |
 | 8 | ✅ Done | Entry verwijzingen & graph view met d3-force, ReferenceSelector, EntryReferences, GraphView met zoom/pan |
 | 9 | ✅ Done | AI tag suggesties via OpenAI (gpt-4o-mini), Supabase Edge Function, TagSuggestions component |
-| 10 | ⏳ In uitvoering | Dark mode (light/dark/system), responsive mobile layout, MobileNav, SkeletonLoaders, prefers-reduced-motion, touch targets, lazy GraphView |
+| 10 | ✅ Done | Dark mode (light/dark/system), responsive mobile layout, MobileNav, SkeletonLoaders, prefers-reduced-motion, touch targets, lazy GraphView, WCAG contrast audit, FCP < 2s |

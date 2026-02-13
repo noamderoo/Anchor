@@ -35,7 +35,7 @@ export function Flashbacks({ onOpenEntry }: FlashbacksProps) {
   if (isLoading) {
     return (
       <section className="mb-6">
-        <h2 className="text-xs font-semibold text-neutral-400 uppercase tracking-wider mb-3 flex items-center gap-1.5">
+        <h2 className="text-xs font-semibold text-neutral-500 uppercase tracking-wider mb-3 flex items-center gap-1.5">
           <Clock size={12} className="text-indigo-400" />
           Terugblik
         </h2>
@@ -55,7 +55,7 @@ export function Flashbacks({ onOpenEntry }: FlashbacksProps) {
 
   return (
     <section className="mb-6">
-      <h2 className="text-xs font-semibold text-neutral-400 uppercase tracking-wider mb-3 flex items-center gap-1.5">
+      <h2 className="text-xs font-semibold text-neutral-500 uppercase tracking-wider mb-3 flex items-center gap-1.5">
         <Clock size={12} className="text-indigo-400" />
         Terugblik
       </h2>
@@ -116,7 +116,7 @@ function FlashbackGroup({
           )
         })}
         {remaining > 0 && (
-          <p className="text-[10px] text-neutral-400 pl-9">
+          <p className="text-[10px] text-neutral-500 pl-9">
             +{remaining} meer
           </p>
         )}

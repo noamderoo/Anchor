@@ -1,22 +1,4 @@
-import { ENTRY_TYPE_CONFIGS } from '@/types'
-import {
-  GraduationCap,
-  Lightbulb,
-  Trophy,
-  StickyNote,
-  Link,
-  Bookmark,
-} from 'lucide-react'
 import type { EntryType } from '@/types'
-
-const ENTRY_ICONS: Record<EntryType, typeof GraduationCap> = {
-  lesson: GraduationCap,
-  idea: Lightbulb,
-  milestone: Trophy,
-  note: StickyNote,
-  resource: Link,
-  bookmark: Bookmark,
-}
 
 // Color hex values per entry type (for SVG rendering)
 const TYPE_COLORS: Record<EntryType, { fill: string; stroke: string; text: string }> = {
@@ -54,7 +36,6 @@ export function GraphNode({
 }: GraphNodeProps) {
   const radius = Math.max(8, Math.min(20, 6 + connectionCount * 2))
   const colors = TYPE_COLORS[entryType]
-  const config = ENTRY_TYPE_CONFIGS[entryType]
 
   return (
     <g

@@ -229,7 +229,7 @@ export function TagInput({ entryId, entryTags, onTagAdded, onTagRemoved }: TagIn
                 ref={dropdownRef}
                 className="absolute top-full left-0 right-0 mt-1 bg-white dark:bg-neutral-800 border border-neutral-200 dark:border-neutral-700 rounded-lg shadow-lg p-3 z-20"
               >
-                <p className="text-xs text-neutral-400 text-center">
+                <p className="text-xs text-neutral-500 text-center">
                   Typ om een tag te zoeken of aan te maken
                 </p>
               </div>

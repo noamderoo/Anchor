@@ -27,11 +27,11 @@ export function LatestEntry({ entry, onOpen }: LatestEntryProps) {
   if (!entry) {
     return (
       <section className="mb-6">
-        <h2 className="text-xs font-semibold text-neutral-400 uppercase tracking-wider mb-3">
+        <h2 className="text-xs font-semibold text-neutral-500 uppercase tracking-wider mb-3">
           Laatste entry
         </h2>
         <div className="rounded-xl border border-neutral-200 dark:border-neutral-700 bg-white dark:bg-neutral-800 p-4 h-20 flex items-center justify-center">
-          <p className="text-neutral-300 dark:text-neutral-600 text-sm">Nog geen entries</p>
+          <p className="text-neutral-500 dark:text-neutral-400 text-sm">Nog geen entries</p>
         </div>
       </section>
     )
@@ -62,7 +62,7 @@ export function LatestEntry({ entry, onOpen }: LatestEntryProps) {
 
   return (
     <section className="mb-6">
-      <h2 className="text-xs font-semibold text-neutral-400 uppercase tracking-wider mb-3">
+      <h2 className="text-xs font-semibold text-neutral-500 uppercase tracking-wider mb-3">
         Laatste entry
       </h2>
       <button
@@ -84,7 +84,7 @@ export function LatestEntry({ entry, onOpen }: LatestEntryProps) {
             {entry.content && (
               <p className="text-xs text-neutral-500 dark:text-neutral-400 line-clamp-2 mt-0.5">{entry.content}</p>
             )}
-            <p className="text-[11px] text-neutral-400 mt-1.5">{timeAgo(entry.updated_at)}</p>
+            <p className="text-[11px] text-neutral-500 mt-1.5">{timeAgo(entry.updated_at)}</p>
           </div>
         </div>
       </button>

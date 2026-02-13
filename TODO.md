@@ -38,8 +38,8 @@
 - [x] Skeleton loaders bij view loading states
 
 **Nog te doen**
-- [ ] Kleurcontrast audit (WCAG 4.5:1)
-- [ ] Performance meting (FCP < 2s target)
+- [x] Kleurcontrast audit (WCAG 4.5:1)
+- [x] Performance meting (FCP < 2s target)
 
 ### Fase 9 afgerond: AI Tag Suggesties ✅
 

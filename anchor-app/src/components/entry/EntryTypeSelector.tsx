@@ -67,7 +67,7 @@ export function EntryTypeSelector() {
           </h2>
           <button
             onClick={closeTypeSelector}
-            className="touch-target p-1.5 rounded-lg text-neutral-400 dark:text-neutral-500 hover:text-neutral-600 dark:hover:text-neutral-300 hover:bg-neutral-100 dark:hover:bg-neutral-700 transition-colors cursor-pointer"
+            className="touch-target p-1.5 rounded-lg text-neutral-500 dark:text-neutral-400 hover:text-neutral-600 dark:hover:text-neutral-300 hover:bg-neutral-100 dark:hover:bg-neutral-700 transition-colors cursor-pointer"
             aria-label="Sluiten"
           >
             <X size={18} />

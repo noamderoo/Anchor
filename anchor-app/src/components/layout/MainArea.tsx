@@ -88,7 +88,7 @@ export function MainArea({ entries, isLoading, hasMore, isLoadingMore, onLoadMor
           {currentView === 'graph' && !showEmptyResults && (
             <div className="h-full min-h-[500px]">
               <Suspense fallback={
-                <div className="flex items-center justify-center h-full text-neutral-400 dark:text-neutral-500">
+                <div className="flex items-center justify-center h-full text-neutral-500 dark:text-neutral-400">
                   <div className="text-center space-y-2">
                     <div className="w-8 h-8 border-2 border-primary-300 border-t-primary-600 rounded-full animate-spin mx-auto" />
                     <p className="text-sm">Graph laden...</p>

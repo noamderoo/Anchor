@@ -336,7 +336,7 @@ export function EntryModal() {
             <Icon size={18} className={iconColors[editingEntry.entry_type]} />
             <span className="text-sm font-medium text-neutral-500 dark:text-neutral-400">{config.label}</span>
             {hasUnsavedChanges && (
-              <span className="text-xs text-neutral-400 dark:text-neutral-500 ml-2">• Niet opgeslagen</span>
+              <span className="text-xs text-neutral-500 dark:text-neutral-400 ml-2">• Niet opgeslagen</span>
             )}
           </div>
 
@@ -345,7 +345,7 @@ export function EntryModal() {
               <>
                 <button
                   onClick={handleArchive}
-                  className="touch-target p-2 rounded-lg text-neutral-400 dark:text-neutral-500 hover:text-amber-600 dark:hover:text-amber-400 hover:bg-amber-50 dark:hover:bg-amber-950/30 transition-colors cursor-pointer"
+                  className="touch-target p-2 rounded-lg text-neutral-500 dark:text-neutral-400 hover:text-amber-600 dark:hover:text-amber-400 hover:bg-amber-50 dark:hover:bg-amber-950/30 transition-colors cursor-pointer"
                   title="Archiveren"
                   aria-label="Entry archiveren"
                 >
@@ -353,7 +353,7 @@ export function EntryModal() {
                 </button>
                 <button
                   onClick={() => setShowDeleteConfirm(true)}
-                  className="touch-target p-2 rounded-lg text-neutral-400 dark:text-neutral-500 hover:text-red-600 dark:hover:text-red-400 hover:bg-red-50 dark:hover:bg-red-950/30 transition-colors cursor-pointer"
+                  className="touch-target p-2 rounded-lg text-neutral-500 dark:text-neutral-400 hover:text-red-600 dark:hover:text-red-400 hover:bg-red-50 dark:hover:bg-red-950/30 transition-colors cursor-pointer"
                   title="Verwijderen"
                   aria-label="Entry verwijderen"
                 >
@@ -363,7 +363,7 @@ export function EntryModal() {
             )}
             <button
               onClick={handleClose}
-              className="touch-target p-2 rounded-lg text-neutral-400 dark:text-neutral-500 hover:text-neutral-600 dark:hover:text-neutral-300 hover:bg-neutral-100 dark:hover:bg-neutral-700 transition-colors cursor-pointer ml-1"
+              className="touch-target p-2 rounded-lg text-neutral-500 dark:text-neutral-400 hover:text-neutral-600 dark:hover:text-neutral-300 hover:bg-neutral-100 dark:hover:bg-neutral-700 transition-colors cursor-pointer ml-1"
               aria-label="Sluiten"
             >
               <X size={18} />
@@ -380,7 +380,7 @@ export function EntryModal() {
 
           {/* Tags */}
           <div className="mt-5 pt-4 border-t border-neutral-100 dark:border-neutral-700">
-            <label className="block text-xs font-medium text-neutral-400 dark:text-neutral-500 uppercase tracking-wider mb-2">
+            <label className="block text-xs font-medium text-neutral-500 dark:text-neutral-400 uppercase tracking-wider mb-2">
               Tags
             </label>
             <TagInput
@@ -423,7 +423,7 @@ export function EntryModal() {
 
         {/* Footer */}
         <div className="flex items-center justify-between px-4 md:px-6 py-4 border-t border-neutral-100 dark:border-neutral-700 bg-neutral-50/50 dark:bg-neutral-800/50">
-          <div className="text-xs text-neutral-400 dark:text-neutral-500">
+          <div className="text-xs text-neutral-500 dark:text-neutral-400">
             {!isNew && (
               <>
                 Aangemaakt: {new Date(editingEntry.created_at).toLocaleDateString('nl-NL', {
@@ -441,7 +441,7 @@ export function EntryModal() {
               Opslaan
             </button>
           ) : (
-            <div className="text-xs text-neutral-400 dark:text-neutral-500">
+            <div className="text-xs text-neutral-500 dark:text-neutral-400">
               Auto-save na 3 seconden
             </div>
           )}

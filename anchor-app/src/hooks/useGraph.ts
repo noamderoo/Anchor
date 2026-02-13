@@ -1,4 +1,4 @@
-import { useEffect, useRef, useMemo, useCallback, useState } from 'react'
+import { useEffect, useRef, useMemo, useState } from 'react'
 import {
   forceSimulation,
   forceLink,
@@ -9,7 +9,7 @@ import {
   type SimulationLinkDatum,
 } from 'd3-force'
 import type { Entry, Tag, EntryReference } from '@/types'
-import { buildGraphData, type GraphNode, type GraphEdge, type GraphData } from '@/lib/queries/graph'
+import { buildGraphData, type GraphNode, type GraphData } from '@/lib/queries/graph'
 
 // ─── Simulation Node/Link types ───
 
@@ -120,13 +120,6 @@ export function useGraph(
       if (simulationRef.current) {
         simulationRef.current.stop()
       }
-    }
-  }, [])
-
-  const reheat = useCallback(() => {
-    if (simulationRef.current) {
-      setIsSimulating(true)
-      simulationRef.current.alpha(0.5).restart()
     }
   }, [])
 

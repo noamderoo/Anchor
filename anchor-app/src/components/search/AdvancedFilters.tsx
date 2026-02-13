@@ -37,7 +37,7 @@ export function AdvancedFilters({ entries }: AdvancedFiltersProps) {
   return (
     <div className="border-b border-neutral-200 dark:border-neutral-700 bg-white dark:bg-neutral-900 px-4 py-3 animate-slide-in-up">
       <div className="flex items-center justify-between mb-3">
-        <h3 className="text-xs font-semibold text-neutral-400 dark:text-neutral-500 uppercase tracking-wider">
+        <h3 className="text-xs font-semibold text-neutral-500 dark:text-neutral-400 uppercase tracking-wider">
           Filters
         </h3>
         {hasActiveFilters() && (
@@ -172,7 +172,7 @@ export function AdvancedFilters({ entries }: AdvancedFiltersProps) {
               className="px-2 py-1 text-xs bg-neutral-100 dark:bg-neutral-800 border border-transparent rounded-md text-neutral-700 dark:text-neutral-200 focus:bg-white dark:focus:bg-neutral-700 focus:border-primary-300 dark:focus:border-primary-600 focus:outline-none"
               aria-label="Startdatum"
             />
-            <span className="text-xs text-neutral-400 dark:text-neutral-500">–</span>
+            <span className="text-xs text-neutral-500 dark:text-neutral-400">–</span>
             <input
               type="date"
               value={dateRange.to || ''}

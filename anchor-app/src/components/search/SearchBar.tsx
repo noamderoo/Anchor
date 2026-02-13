@@ -56,7 +56,7 @@ export function SearchBar() {
         {searchQuery && (
           <button
             onClick={() => setSearchQuery('')}
-            className="absolute right-2 text-neutral-400 dark:text-neutral-500 hover:text-neutral-600 dark:hover:text-neutral-300 cursor-pointer"
+            className="absolute right-2 text-neutral-500 dark:text-neutral-400 hover:text-neutral-600 dark:hover:text-neutral-300 cursor-pointer"
             aria-label="Zoekopdracht wissen"
           >
             <X size={14} />
